@@ -11,13 +11,47 @@ html {
   line-height: 1.15;
   -webkit-text-size-adjust: 100%;
   -ms-text-size-adjust: 100%;
-  -webkit-tap-highlight-color: transparent; }
+  -webkit-tap-highlight-color: transparent;
+  width: 100%;
+  overflow-x: hidden;
+  }
 
 body {
   margin: 0;
-  font-family: Arial, Helvetica, sans-serif;}
+  font-family: Arial, Helvetica, sans-serif;
+  overflow-x: hidden;}
 
 
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.mat-form-field-appearance-legacy .mat-form-field-suffix .mat-icon-button .mat-icon {
+  font-size: x-large !important;
+  color: #ffc0bf !important;
+}
+
+
+.mat-input-element {
+  color: #ffc0bf !important;
+}
+
+.mat-input-element {
+  caret-color: #ffc0bf !important;
+  font-size: 16px !important;
+}
+
+.mat-form-field-appearance-legacy .mat-form-field-label {
+  color: rgb(255 255 255) !important;
+  font-size: 16px !important;
+}
+
+.mat-form-field-underline {
+  /*change color of underline*/
+  background-color: #fff !important;
+}
+
+.mat-form-field-ripple {
+ /*change color of underline when focused*/
+ background-color: #ffc0bf !important;;
+}
