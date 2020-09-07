@@ -12,13 +12,13 @@ export class NavbarComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    const mkmHamburger = document.querySelector('.mkm-hamburger');
-    const mkmNavLinks = document.querySelector('.mkm-nav-links');
-    const links = document.querySelectorAll('.mkm-nav-links li');
+    const mykidsmentorHamburger = document.querySelector('.mykidsmentor-hamburger');
+    const mykidsmentorNavLinks = document.querySelector('.mykidsmentor-nav-links');
+    const links = document.querySelectorAll('.mykidsmentor-nav-links li');
 
-    mkmHamburger.addEventListener('click', () => {
-      mkmNavLinks.classList.toggle('open');
-      mkmHamburger.classList.toggle('toggle');
+    mykidsmentorHamburger.addEventListener('click', () => {
+      mykidsmentorNavLinks.classList.toggle('open');
+      mykidsmentorHamburger.classList.toggle('toggle');
       links.forEach(link => {
 
         link.classList.toggle('fade');

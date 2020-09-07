@@ -4,29 +4,29 @@ nav {
   background: #2d7d93;}
 
   /* Container for the Navbar */
-  .mkm-nav-elements {
+  .mykidsmentor-nav-elements {
     display: block;}
 
     /* Row that contains all elements of the Navbar */
-    .mkm-nav-elements-row {
+    .mykidsmentor-nav-elements-row {
       display: flex;
       background: #2d7d93;}
 
       /* MykidsMentor's Logo */
-      .mkm-logo{
+      .mykidsmentor-logo{
         width: 30%;}
 
         /* MykidsMentor's Logo Size */
-        .mkm-logo-size {
+        .mykidsmentor-logo-size {
           height: 160px;}
 
       /* Contains two rows inside */
-      .mkm-nav {
+      .mykidsmentor-nav {
         display: block;
         width: 70%;}
 
         /* Row that contains search bar, zhuyin, social media icons, Login and Signup buttons */
-        .mkm-nav-row1 {
+        .mykidsmentor-nav-row1 {
           padding-top: 15px;
           padding-bottom: 42px;}
 
@@ -53,7 +53,7 @@ nav {
                 width: 32px;}
 
           /* Zhuyin Switch for allowing users to see zhuyin characters */
-          .mkm-switch {
+          .mykidsmentor-switch {
             position: absolute;
               top: 70%;
               left: 50%;
@@ -65,7 +65,7 @@ nav {
               transition: all 0.2s ease;
               border-radius: 25px;}
 
-            .mkm-switch span {
+            .mykidsmentor-switch span {
               position: absolute;
               width: 20px;
               height: 4px;
@@ -77,7 +77,7 @@ nav {
               transform: rotate(-45deg);
               transition: all 0.2s ease;}
 
-            .mkm-switch span:after {
+            .mykidsmentor-switch span:after {
               content: "";
               display: block;
               position: absolute;
@@ -87,7 +87,7 @@ nav {
               background: #fff;
               transition: all 0.2s ease;}
 
-            .mkm-switch label {
+            .mykidsmentor-switch label {
               cursor: pointer;
               color: rgba(0,0,0,0.2);
               width: 90px;
@@ -106,60 +106,60 @@ nav {
             position: absolute;
             right: 0px;}
 
-          #no:checked ~ .mkm-switch {
+          #no:checked ~ .mykidsmentor-switch {
             top: 70%;
             background: #5199ae;
             height: 42px;}
 
-          #no:checked ~ .mkm-switch span {
+          #no:checked ~ .mykidsmentor-switch span {
             background: #ffc0bf;
             margin-left: -15px;}
 
-          #no:checked ~ .mkm-switch span:after {
+          #no:checked ~ .mykidsmentor-switch span:after {
             background: #ffc0bf;
             height: 20px;
             margin-top: -8px;
             margin-left: 8px;}
 
-          #yes:checked ~ .mkm-switch label[for=yes] {
+          #yes:checked ~ .mykidsmentor-switch label[for=yes] {
             color: #fff;
             font-size: 17px;}
 
-          #no:checked ~ .mkm-switch label[for=no] {
+          #no:checked ~ .mykidsmentor-switch label[for=no] {
             color: #ffc0bf;
             font-size: 17px;}
 
           /* Style for the social media icons */
-          .mkm-social-icons {
+          .mykidsmentor-social-icons {
             display: flex;
             list-style: none;
             margin-left: 14px;
             margin-bottom: 0rem;
           }
 
-          .mkm-social-icons-elements {
+          .mykidsmentor-social-icons-elements {
             margin-right: 15px;
             margin-top: 10px;}
 
-          .mkm-social {
+          .mykidsmentor-social {
             height: 27px;}
 
           /* User's name after login */
-          .mkm-username {
+          .mykidsmentor-username {
             font-size: 20px;
             color: #ffffff;
             margin-left: 2px;
             padding-top: 16px;}
 
-          .mkm-username-icon {
+          .mykidsmentor-username-icon {
             padding-top: 9px;
           }
 
           /* Login and Signup buttons */
-          .mkm-button {
+          .mykidsmentor-button {
             background-color: #5199ad;
             border-radius: 43px;
-            color: white;
+            color: #ffc0bf;
             text-align: center;
             text-decoration: none;
             display: inline-block;
@@ -169,16 +169,21 @@ nav {
             width: 100px;
             border: 9px solid #5199ad;}
 
-            .mkm-button:hover {
+            .mykidsmentor-button:hover {
               background-color: #ffc1c0;
               border: 9px solid #ffc1c0;
+              color: #fff;
+            }
+
+            .mykidsmentor-button:active {
+              transform: translateY(10px);
             }
 
         /* Row that contains the nav links */
-        .mkm-nav-row2 {
+        .mykidsmentor-nav-row2 {
           width: 100%;}
 
-          .mkm-nav-links {
+          .mykidsmentor-nav-links {
             padding-top: 15px ;
             display: flex;
             list-style: none;
@@ -187,11 +192,11 @@ nav {
             align-items: center;
             margin-left: auto;}
 
-            .mkm-nav-links li a {
+            .mykidsmentor-nav-links li a {
               color: #2d7d93;
               text-decoration: none;}
 
-            .mkm-main-link {
+            .mykidsmentor-main-link {
               /* border: 2px solid white; */
               border: 5px solid #89cbde;
               width: 120px;
@@ -200,24 +205,70 @@ nav {
               border-top-right-radius: 15px;
               border-top-left-radius: 15px;}
 
-              .mkm-main-link:hover {
-                border-color: #fff;
+              .mykidsmentor-main-link:hover {
+                border-top-color: #fff;
+                border-right-color: #fff;
+                border-left-color: #fff;
                 text-decoration: none;}
 
-          .mkm-main-link-size {
+          .mykidsmentor-main-link-size {
             font-size: 25px;
             vertical-align: middle;
             line-height: 32px;}
 
-/* Qoutes from Teachers */
-.mkm-qoutes {
+          /* .mykidsmentor-main-link-size:active {
+            transform: translateY(3px);
+          } */
+
+          .mykidsmentor-dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #f1f1f1;
+            min-width: 110px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 1;
+            /* border-right: 2px solid #8acbde;
+            border-left: 2px solid #8acbde; */
+            border-bottom-right-radius: 25px ;
+            border-bottom-left-radius: 25px;
+            border-bottom: 25px;
+          }
+
+          .mykidsmentor-dropdown-content a {
+            color: black;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            border-bottom: 2px solid #8acbde;
+          }
+
+          .mykidsmentor-dropdown-content a:hover {
+            background: #ddd;
+            }
+
+          .mykidsmentor-dropdown-content .mykidsmentor-last:hover {
+            background: #ddd;
+            border-bottom-left-radius: 25px !important;
+            border-bottom-right-radius: 25px !important;
+            }
+
+          .mykidsmentor-dropdown-content .mykidsmentor-last{
+            border-bottom: 0px !important;
+          }
+
+          .mykidsmentor-main-link:hover .mykidsmentor-dropdown-content {
+            display: block;}
+
+
+/* Quotes from Teachers */
+.mykidsmentor-qoutes {
   color: #ffffff;
   font-weight: bold;
   font-size: 18px;
   top: 35%;
   padding-left: 60px;}
 
-.mkm-qoutes-background {
+.mykidsmentor-qoutes-background {
   background-color: #ffc1c0;
   height: 55px;}
 
@@ -229,11 +280,11 @@ nav {
     position: relative;
   }
 
-  .mkm-logo-size {
+  .mykidsmentor-logo-size {
     height: 130px;
   }
 
-  .mkm-switch {
+  .mykidsmentor-switch {
     display: none;
   }
 
@@ -241,21 +292,21 @@ nav {
     display: none;
   }
 
-  .mkm-nav-row1 {
+  .mykidsmentor-nav-row1 {
     display: none;
   }
 
-  /* .mkm-nav-row2 {
+  /* .mykidsmentor-nav-row2 {
     display: none;
   } */
 
-  .mkm-qoutes-background {
+  .mykidsmentor-qoutes-background {
     width: 375px;
     display: block;
     background-color: #fff;
   }
 
-  .mkm-mobile-date {
+  .mykidsmentor-mobile-date {
     background-color: #ffc1c0;
     text-align: center;
     font-size: 15px;
@@ -264,21 +315,21 @@ nav {
     padding-bottom: 2px;
   }
 
-  .mkm-mobile-quotes {
+  .mykidsmentor-mobile-quotes {
     background-color: #89cbde;
     top: 2%;
     color: #2d7d92;
   }
 
-  .mkm-desktop-quotes {
+  .mykidsmentor-desktop-quotes {
     display: none;
   }
 
-  .mkm-mobile-date {
+  .mykidsmentor-mobile-date {
     font-size: 15px;
   }
 
-  .mkm-nav-links {
+  .mykidsmentor-nav-links {
     position: fixed;
     background: #2d7d92;
     height: 100vh;
@@ -291,49 +342,49 @@ nav {
     pointer-events: none;
   }
 
-  .mkm-nav-links.open {
+  .mykidsmentor-nav-links.open {
     clip-path: circle(1800px at 90% -10%);
     -webkit-clip-path: circle(1800px at 90% -10%);
     pointer-events: all;
   }
 
-  .mkm-nav-links li {
+  .mykidsmentor-nav-links li {
     opacity: 0;
   }
 
-  .mkm-nav-links li a {
+  .mykidsmentor-nav-links li a {
     font-size: 25px;
   }
 
-  .mkm-nav-links li:nth-child(1) {
+  .mykidsmentor-nav-links li:nth-child(1) {
     transition: all 0.5s ease 0.2s;
   }
 
-  .mkm-nav-links li:nth-child(2) {
+  .mykidsmentor-nav-links li:nth-child(2) {
     transition: all 0.5s ease 0.4s;
   }
 
-  .mkm-nav-links li:nth-child(3) {
+  .mykidsmentor-nav-links li:nth-child(3) {
     transition: all 0.5s ease 0.6s;
   }
 
-  .mkm-nav-links li:nth-child(4) {
+  .mykidsmentor-nav-links li:nth-child(4) {
     transition: all 0.5s ease 0.8s;
   }
 
-  .mkm-nav-links li:nth-child(5) {
+  .mykidsmentor-nav-links li:nth-child(5) {
     transition: all 0.5s ease 1s;
   }
 
-  .mkm-nav-links li:nth-child(6) {
+  .mykidsmentor-nav-links li:nth-child(6) {
     transition: all 0.5s ease 1.2s;
   }
 
-  .mkm-nav-links li.fade {
+  .mykidsmentor-nav-links li.fade {
     opacity: 1;
   }
 
-  .mkm-main-link {
+  .mykidsmentor-main-link {
     /* border: 2px solid white; */
     border: 5px solid #89cbde;
     width: 120px;
@@ -342,19 +393,23 @@ nav {
     border-bottom-left-radius: 15px;
     border-bottom-right-radius: 15px;}
 
-  .mkm-main-link-register {
+  .mykidsmentor-main-link-register {
     /* border: 2px solid white; */
-    border: 5px solid #fff;
+    border: 5px solid #5199ad;
     width: 120px;
     text-align: center;
-    background-color: #fff;
+    background-color: #5199ad;
     border-radius: 15px;}
 
+  .mykidsmentor-auth li a  {
+    color: #ffc0bf;
+  }
 
-  .mkm-logo {
+
+  .mykidsmentor-logo {
     width: 0%;}
 
-  .mkm-line {
+  .mykidsmentor-line {
     width: 30px;
     height: 4px;
     background: #ffc1c0;
@@ -362,7 +417,7 @@ nav {
     border-radius: 25px;
   }
 
-  .mkm-hamburger {
+  .mykidsmentor-hamburger {
     position: absolute;
     cursor: pointer;
     right: 5%;
@@ -387,23 +442,23 @@ nav {
     transition: all 0.5s ease 1s;
   }
 
-  .mkm-auth {
+  .mykidsmentor-auth {
     display: flex;
     list-style: none;
     /* background: #ffc1c0;
     border: 11px solid #ffc1c0; */
   }
 
-  .mkm-register {
+  .mykidsmentor-register {
     padding-top: 70px;
 
   }
 
-  .mkm-login {
+  .mykidsmentor-login {
     margin-right: 10px;
   }
 
-  .mkm-signup {
+  .mykidsmentor-signup {
     margin-left: 10px;
   }
 
@@ -411,19 +466,19 @@ nav {
 
 @media screen and (min-width: 1114px) {
 
-  /* .mkm-mobile {
+  /* .mykidsmentor-mobile {
     display: none;
   } */
 
-  .mkm-mobile-date{
+  .mykidsmentor-mobile-date{
     display: none;
   }
 
-  .mkm-mobile-quotes{
+  .mykidsmentor-mobile-quotes{
     display: none;
   }
 
-  .mkm-register {
+  .mykidsmentor-register {
     display: none;
   }
 
