@@ -1,0 +1,95 @@
+<div class="container-full">
+  <div (click)="close(false)" class="mykidsmentor-cancel">
+    <div class="mykidsmentor-line line1"></div>
+    <div class="mykidsmentor-line line2"></div>
+    <div class="mykidsmentor-line3 line3"></div>
+  </div>
+  <div *ngIf="!isSmallScreen; else showMobileLoginPic" class="row">
+    <img class="mykidsmentor-login" src="assets/img/mykidsmentor_login.jpg" alt="mykidsmentor_login">
+  </div>
+
+  <ng-template #showMobileLoginPic>
+    <div class="row">
+      <img class="mykidsmentor-login-mobile-pic" src="assets/img/mykidsmentor_login.jpg" alt="mykidsmentor_login">
+    </div>
+  </ng-template>
+</div>
+
+<div class="container">
+  <div class="row mkm-dialog-title">
+    <h1 class=""> 登入 </h1>
+  </div>
+  <div class="row">
+
+      <span class="mkm-login-error" *ngIf="error">{{ error }}</span>
+
+    <form #formData="ngForm" (ngSubmit)="onUserLogin(formData.value)" class="mykidsmentor-form">
+
+      <div class="mykidsmentor-form-element">
+        <div class="row">
+          <label class="mkm-label" for="uname">電子信箱 E-mail</label>
+        </div>
+
+        <div class="row">
+          <input type="text" name="email" #email="ngModel" ngModel required>
+        </div>
+
+        <div class="row mkm-password">
+          <label class="mkm-label" for="psw">密碼 Password</label>
+        </div>
+
+        <div class="row">
+          <input type="password" name="password" #password="ngModel" ngModel required minlength="5">
+        </div>
+
+        <div class="row mkm-button">
+          <div class="col">
+            <a (click)="resetUserPassword(formData.value, actionCodeSettings)">忘記密碼？</a>
+          </div>
+
+          <div class="col mkm-button-right">
+            <button class="mkm-login-button mkm-label" type="submit" >登入</button>
+          </div>
+        </div>
+
+        <div class="row mkm-account">
+          <span> 還沒有建立帳號嗎？<a class="mykidsmentor-no-account" (click)="close(true)"> 註冊帳號 </a>  </span>
+        </div>
+
+        <div class="row">
+          <div class="or-line">
+            <hr><span class="mkm-space"> 或是用 </span><hr>
+          </div>
+        </div>
+
+        <div class="container-full">
+
+          <div class="row">
+
+            <div class="col">
+              <div class="mkm-social">
+                <a (click)="onUserLoginWithFb()"> <img style="height: 30px;" src="assets/img/facebook-login.png" alt="">帳號登入</a>
+              </div>
+
+            </div>
+
+            <div class="col">
+              <div class="mkm-social">
+                <a (click)="onUserLoginWithGoogle()"> <img style="height: 30px;" src="assets/img/google-login.png" alt="">帳號登入</a>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+    </form>
+  </div>
+</div>
+
+<div *ngIf="isLoading" class="loading">
+
+</div>
+
+

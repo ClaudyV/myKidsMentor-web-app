@@ -1,0 +1,55 @@
+.mkm-password-reset {
+  padding-top: 20px;
+  justify-content: center;
+  text-align: center;
+  font-size: 17px;
+  color: #2d7d92;
+  background: #ffc1c0;
+}
+
+.mykidsmentor-line {
+  width: 30px;
+  height: 4px;
+  background:#88cbde;
+  margin: 9px;
+  border-radius: 25px;
+}
+
+.mykidsmentor-line3 {
+  width: 30px;
+  height: 4px;
+  background:#ffc1c0;
+  margin: 9px;
+  border-radius: 25px;
+}
+
+.mykidsmentor-cancel {
+  z-index: 1;
+  background: #ffffffb8;
+  border-radius: 3px;
+  position: relative;
+  float: right;
+}
+
+ .line1 {
+  transform: rotate(-45deg) translate(-9px, 9px);
+  transition: all 0.5s ease 1s;
+}
+
+ .line2 {
+  opacity: 0;
+}
+
+ .line3 {
+  transform: rotate(45deg) translate(-9px, -10px);
+  transition: all 0.5s ease 1s;
+}
+
+.mat-dialog-container {
+  background: #ffc1c0 !important;
+}
+
+
+::ng-deep.mat-dialog-container {
+  background: #ffc0bf;
+  }

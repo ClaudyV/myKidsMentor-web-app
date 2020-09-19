@@ -3,20 +3,63 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+
+// components generated
 import { NavbarComponent } from './navbar/navbar.component';
 import { BodyComponent } from './body/body.component';
+
+// imported modules
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {MatIconModule} from '@angular/material/icon';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatButtonModule} from '@angular/material/button';
+import {FormsModule} from '@angular/forms';
+import {MatInputModule} from '@angular/material/input';
+import {AngularFireModule} from '@angular/fire';
+import { AngularFireAnalyticsModule } from '@angular/fire/analytics';
+import { environment } from '../environments/environment';
+import { LoginComponent } from './login/login.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
+import {MatDialogModule} from '@angular/material/dialog';
+import { HomeComponent } from './home/home.component';
+import { CourseComponent } from './course/course.component';
+import { SignupComponent } from './signup/signup.component';
+import {LayoutModule} from '@angular/cdk/layout';
+import { PwnotificationComponent } from './pwnotification/pwnotification.component';
+
 
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
-    BodyComponent
+    BodyComponent,
+    LoginComponent,
+    HomeComponent,
+    CourseComponent,
+    SignupComponent,
+    PwnotificationComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    MatIconModule,
+    MatFormFieldModule,
+    MatButtonModule,
+    FormsModule,
+    MatInputModule,
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFireAnalyticsModule,
+    ReactiveFormsModule,
+    MatProgressBarModule,
+    MatDialogModule,
+    LayoutModule
+  ],
+  entryComponents: [
+    LoginComponent,
+    SignupComponent,
+    PwnotificationComponent
   ],
   providers: [],
   bootstrap: [AppComponent]

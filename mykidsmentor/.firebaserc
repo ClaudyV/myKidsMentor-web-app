@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "my-kid-s-mentor": {
+      "hosting": {
+        "mykidsmentor": [
+          "my-kid-s-mentor"
+        ]
+      }
+    }
+  }
+}

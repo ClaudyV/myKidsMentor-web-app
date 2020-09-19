@@ -1,57 +1,175 @@
 <header>
     <nav>
-      <div class="mkm-hamburger">
-        <div class="mkm-line"></div>
-        <div class="mkm-line"></div>
-        <div class="mkm-line"></div>
-      </div>
+      <div class="mykidsmentor-nav-elements">
 
-      <div class="mkm-nav-elements">
+        <div class="mykidsmentor-hamburger">
+          <div class="mykidsmentor-line line1"></div>
+          <div class="mykidsmentor-line line2"></div>
+          <div class="mykidsmentor-line line3"></div>
+        </div>
 
-        <div class="mkm-nav-elements-row1">
+        <div class="mykidsmentor-nav-elements-row">
 
-          <div class="mkm-logo">
-            <img class="mkm-logo-size" src="assets/img/my_kids_mentor_official_logo.png">
+          <div id="mkm-logo" class="mykidsmentor-logo">
+          <a routerLink="/"> <img class="mykidsmentor-logo-size" src="assets/img/my_kids_mentor_official_logo.png"> </a>
           </div>
 
-          <div class="mkm-nav">
-            <div class="mkm-nav-row1">
-                <ul class="mkm-nav-links">
-                  <li> <label class="switch"><input type="checkbox" id="togBtn">
-                          <div class="slider round">
-                          <span class="on">注音版</span>
-                          <span class="off">無注音版</span>
+          <div class="mykidsmentor-nav">
+            <div class="mykidsmentor-nav-row1">
+                <div class="row justify-content-end">
+                  <div class="col-5">
+                    <mat-form-field class="search-form-field" floatLabel="never">
+                      <input matInput [(ngModel)]="searchKey" placeholder="搜 尋" autocomplete="off">
+                      <button mat-button matSuffix mat-icon-button aria-label="Clear"*ngIf="!searchKey">
+                        <mat-icon>search</mat-icon>
+                      </button>
+                      <button mat-button matSuffix mat-icon-button aria-label="Clear"*ngIf="searchKey" (click)="onSearchClear()">
+                        <mat-icon>close</mat-icon>
+                      </button>
+                    </mat-form-field>
+                  </div>
+                  <div class="col-4 col-sm-3">
+                    <input type="radio" name="rdo" id="yes">
+                    <input type="radio" name="rdo" id="no" checked>
+                    <div class="mykidsmentor-switch">
+                      <label for="yes">注音版</label>
+                      <label for="no">無注音版</label>
+                      <span></span>
+                    </div>
+                  </div>
+                  <div class="col-4">
+
+                    <ul class="mykidsmentor-social-icons">
+                      <li class="mykidsmentor-social-icons-elements">
+                        <img class="mykidsmentor-social" src="assets/img/facebook.png" alt="facebook">
+                      </li>
+                      <li class="mykidsmentor-social-icons-elements">
+                        <img class="mykidsmentor-social" src="assets/img/instagram.png" alt="instagram">
+                      </li>
+                      <ng-template [ngIf]="user">
+
+                        <li class="mykidsmentor-username-icon">
+                          <img *ngIf="user.photoURL; else showpic" class="mykidsmentor-user-picture" src="{{user.photoURL}}" alt="mykidsmentor account">
+                          <ng-template #showpic> <img  class="mykidsmentor-social" src="assets/img/mkm-account.png" alt="{{user.displayName}}"> </ng-template>
+                          <div class="mykidsmentor-dropdown-content-user">
+                            <a href="#">證號資料</a>
+                            <a href="#">我的課程</a>
+                            <a class="mykidsmentor-last" (click)="userLogout()">登出</a>
                           </div>
-                        </label>
-                    </li>
-                  <li class="mkm-username"> Hi, 米克羅 </li>
-                </ul>
+                          <b *ngIf="user.displayName; else showEmail" class="mykidsmentor-username">{{ (user.displayName.length > 19)? (user.displayName | slice:0:19)+'..':(user.displayName)}}</b>
+                          <ng-template #showEmail><b class="mykidsmentor-username">{{ (user.email.length > 19)? (user.email | slice:0:19)+'..':(user.email)}}</b></ng-template>
+                        </li>
+
+                      </ng-template>
+
+                      <ng-template [ngIf]="!user">
+
+                        <a (click)="openLoginDialog()" class="mykidsmentor-button">登入</a>
+                        <a (click)="openSignupDialog()" class="mykidsmentor-button">註冊</a>
+
+                      </ng-template>
+
+
+                    </ul>
+
+                  </div>
+                </div>
             </div>
-            <div class="mkm-nav-row2">
-              <ul class="mkm-nav-links">
-                <li class="mkm-main-link"><a class="mkm-main-link-size" href="#">課程</a></li>
-                <li class="mkm-main-link"><a class="mkm-main-link-size" href="#">文章</a></li>
-                <li class="mkm-main-link"><a class="mkm-main-link-size" href="#">關於</a></li>
-                <li class="mkm-main-link"><a class="mkm-main-link-size" href="#">聯絡</a></li>
-                <li class="mkm-main-link"><a class="mkm-main-link-size" href="#">會員</a></li>
+            <div class="mykidsmentor-nav-row2">
+              <ul class="mykidsmentor-nav-links">
+
+                <div class="mykidsmentor-register">
+
+                    <ng-template [ngIf]="user">
+                      <div class="mykidsmentor-username-info">
+                      <img *ngIf="user.photoURL; else showpic" class="mykidsmentor-user-picture" src="{{user.photoURL}}" alt="mykidsmentor account">
+                      <ng-template #showpic> <img  class="mykidsmentor-social" src="assets/img/mkm-account.png" alt="{{user.displayName}}"> </ng-template>
+
+                      <b *ngIf="user.displayName; else showEmail" class="mykidsmentor-username">{{ (user.displayName.length > 20)? (user.displayName | slice:0:20)+'..':(user.displayName)}}</b>
+                      <ng-template #showEmail><b class="mykidsmentor-username">{{ (user.email.length > 19)? (user.email | slice:0:19)+'..':(user.email)}}</b></ng-template>
+                      <div class="mykidsmentor-dropdown-content-user">
+                        <a href="#">帳號資料</a>
+                        <a href="#">我的課程</a>
+                        <a class="mykidsmentor-last" (click)="userLogout()">登出</a>
+                      </div>
+                    </div>
+                    </ng-template>
+
+                    <ng-template [ngIf]="!user">
+                      <div class="mykidsmentor-auth"> </div>
+                        <a class="mykidsmentor-mobile-login" (click)="openLoginDialog()">登入</a>
+                        <a class="mykidsmentor-mobile-login" (click)="openSignupDialog()">註冊</a>
+                    </ng-template>
+
+
+                </div>
+                <li class="mykidsmentor-main-link">
+                  <a class="mykidsmentor-main-link-size">課程</a>
+                  <div id="mykidsmentor-close" class="mykidsmentor-dropdown-content">
+                    <a *ngIf="!user ; else showcourse" (click)="openLoginDialog()" routerLink="/course">最新影片</a>
+                    <ng-template #showcourse> <a routerLink="/course">最新影片</a> </ng-template>
+                    <a href="#">熱門影片</a>
+                    <a class="mykidsmentor-last" href="#">分類影片</a>
+                  </div>
+                </li>
+                <li class="mykidsmentor-main-link">
+                  <a class="mykidsmentor-main-link-size" href="#blog">文章</a>
+                  <div class="mykidsmentor-dropdown-content">
+                    <a  href="#">最新文章</a>
+                    <a href="#">熱門文章</a>
+                    <a class="mykidsmentor-last" href="#">分類文章</a>
+                  </div>
+                </li>
+                <li class="mykidsmentor-main-link">
+                  <a class="mykidsmentor-main-link-size" href="#about">關於</a>
+                  <div class="mykidsmentor-dropdown-content">
+                    <a href="#">心伴理念</a>
+                    <a href="#">服務項目</a>
+                    <a class="mykidsmentor-last" href="#">師資介紹</a>
+                  </div>
+                </li>
+                <li class="mykidsmentor-main-link">
+                  <a class="mykidsmentor-main-link-size" href="#contact">聯絡</a>
+                </li>
+                <li class="mykidsmentor-main-link">
+                  <a class="mykidsmentor-main-link-size" href="#membership">會員</a>
+                  <div class="mykidsmentor-dropdown-content">
+                    <a href="#">會員中心</a>
+                    <a href="#">加入會員</a>
+                    <a class="mykidsmentor-last" href="#">會員登入</a>
+                  </div>
+                </li>
               </ul>
             </div>
           </div>
-
-
         </div>
+      </div>
+    </nav>
 
-        <div class="mkm-nav-elements-row2">
-          <ul class="mkm-nav-links">
-            <li class="mkm-qoutes"> 2020年8月31日  31C</li>
-            <li class="mkm-qoutes"> 我們會成功的， 要繼續努力， 好不好？</li>
-          </ul>
+    <div class="container-full mykidsmentor-desktop-quotes">
+      <div class="row mykidsmentor-qoutes-background">
+        <div class="col-sm-4 mykidsmentor-qoutes">
+          2020年8月31日  31C
         </div>
+        <div class="col-8 mykidsmentor-qoutes">
+          我們會成功的， 要繼續努力， 好不好？
+        </div>
+      </div>
+    </div>
 
+    <div class="container-full mykidsmentor-mobile-date">
 
+       <div class="col-12">
+        2020年8月31日  31C
+       </div>
+
+    </div>
+
+    <div class="container-full mykidsmentor-mobile-quotes">
+      <div class="col-12">
+        我們會成功的， 要繼續努力， 好不好？ 我們會成功的， 要繼續努力， 好不好？我們會成功的， 要繼續努力， 好不好？
       </div>
 
+    </div>
 
-
-    </nav>
 </header>

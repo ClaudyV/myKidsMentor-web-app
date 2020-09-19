@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthenticationService } from '../service/authentication.service';
+
 
 @Component({
   selector: 'app-body',
@@ -7,9 +9,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BodyComponent implements OnInit {
 
-  constructor() { }
+  user: firebase.User;
+
+  constructor(private loginfo: AuthenticationService) { }
 
   ngOnInit(): void {
+    this.loginfo.getCurrentUser()
+        .subscribe(user => this.user = user);
   }
 
 }

@@ -1,0 +1,14 @@
+.mykidsmentor-intro {
+
+  min-height: 80vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background: url('../../assets/img/intro_gif.gif') no-repeat center;
+  background-size: cover;
+
+}
+
+
+
