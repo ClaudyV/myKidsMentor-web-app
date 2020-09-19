@@ -10,8 +10,8 @@
 
         <div class="mykidsmentor-nav-elements-row">
 
-          <div class="mykidsmentor-logo">
-            <img class="mykidsmentor-logo-size" src="assets/img/my_kids_mentor_official_logo.png">
+          <div id="mkm-logo" class="mykidsmentor-logo">
+          <a routerLink="/"> <img class="mykidsmentor-logo-size" src="assets/img/my_kids_mentor_official_logo.png"> </a>
           </div>
 
           <div class="mykidsmentor-nav">
@@ -46,13 +46,30 @@
                       <li class="mykidsmentor-social-icons-elements">
                         <img class="mykidsmentor-social" src="assets/img/instagram.png" alt="instagram">
                       </li>
-                      <!-- <li class="mykidsmentor-username-icon">
-                        <img class="mykidsmentor-social" src="assets/img/mykidsmentor-account.png" alt="mykidsmentor account">
-                      </li>
-                      <b class="mykidsmentor-username">Hi, 米克羅</b>
-                      <a href="#signup" class="mykidsmentor-button">登出</a> -->
-                      <a href="#login" class="mykidsmentor-button">登入</a>
-                      <a href="#signup" class="mykidsmentor-button">註冊</a>
+                      <ng-template [ngIf]="user">
+
+                        <li class="mykidsmentor-username-icon">
+                          <img *ngIf="user.photoURL; else showpic" class="mykidsmentor-user-picture" src="{{user.photoURL}}" alt="mykidsmentor account">
+                          <ng-template #showpic> <img  class="mykidsmentor-social" src="assets/img/mkm-account.png" alt="{{user.displayName}}"> </ng-template>
+                          <div class="mykidsmentor-dropdown-content-user">
+                            <a href="#">證號資料</a>
+                            <a href="#">我的課程</a>
+                            <a class="mykidsmentor-last" (click)="userLogout()">登出</a>
+                          </div>
+                          <b *ngIf="user.displayName; else showEmail" class="mykidsmentor-username">{{ (user.displayName.length > 19)? (user.displayName | slice:0:19)+'..':(user.displayName)}}</b>
+                          <ng-template #showEmail><b class="mykidsmentor-username">{{ (user.email.length > 19)? (user.email | slice:0:19)+'..':(user.email)}}</b></ng-template>
+                        </li>
+
+                      </ng-template>
+
+                      <ng-template [ngIf]="!user">
+
+                        <a (click)="openLoginDialog()" class="mykidsmentor-button">登入</a>
+                        <a (click)="openSignupDialog()" class="mykidsmentor-button">註冊</a>
+
+                      </ng-template>
+
+
                     </ul>
 
                   </div>
@@ -60,28 +77,47 @@
             </div>
             <div class="mykidsmentor-nav-row2">
               <ul class="mykidsmentor-nav-links">
-                <li class="mykidsmentor-register">
-                  <ul class="mykidsmentor-auth">
-                    <li class="mykidsmentor-main-link-register mykidsmentor-login"><a class="mykidsmentor-main-link-size" href="#login">登入</a></li>
-                    <li class="mykidsmentor-main-link-register mykidsmentor-signup"><a class="mykidsmentor-main-link-size" href="#signup">註冊</a></li>
-                  </ul>
-                </li>
+
+                <div class="mykidsmentor-register">
+
+                    <ng-template [ngIf]="user">
+                      <div class="mykidsmentor-username-info">
+                      <img *ngIf="user.photoURL; else showpic" class="mykidsmentor-user-picture" src="{{user.photoURL}}" alt="mykidsmentor account">
+                      <ng-template #showpic> <img  class="mykidsmentor-social" src="assets/img/mkm-account.png" alt="{{user.displayName}}"> </ng-template>
+
+                      <b *ngIf="user.displayName; else showEmail" class="mykidsmentor-username">{{ (user.displayName.length > 20)? (user.displayName | slice:0:20)+'..':(user.displayName)}}</b>
+                      <ng-template #showEmail><b class="mykidsmentor-username">{{ (user.email.length > 19)? (user.email | slice:0:19)+'..':(user.email)}}</b></ng-template>
+                      <div class="mykidsmentor-dropdown-content-user">
+                        <a href="#">帳號資料</a>
+                        <a href="#">我的課程</a>
+                        <a class="mykidsmentor-last" (click)="userLogout()">登出</a>
+                      </div>
+                    </div>
+                    </ng-template>
+
+                    <ng-template [ngIf]="!user">
+                      <div class="mykidsmentor-auth"> </div>
+                        <a class="mykidsmentor-mobile-login" (click)="openLoginDialog()">登入</a>
+                        <a class="mykidsmentor-mobile-login" (click)="openSignupDialog()">註冊</a>
+                    </ng-template>
+
+
+                </div>
                 <li class="mykidsmentor-main-link">
-                  <a class="mykidsmentor-main-link-size" href="#course">課程</a>
-                  <div class="mykidsmentor-dropdown-content">
-                    <a href="#">最新影片</a>
+                  <a class="mykidsmentor-main-link-size">課程</a>
+                  <div id="mykidsmentor-close" class="mykidsmentor-dropdown-content">
+                    <a *ngIf="!user ; else showcourse" (click)="openLoginDialog()" routerLink="/course">最新影片</a>
+                    <ng-template #showcourse> <a routerLink="/course">最新影片</a> </ng-template>
                     <a href="#">熱門影片</a>
-                    <a href="#">分類影片</a>
-                    <a class="mykidsmentor-last" href="#">其他課程</a>
+                    <a class="mykidsmentor-last" href="#">分類影片</a>
                   </div>
                 </li>
                 <li class="mykidsmentor-main-link">
                   <a class="mykidsmentor-main-link-size" href="#blog">文章</a>
                   <div class="mykidsmentor-dropdown-content">
-                    <a href="#">最新文章</a>
+                    <a  href="#">最新文章</a>
                     <a href="#">熱門文章</a>
-                    <a href="#">分類文章</a>
-                    <a class="mykidsmentor-last" href="#">作者群</a>
+                    <a class="mykidsmentor-last" href="#">分類文章</a>
                   </div>
                 </li>
                 <li class="mykidsmentor-main-link">
@@ -94,9 +130,6 @@
                 </li>
                 <li class="mykidsmentor-main-link">
                   <a class="mykidsmentor-main-link-size" href="#contact">聯絡</a>
-                  <div class="mykidsmentor-dropdown-content">
-                    <a class="mykidsmentor-last" href="#">聯絡我們</a>
-                  </div>
                 </li>
                 <li class="mykidsmentor-main-link">
                   <a class="mykidsmentor-main-link-size" href="#membership">會員</a>

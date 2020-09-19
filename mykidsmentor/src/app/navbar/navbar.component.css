@@ -142,17 +142,27 @@ nav {
             margin-top: 10px;}
 
           .mykidsmentor-social {
-            height: 27px;}
+            height: 36px;
+            border-radius: 43px;}
+
+          .mykidsmentor-user-picture {
+            height: 36px;
+            border-radius: 43px;
+            border: 2px solid #fff;
+            cursor: pointer;}
 
           /* User's name after login */
           .mykidsmentor-username {
-            font-size: 20px;
+            font-size: 15px;
             color: #ffffff;
             margin-left: 2px;
-            padding-top: 16px;}
+            padding-top: 16px;
+            padding-left: 3px;
+            cursor: pointer;}
 
           .mykidsmentor-username-icon {
             padding-top: 9px;
+            position: relative;
           }
 
           /* Login and Signup buttons */
@@ -170,6 +180,12 @@ nav {
             border: 9px solid #5199ad;}
 
             .mykidsmentor-button:hover {
+              background-color: #ffc1c0;
+              border: 9px solid #ffc1c0;
+              color: #fff;
+            }
+
+            .mykidsmentor-button:active {
               background-color: #ffc1c0;
               border: 9px solid #ffc1c0;
               color: #fff;
@@ -259,6 +275,46 @@ nav {
           .mykidsmentor-main-link:hover .mykidsmentor-dropdown-content {
             display: block;}
 
+          .mykidsmentor-username-icon:hover .mykidsmentor-dropdown-content-user {
+            display: block;
+          }
+
+          .mykidsmentor-dropdown-content-user {
+            display: none;
+            position: absolute;
+            background-color: #f1f1f1;
+            min-width: 110px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 1;
+            border-bottom-right-radius: 25px ;
+            border-bottom-left-radius: 25px;
+            border-bottom: 25px;
+            width: 190px;
+            cursor: pointer;
+          }
+
+          .mykidsmentor-dropdown-content-user a {
+            color: #2d7d92;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            border-bottom: 2px solid #8acbde;
+          }
+
+          .mykidsmentor-dropdown-content-user a:hover {
+            background: #ddd;
+            }
+
+          .mykidsmentor-dropdown-content-user .mykidsmentor-last:hover {
+            background: #ddd;
+            border-bottom-left-radius: 25px !important;
+            border-bottom-right-radius: 25px !important;
+            }
+
+          .mykidsmentor-dropdown-content-user .mykidsmentor-last{
+            border-bottom: 0px !important;
+          }
+
 
 /* Quotes from Teachers */
 .mykidsmentor-qoutes {
@@ -273,7 +329,7 @@ nav {
   height: 55px;}
 
 
-@media screen and (max-width: 1113px) {
+@media screen and (max-width: 1213px) {
 
   nav {
     height: 132px;
@@ -333,19 +389,22 @@ nav {
     position: fixed;
     background: #2d7d92;
     height: 100vh;
-    width: 100%;
+    width: 65%;
     display: block;
     z-index: 1;
     clip-path: circle(100px at 90% -10%);
     -webkit-clip-path: circle(100px at 90% -10%);
     transition: all 1s ease-out;
     pointer-events: none;
+    border-left: 2px solid #ffffff;
+
   }
 
   .mykidsmentor-nav-links.open {
     clip-path: circle(1800px at 90% -10%);
     -webkit-clip-path: circle(1800px at 90% -10%);
     pointer-events: all;
+    border-left: 2px solid #ffffff;
   }
 
   .mykidsmentor-nav-links li {
@@ -407,7 +466,7 @@ nav {
 
 
   .mykidsmentor-logo {
-    width: 0%;}
+    width: 35%;}
 
   .mykidsmentor-line {
     width: 30px;
@@ -446,13 +505,13 @@ nav {
     display: flex;
     list-style: none;
     justify-content: center;
-    padding-top: 10%;
     padding-bottom: 10%;
   }
 
   .mykidsmentor-register {
-    padding-top: 70px;
-
+    padding-top: 82px;
+    padding-bottom: 15px;
+    text-align: center;
   }
 
   .mykidsmentor-login {
@@ -481,17 +540,80 @@ nav {
     border-bottom-right-radius: 0px !important;
     }
 
-  .mykidsmentor-show {
-    display: block;}
-
   .mykidsmentor-main-link:hover {
     border-top-color: #8acbde !important;
     border-right-color: #8acbde !important;
     border-left-color: #8acbde !important;}
 
+  .mykidsmentor-logo-size-change {
+    width: 0% !important;
+  }
+
+  .mykidsmentor-dropdown-content-user {
+    display: block;
+    position: relative;
+    background-color: #f1f1f1;
+    min-width: 110px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    border-bottom-right-radius: 25px ;
+    border-bottom-left-radius: 25px;
+    border-bottom: 25px;
+    width: 100%;
+  }
+
+  .mykidsmentor-dropdown-content-user a {
+    color: #2d7d92;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    border-bottom: 2px solid #8acbde;
+  }
+
+  .mykidsmentor-dropdown-content-user a:hover {
+    background: #ddd;
+    }
+
+  .mykidsmentor-dropdown-content-user .mykidsmentor-last:hover {
+    background: #ddd;
+    border-bottom-left-radius: 25px !important;
+    border-bottom-right-radius: 25px !important;
+    }
+
+  .mykidsmentor-dropdown-content-user .mykidsmentor-last{
+    border-bottom: 0px !important;
+  }
+
+   .mykidsmentor-mobile-login {
+    background-color: #5199ad !important;
+    border-radius: 43px !important;
+    color: #ffc0bf !important;
+    text-align: center !important;
+    text-decoration: none !important;
+    display: inline-block !important;
+    font-size: 20px !important;
+    margin: 4px 10px !important;
+    cursor: pointer !important;
+    width: 83px !important;
+    border: 9px solid #5199ad !important;
+  }
+
+  .mykidsmentor-username-info {
+    border-top: 2px solid #fff;
+    border-top-left-radius: 25px;
+    border-top-right-radius: 25px;
+    padding-top: 3px;
+  }
+
 }
 
-@media screen and (min-width: 1114px) {
+@media screen and (min-width: 747px) and (max-width: 1213px) {
+  .mykidsmentor-nav-links {
+    width: 67%;
+  }
+}
+
+@media screen and (min-width: 1214px) {
 
   /* .mykidsmentor-mobile {
     display: none;

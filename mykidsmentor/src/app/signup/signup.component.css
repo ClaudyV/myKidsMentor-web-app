@@ -1,0 +1,155 @@
+.mykidsmentor-login {
+  width: 515px;
+  /* height: 250px; */
+}
+
+.mykidsmentor-line {
+  width: 30px;
+  height: 4px;
+  background:#88cbde;
+  margin: 9px;
+  border-radius: 25px;
+}
+
+.mykidsmentor-line3 {
+  width: 30px;
+  height: 4px;
+  background:#ffc1c0;
+  margin: 9px;
+  border-radius: 25px;
+}
+
+.mykidsmentor-cancel {
+  z-index: 1;
+  background: #ffffffb8;
+  border-radius: 3px;
+  position: relative;
+  float: right;
+}
+
+ .line1 {
+  transform: rotate(-45deg) translate(-9px, 9px);
+  transition: all 0.5s ease 1s;
+}
+
+ .line2 {
+  opacity: 0;
+}
+
+ .line3 {
+  transform: rotate(45deg) translate(-9px, -10px);
+  transition: all 0.5s ease 1s;
+}
+
+
+input {
+  width: 100%;
+  padding: 10px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 2px solid #ffc1c0;
+  box-sizing: border-box;
+  border-radius: 43px;
+}
+
+
+.mykidsmentor-form {
+  width: 100%;
+}
+
+.mykidsmentor-form-element {
+  padding-left: 30px;
+  padding-right: 30px;
+}
+
+.mkm-label {
+  color: #ffc1c0;
+  font-size: 18px;
+}
+
+.mkm-password {
+  padding-top: 15px;
+}
+
+input:focus {
+  border-radius: 43px !important;
+  /* border: 2px solid #88cbde !important; */
+  outline: none;
+  box-shadow: -1px -1px 8px 0px #ffc1c0;
+}
+
+input:active {
+  border-radius: 43px;
+}
+
+
+.mkm-dialog-title {
+  padding-top: 5px;
+  justify-content: center !important;
+  text-align: center;
+  color: #ffc1c0;
+}
+
+input:-webkit-autofill {
+    transition: background-color 5000s ease-in-out 0s;
+}
+
+.mkm-login-button {
+  border-radius: 43px;
+  background: #ffc1c0;
+  color: #fff;
+  width: 100%;
+  border: 2px solid #ffc1c0;
+  padding: 10px 20px;
+}
+
+.mkm-button {
+  padding-top: 20px;
+}
+
+.mkm-button-right {
+  padding-right: 0px;
+}
+
+.or-line {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+}
+
+hr {
+  border: 0;
+  border-top: 1px solid #88cbde;
+  flex: 1;
+  z-index: 1;
+}
+
+.mkm-space {
+  padding-right: 10px;
+  padding-left: 10px;
+  color: #88cbde;
+}
+
+.mkm-account {
+  justify-content: center;
+  padding-top: 10px;
+}
+
+.mkm-social {
+  border-radius: 43px;
+  background: #fff;
+  color: #88cbde;
+  width: 100%;
+  border: 2px solid #88cbde;
+  cursor: pointer;
+  text-align: center;
+}
+
+.mkm-login-error {
+  padding-left: 15px;
+  color: red;
+  padding-bottom: 15px;
+}
+
+

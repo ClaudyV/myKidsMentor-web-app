@@ -53,5 +53,23 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
 .mat-form-field-ripple {
  /*change color of underline when focused*/
- background-color: #ffc0bf !important;;
+ background-color: #ffc0bf !important;
 }
+
+.mat-dialog-container {
+  padding-left: 15px !important;
+  padding: 0px !important;
+  overflow-x: hidden !important;
+}
+
+/* .md-dialog-container {
+  height: 700px;
+} */
+.mkm-pass {
+   height: 70px;
+   width: 570px;
+}
+
+
+
+

@@ -1,0 +1,86 @@
+<div class="container-full">
+  <div (click)="close(false)" class="mykidsmentor-cancel">
+    <div class="mykidsmentor-line line1"></div>
+    <div class="mykidsmentor-line line2"></div>
+    <div class="mykidsmentor-line3 line3"></div>
+  </div>
+  <div class="row">
+    <img class="mykidsmentor-login" src="assets/img/mykidsmentor_login.jpg" alt="mykidsmentor_login">
+  </div>
+</div>
+
+<div class="container">
+  <div class="row mkm-dialog-title">
+    <h1 class=""> 註冊 </h1>
+  </div>
+  <div class="row">
+
+      <span class="mkm-login-error" *ngIf="error">{{ error }}</span>
+
+    <form #formData="ngForm" (ngSubmit)="onSubmit(formData)" class="mykidsmentor-form">
+
+      <div class="mykidsmentor-form-element">
+        <div class="row">
+          <label class="mkm-label" for="uname">電子信箱 E-mail</label>
+        </div>
+
+        <div class="row">
+          <input type="text" placeholder="email" name="email" #email="ngModel" ngModel required email>
+        </div>
+
+        <div class="row mkm-password">
+          <label class="mkm-label" for="psw">密碼 Password</label>
+        </div>
+
+        <div class="row">
+          <input type="password" placeholder="Choose app password" name="password" #password="ngModel" ngModel required minlength="5"
+          maxlength="30">
+        </div>
+
+        <div class="row mkm-button">
+          <div class="col">
+            忘記密碼？
+          </div>
+
+          <div class="col mkm-button-right">
+            <button class="mkm-login-button mkm-label" type="submit">註冊</button>
+          </div>
+        </div>
+
+        <div class="row mkm-account">
+          <span> 有建立帳號嗎？<a (click)="close(true)" class="mykidsmentor-no-account"> 登入帳號 </a>  </span>
+        </div>
+
+        <div class="row">
+          <div class="or-line">
+            <hr><span class="mkm-space"> 或是用 </span><hr>
+          </div>
+        </div>
+
+        <div class="container-full">
+
+          <div class="row">
+
+            <div class="col">
+              <div class="mkm-social">
+                <a (click)="onUserLoginWithFb()"> <img style="height: 30px;" src="assets/img/facebook-login.png" alt="">帳號登入</a>
+              </div>
+
+            </div>
+
+            <div class="col">
+              <div class="mkm-social">
+                <a (click)="onUserLoginWithGoogle()"> <img style="height: 30px;" src="assets/img/google-login.png" alt="">帳號登入</a>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+    </form>
+  </div>
+</div>
+
+
