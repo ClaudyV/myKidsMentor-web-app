@@ -13,6 +13,7 @@ export class AuthenticationService implements CanActivate {
 
   authState: any = null;
   authStateName;
+  userName;
 
   constructor(public authLogin: AngularFireAuth, private dialog: MatDialog, private router: Router) {
                 this.authLogin.authState.subscribe(
@@ -22,6 +23,7 @@ export class AuthenticationService implements CanActivate {
                     this.authStateName = user.displayName;
                   }
                   );
+                console.log(this.canActivate());
                }
 
   onLogin(formData?) {
@@ -39,6 +41,10 @@ export class AuthenticationService implements CanActivate {
     return this.authLogin.signInWithPopup(new auth.FacebookAuthProvider());
   }
 
+  updateProf() {
+    return this.authLogin;
+  }
+
   getCurrentUser() {
     return this.authLogin.authState;
   }
@@ -49,11 +55,17 @@ export class AuthenticationService implements CanActivate {
 
   logout() {
     return this.authLogin.signOut().then(success => {
-      setTimeout(() => window.location.reload(), 2000);
+      setTimeout(() => window.location.reload(), 1000);
     });
   }
 
-  createUser(formData) {
+  async sendVerificationMail(actionCodeSettings) {
+    return (await this.authLogin.currentUser).sendEmailVerification(actionCodeSettings);
+  }
+
+  async createUser(formData) {
+    this.userName = formData.value.firstname;
+    console.log(this.userName);
     return this.authLogin.createUserWithEmailAndPassword(formData.value.email, formData.value.password);
   }
 
@@ -61,7 +73,7 @@ export class AuthenticationService implements CanActivate {
     return this.authLogin.authState
                     .pipe(
                       map(user => {
-                          if(user) {
+                          if (user) {
                             return true;
                           } else {
                             this.router.navigate(['']);

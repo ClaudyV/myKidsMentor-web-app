@@ -52,7 +52,7 @@
                           <img *ngIf="user.photoURL; else showpic" class="mykidsmentor-user-picture" src="{{user.photoURL}}" alt="mykidsmentor account">
                           <ng-template #showpic> <img  class="mykidsmentor-social" src="assets/img/mkm-account.png" alt="{{user.displayName}}"> </ng-template>
                           <div class="mykidsmentor-dropdown-content-user">
-                            <a href="#">證號資料</a>
+                            <a href="#">帳號資料</a>
                             <a href="#">我的課程</a>
                             <a class="mykidsmentor-last" (click)="userLogout()">登出</a>
                           </div>
@@ -81,18 +81,20 @@
                 <div class="mykidsmentor-register">
 
                     <ng-template [ngIf]="user">
-                      <div class="mykidsmentor-username-info">
-                      <img *ngIf="user.photoURL; else showpic" class="mykidsmentor-user-picture" src="{{user.photoURL}}" alt="mykidsmentor account">
-                      <ng-template #showpic> <img  class="mykidsmentor-social" src="assets/img/mkm-account.png" alt="{{user.displayName}}"> </ng-template>
 
-                      <b *ngIf="user.displayName; else showEmail" class="mykidsmentor-username">{{ (user.displayName.length > 20)? (user.displayName | slice:0:20)+'..':(user.displayName)}}</b>
-                      <ng-template #showEmail><b class="mykidsmentor-username">{{ (user.email.length > 19)? (user.email | slice:0:19)+'..':(user.email)}}</b></ng-template>
-                      <div class="mykidsmentor-dropdown-content-user">
-                        <a href="#">帳號資料</a>
-                        <a href="#">我的課程</a>
-                        <a class="mykidsmentor-last" (click)="userLogout()">登出</a>
+                      <div class="mykidsmentor-username-info">
+                        <img *ngIf="user.photoURL; else showpic" class="mykidsmentor-user-picture" src="{{user.photoURL}}" alt="mykidsmentor account">
+                        <ng-template #showpic> <img  class="mykidsmentor-social" src="assets/img/mkm-account.png" alt="{{user.displayName}}"> </ng-template>
+
+                        <b *ngIf="user.displayName; else showEmail" class="mykidsmentor-username">{{ (user.displayName.length > 20)? (user.displayName | slice:0:20)+'..':(user.displayName)}}</b>
+                        <ng-template #showEmail><b class="mykidsmentor-username">{{ (user.email.length > 19)? (user.email | slice:0:19)+'..':(user.email)}}</b></ng-template>
+                        <div class="mykidsmentor-dropdown-content-user">
+                          <a href="#">帳號資料</a>
+                          <a href="#">我的課程</a>
+                          <a class="mykidsmentor-last" (click)="userLogout()">登出</a>
+                        </div>
                       </div>
-                    </div>
+
                     </ng-template>
 
                     <ng-template [ngIf]="!user">
@@ -106,7 +108,7 @@
                 <li class="mykidsmentor-main-link">
                   <a class="mykidsmentor-main-link-size">課程</a>
                   <div id="mykidsmentor-close" class="mykidsmentor-dropdown-content">
-                    <a *ngIf="!user ; else showcourse" (click)="openLoginDialog()" routerLink="/course">最新影片</a>
+                    <a *ngIf="!user; else showcourse" (click)="openLoginDialog()" routerLink="/course">最新影片</a>
                     <ng-template #showcourse> <a routerLink="/course">最新影片</a> </ng-template>
                     <a href="#">熱門影片</a>
                     <a class="mykidsmentor-last" href="#">分類影片</a>

@@ -6,16 +6,14 @@ import { Router } from '@angular/router';
 import { AuthenticationService } from './../service/authentication.service';
 import { MatDialog } from '@angular/material/dialog';
 
-
-
 @Component({
-  selector: 'app-pwnotification',
-  templateUrl: './pwnotification.component.html',
-  styleUrls: ['./pwnotification.component.css']
+  selector: 'app-everification',
+  templateUrl: './everification.component.html',
+  styleUrls: ['./everification.component.css']
 })
-export class PwnotificationComponent implements OnInit {
+export class EverificationComponent implements OnInit {
 
-  constructor(public PwNotificationDialogRef: MatDialogRef<PwnotificationComponent>,
+  constructor(public PwNotificationDialogRef: MatDialogRef<EverificationComponent>,
               @Inject(MAT_DIALOG_DATA) public data: any,
               public auth: AngularFireAuth,
               private login: AuthenticationService,
@@ -23,9 +21,6 @@ export class PwnotificationComponent implements OnInit {
               public dialog: MatDialog) { }
 
   ngOnInit(): void {
-    // const ad = resetUserPassword()
   }
-
-
 
 }

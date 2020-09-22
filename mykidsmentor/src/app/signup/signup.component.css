@@ -152,4 +152,16 @@ hr {
   padding-bottom: 15px;
 }
 
+.mykidsmentor-account {
+  color: #2d7d93;
+  cursor: pointer;
+}
 
+.mykidsmentor-login-mobile-pic {
+  width: calc(100vw - 72px) !important;
+}
+
+button:focus {
+  outline: none;
+  box-shadow: -1px -1px 8px 0px #ffc1c0;
+}

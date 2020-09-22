@@ -78,6 +78,11 @@ input:focus {
   box-shadow: -1px -1px 8px 0px #ffc1c0;
 }
 
+button:focus {
+  outline: none;
+  box-shadow: -1px -1px 8px 0px #ffc1c0;
+}
+
 input:active {
   border-radius: 43px;
 }
@@ -94,6 +99,10 @@ input:-webkit-autofill {
     transition: background-color 5000s ease-in-out 0s;
 }
 
+button:-webkit-autofill {
+  transition: background-color 5000s ease-in-out 0s;
+}
+
 .mkm-login-button {
   border-radius: 43px;
   background: #ffc1c0;
@@ -105,6 +114,8 @@ input:-webkit-autofill {
 
 .mkm-button {
   padding-top: 20px;
+  cursor: pointer;
+  color: #2d7d93;
 }
 
 .mkm-button-right {
@@ -175,6 +186,16 @@ hr {
 .mykidsmentor-login-mobile-pic {
   width: calc(100vw - 72px) !important;
 }
+
+
+@media screen and (max-width: 599px) {
+  .mkm-account {
+    padding-top: 20px;
+    padding-bottom: 30px;
+  }
+}
+
+
 
 
 

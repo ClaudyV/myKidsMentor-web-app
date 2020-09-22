@@ -15,9 +15,11 @@ export class NavbarComponent implements OnInit {
 
   searchKey: string; // Searck input
   user: firebase.User;
+  userVerified;
   isSmallScreen: boolean;
   smallHeight = '570px';
-  bigHeight = '700px';
+  bigHeightSignup = '680px';
+  bigHeightLogin = '620px';
   matWidth = '515px';
 
   constructor(public dialog: MatDialog,
@@ -31,7 +33,11 @@ export class NavbarComponent implements OnInit {
     this.navbarEvent();
 
     this.loginfo.getCurrentUser()
-        .subscribe(user => this.user = user);
+        .subscribe(user => {
+          if(user && user.emailVerified){
+            this.user = user;
+          }
+           });
   }
 
   userLogout() {
@@ -59,7 +65,7 @@ export class NavbarComponent implements OnInit {
   openLoginDialog() {
 
         this.dialog.open(LoginComponent, {
-          height: this.isSmallScreen ? this.smallHeight : this.bigHeight,
+          height: this.isSmallScreen ? this.smallHeight : this.bigHeightLogin,
           width: this.matWidth,
         }).afterClosed().subscribe(
           showSignupModal => showSignupModal && this.openSignupDialog()
@@ -69,11 +75,14 @@ export class NavbarComponent implements OnInit {
 
   openSignupDialog() {
 
-    this.dialog.open(SignupComponent, {
-      height: this.isSmallScreen ? this.smallHeight : this.bigHeight,
+    const dialogRef = this.dialog.open(SignupComponent, {
+      height: this.isSmallScreen ? this.smallHeight : this.bigHeightSignup,
       width: this.matWidth,
     }).afterClosed().subscribe(
-      showLoginModal => showLoginModal && this.openLoginDialog()
+      showLoginModal => {
+        showLoginModal.bool && this.openLoginDialog();
+        console.log(showLoginModal.data);
+      }
       );
   }
 

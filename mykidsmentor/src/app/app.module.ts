@@ -27,6 +27,7 @@ import { CourseComponent } from './course/course.component';
 import { SignupComponent } from './signup/signup.component';
 import {LayoutModule} from '@angular/cdk/layout';
 import { PwnotificationComponent } from './pwnotification/pwnotification.component';
+import { EverificationComponent } from './everification/everification.component';
 
 
 @NgModule({
@@ -38,7 +39,8 @@ import { PwnotificationComponent } from './pwnotification/pwnotification.compone
     HomeComponent,
     CourseComponent,
     SignupComponent,
-    PwnotificationComponent
+    PwnotificationComponent,
+    EverificationComponent
   ],
   imports: [
     BrowserModule,
@@ -59,7 +61,8 @@ import { PwnotificationComponent } from './pwnotification/pwnotification.compone
   entryComponents: [
     LoginComponent,
     SignupComponent,
-    PwnotificationComponent
+    PwnotificationComponent,
+    EverificationComponent
   ],
   providers: [],
   bootstrap: [AppComponent]
