@@ -18,7 +18,8 @@ nav {
 
         /* MykidsMentor's Logo Size */
         .mykidsmentor-logo-size {
-          height: 160px;}
+          height: 155px;
+          padding-left: 6px;}
 
       /* Contains two rows inside */
       .mykidsmentor-nav {
@@ -266,6 +267,7 @@ nav {
             background: #ddd;
             border-bottom-left-radius: 25px !important;
             border-bottom-right-radius: 25px !important;
+            cursor: pointer;
             }
 
           .mykidsmentor-dropdown-content .mykidsmentor-last{
@@ -329,12 +331,18 @@ nav {
   height: 55px;}
 
 
-@media screen and (max-width: 1213px) {
+@media screen and (max-width: 1394px) {
 
   nav {
     height: 132px;
     position: relative;
   }
+
+  .mykidsmentor-nav-elements {
+    position: fixed;
+    width: 100%;
+    z-index: 1;
+}
 
   .mykidsmentor-logo-size {
     height: 130px;
@@ -389,7 +397,7 @@ nav {
     position: fixed;
     background: #2d7d92;
     height: 100vh;
-    width: 65%;
+    width: 66.9%;
     display: block;
     z-index: 1;
     clip-path: circle(100px at 90% -10%);
@@ -607,13 +615,13 @@ nav {
 
 }
 
-@media screen and (min-width: 747px) and (max-width: 1213px) {
+@media screen and (min-width: 747px) and (max-width: 1394px) {
   .mykidsmentor-nav-links {
     width: 67%;
   }
 }
 
-@media screen and (min-width: 1214px) {
+@media screen and (min-width: 1395px) {
 
   /* .mykidsmentor-mobile {
     display: none;

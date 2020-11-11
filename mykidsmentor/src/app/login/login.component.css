@@ -25,6 +25,7 @@
   border-radius: 3px;
   position: relative;
   float: right;
+  cursor: pointer;
 }
 
  .line1 {
@@ -176,8 +177,8 @@ hr {
   z-index: 100;
   width: 100vw;
   height: 100vh;
-  background-color: rgba(192, 192, 192, 0.5);
-  background-image: url("https://i.stack.imgur.com/MnyxU.gif");
+  background-color: rgb(0 0 0 / 39%);
+  background-image: url('../../assets/img/mkm-loading-gif.gif');
   background-repeat: no-repeat;
   background-position: center;
 }
@@ -192,6 +193,31 @@ hr {
   .mkm-account {
     padding-top: 20px;
     padding-bottom: 30px;
+  }
+}
+
+::ng-deep.mat-dialog-container {
+  background: #ffffff;
+  height: 620px !important;
+  width: 515px !important;
+  }
+
+@media screen and (max-width: 600px) {
+
+  ::ng-deep.mat-dialog-container {
+    background: #ffffff;
+    height: 570px !important;
+    width: 515px !important;
+    }
+
+    .loading {
+      background-size: 300px 260px;
+    }
+}
+
+@media screen and (min-width: 601px) and (max-width: 1000px) {
+  .loading {
+    background-size: 350px 300px;
   }
 }
 

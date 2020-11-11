@@ -20,7 +20,7 @@ export class SignupComponent implements OnInit {
   @Output() messageEvent = new EventEmitter<string>();
   isSmallScreen: boolean;
   userName;
-  dataLoading: boolean;
+  isLoading: boolean;
   actionCodeSettings = {
     // After password reset, the user will be give the ability to go back
     // to this page.
@@ -44,13 +44,15 @@ export class SignupComponent implements OnInit {
 
 
   onSubmit(formData) {
-    this.dataLoading = true;
+    this.isLoading = true;
     this.signup.createUser(formData).then(
       async (success) => {
+      this.isLoading = false;
       this.sendUserVerificationMail(this.actionCodeSettings);
+      this.signupDialogRef.close(false);
       this.dialog.open(EverificationComponent, {
-        height: '70px',
-        width: '570px',
+        panelClass : 'verifyClass',
+        data: {userEmail: formData.value.email}
       }).afterClosed().subscribe(
         result => {}
       );
@@ -58,10 +60,7 @@ export class SignupComponent implements OnInit {
       console.log(this.userName)
       console.log(formData.value)
       console.log(success);
-      this.signupDialogRef.close({
-        bool: false,
-        data : this.userName
-     });
+
       (await this.signup.updateProf().currentUser).updateProfile({
         displayName: this.userName
     }).then( (success) => {
@@ -70,11 +69,12 @@ export class SignupComponent implements OnInit {
       // An error happened.
     });
       this.router.navigate(['']);
-      this.dataLoading = false;
+      this.isLoading = false;
     }).catch(
       (err) => {
       console.log(err);
       this.error = err;
+      this.isLoading = false;
     });
   }
 
@@ -90,23 +90,29 @@ export class SignupComponent implements OnInit {
   }
 
   onUserLoginWithGoogle() {
+    this.isLoading = true;
     this.signup.onLoginWithGoogle().then(
       (success) => {
       console.log(success);
-      // this.signupDialogRef.close([]);
+      this.isLoading = false;
+      this.signupDialogRef.close(false);
       this.router.navigate(['']);
     }).catch((err) => {
+      this.isLoading = false;
       this.error = err;
     });
   }
 
   onUserLoginWithFb() {
+    this.isLoading = true;
     this.signup.onLoginWithFb().then(
       (success) => {
       console.log(success);
-      // this.signupDialogRef.close([]);
+      this.isLoading = false;
+      this.signupDialogRef.close([]);
       this.router.navigate(['']);
     }).catch((err) => {
+      this.isLoading = false;
       this.error = err;
     });
   }

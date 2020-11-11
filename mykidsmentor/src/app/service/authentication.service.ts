@@ -1,8 +1,9 @@
+import { UsersService } from './users.service';
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { auth } from 'firebase/app';
 import { CanActivate, Router } from '@angular/router';
-import { map } from 'rxjs/operators';
+import { map, switchMap } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 import { MatDialog } from '@angular/material/dialog';
 
@@ -12,18 +13,15 @@ import { MatDialog } from '@angular/material/dialog';
 export class AuthenticationService implements CanActivate {
 
   authState: any = null;
-  authStateName;
   userName;
 
-  constructor(public authLogin: AngularFireAuth, private dialog: MatDialog, private router: Router) {
+  constructor(public authLogin: AngularFireAuth, private dialog: MatDialog, private router: Router, private serviceUser: UsersService) {
                 this.authLogin.authState.subscribe(
                   user => {
-                    console.log(user);
                     this.authState = user;
-                    this.authStateName = user.displayName;
+                    this.serviceUser.saveUser(user);
                   }
                   );
-                console.log(this.canActivate());
                }
 
   onLogin(formData?) {
@@ -49,6 +47,27 @@ export class AuthenticationService implements CanActivate {
     return this.authLogin.authState;
   }
 
+  getCurrentUserDb()
+   {
+     return this.authLogin.authState
+                      .pipe(
+                       switchMap(user => {
+                         try
+                         {
+                          return this.serviceUser.getUserById(user.uid);
+                         }
+                         catch (error)
+                         {
+                           console.log(error);
+
+                         }
+                       }),
+                       map(user => {
+                         return user;
+                       })
+                      )
+   }
+
   resetPassword(email, actionCodeSettings) {
     return this.authLogin.sendPasswordResetEmail(email, actionCodeSettings);
   }
@@ -73,7 +92,7 @@ export class AuthenticationService implements CanActivate {
     return this.authLogin.authState
                     .pipe(
                       map(user => {
-                          if (user) {
+                          if (user && user.emailVerified) {
                             return true;
                           } else {
                             this.router.navigate(['']);

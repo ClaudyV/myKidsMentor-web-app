@@ -32,7 +32,7 @@
         </div>
 
         <div class="row">
-          <input type="password" placeholder="密碼 Password" name="password" #password="ngModel" ngModel required minlength="5">
+          <input type="password" placeholder="密碼 Password" name="password" autocomplete="on" #password="ngModel" ngModel required minlength="5">
         </div>
 
         <div class="row mkm-button">
@@ -81,8 +81,6 @@
   </div>
 </div>
 
-<div *ngIf="isLoading" class="loading">
-
-</div>
+<div *ngIf="isLoading" class="loading"></div>
 
 

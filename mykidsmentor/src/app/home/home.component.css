@@ -1,14 +1,398 @@
 .mykidsmentor-intro {
 
-  min-height: 80vh;
+  /* min-height: 80vh;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  background: url('../../assets/img/intro_gif.gif') no-repeat center;
-  background-size: cover;
+  background: url('../../assets/img/mkm-introduction-banner.svg') no-repeat center;
+  background-size: cover; */
 
 }
+
+.road{
+  animation: roadanimation 4s infinite linear;
+  /* animation: roadanimation 5s ease-in infinite; */
+  }
+
+  @keyframes roadanimation {
+
+    from {
+      transform: translateX(0%);
+    }
+    to {
+      transform: translateX(100%);
+    }
+}
+
+#mouse{
+  animation: mouseanimation 4s infinite;
+}
+
+@keyframes mouseanimation {
+
+  0% {
+    transform: translateY(-200px);
+  }
+  5% {
+    transform: translateY(0px);
+  }
+  100% {
+    transform: translateY(380px);
+  }
+}
+
+
+
+.mkm-flow{
+  width: 100%;
+  height: 200px;
+  background-color: #ffc0bf;
+  display: flex;
+  padding: 60px;
+  margin: 0 auto
+}
+
+.mkm-flow-step{
+  cursor: pointer;
+  color: #ffc0bf;
+  border: solid 2px;
+  margin: 0 auto;
+  width: 300px;
+  border-radius: 43px;
+  background-color: #ffff;
+  text-align: center;
+  padding: 28px;
+  height: 80px;
+  font-weight: bold;
+  font-size: 40px;
+}
+
+.mkm-flow-step-triangle{
+  text-align: center;
+}
+
+.mkm-courses{
+  padding-top:  0px;
+}
+
+.mkm-courses-img{
+  padding-top: 60px;
+  width: 100%;
+}
+
+.mkm-video-newcourse{
+  margin: 30px auto;
+  height: 405px !important;
+  width: 390px !important;
+  border: 1px solid #89cbde;
+  margin-right: 40px;
+}
+
+
+.mkm-video-mycourse{
+  margin: 30px auto;
+  height: 405px !important;
+  width: 390px !important;
+  border: 1px solid #89cbde;
+  margin-right: 40px;
+}
+
+
+
+.mkm-wrap-video{
+  padding-right: 75px;
+  padding-left: 75px;
+  position: relative;
+	overflow-x: hidden;
+	overflow-y: hidden;
+}
+
+.mkm-wrap-video-inside{
+  display: flex;
+  padding-top: 60px;
+	box-sizing: border-box;
+	white-space: nowrap;
+	overflow-x: auto;
+	overflow-y: hidden;
+  -webkit-overflow-scrolling: touch;
+  scroll-behavior: smooth;
+}
+
+.mkm-courses-banner{
+  height: 80px;
+  background-color: #5d98aa;
+}
+
+.arrow{
+  cursor: pointer;
+  position: absolute;
+	top: 0;
+	bottom: 0;
+	width: 3em;
+}
+
+.mkm-prev .mkm-left-arrow{
+  left: 15px;
+  top: 47%;
+}
+
+.mkm-prev .mkm-right-arrow{
+  right: 15px;
+  top: 47%;
+}
+
+.mkm-prev .hidden {
+	display: none;
+}
+
+
+.mkm-wrap-video-inside::-webkit-scrollbar {
+  display: none;
+}
+
+.mkm-empty{
+  width: 1px;
+  content: '.';
+  visibility: hidden;
+}
+
+.mkm-image-course{
+  height: 250px;
+  border-bottom: 3px solid #5d98aa;
+  display: block;
+  /* background: url('../../assets/img/mkm-taiwan.jpg') no-repeat center; */
+  background-size: cover;
+}
+
+.mkm-image-content{
+  max-width: 100%;
+  min-height: 247px;
+  position: relative;
+}
+
+.mkm-video-play{
+  position: absolute;
+  top:20px
+}
+
+ngb-rating {
+  padding-right: 10px;
+  font-size: 21px;
+  color:rgba(255, 202, 38, 1);
+}
+
+.mkm-course-rate{
+  display: flex;
+  padding-top: 15px;
+  padding-right: 15px;
+  padding-left: 15px;
+}
+
+.mkm-course-info{
+  display: flex;
+  padding-right: 15px;
+  padding-left: 15px;
+  padding-top: 7px;
+}
+
+.mkm-course-profile-picture{
+  border-radius: 43px;
+  border: 3px solid #5d98aa;
+  width: 55px;
+  height: 55px;
+}
+
+.mkm-course-info-picture{
+  margin-right: 25px;
+}
+
+.mkm-course-info-title-style{
+  color: #5d98aa;
+  font-weight: bold;
+  font-size: 30px;
+}
+
+.mkm-course-info-section{
+  display: block;
+  width: 100%;
+}
+
+.mkm-course-info-category-style{
+  color: #5d98aa;
+  font-weight: bold;
+  font-size: 17px;
+}
+
+.mkm-course-time-info{
+  float: right;
+  color: #7d7d7d;
+  font-size: 15px;
+}
+
+.mkm-discussion{
+  color: #5d98aa;
+}
+
+.mkm-course-progress{
+  height: 45px;  /* Can be anything */
+	background: #fff;
+	border-radius: 25px;
+}
+
+.mkm-course-progress > span{
+  display: block;
+  height: 100%;
+  border-radius: 40px;
+  background-color: rgb(255 192 190);
+  color: #fff;
+  padding: 13px;
+  font-size: 20px;
+}
+
+.mkm-course-progress-bar{
+  padding-top: 10px;
+}
+
+.mkm-mouse{
+  width: 60px;
+  margin-top: -17px;
+}
+
+.mkm-prev-left{
+  cursor: pointer;
+  padding-top: 155px;
+}
+
+.mkm-prev-right{
+  cursor: pointer;
+  padding-top: 155px;
+}
+
+.mkm-slider{
+  width: 60px;
+}
+
+@media screen and (min-width: 849px) and (max-width: 1144px) {
+
+  .mkm-flow-step{
+    font-size: 30px;
+    margin: 6px auto;
+    padding: 19px;
+    height: 63px;
+  }
+
+
+}
+
+@media screen and (max-width: 958px) {
+
+  .mkm-flow-step{
+    font-size: 20px;
+    margin: 6px auto;
+    padding: 19px;
+    height: 63px;
+  }
+
+  .mkm-flow{
+    display: block;
+    height: 371px;
+    padding: 30px;
+  }
+
+
+}
+
+@media screen and (max-width: 370px) {
+
+  .mkm-flow-step{
+    width: auto;
+  }
+
+  .mkm-video-newcourse{
+    width: auto;
+  }
+
+  .mkm-video-mycourse{
+    width: auto;
+  }
+
+
+}
+
+@media screen and (max-width: 600px) {
+
+  .mkm-video-newcourse {
+    height: 435px;
+    width: 259px;
+  }
+
+  .mkm-video-mycourse {
+    height: 435px;
+    width: 259px;
+  }
+
+  .mkm-course-info-picture {
+    margin-right: 5px;
+}
+
+.mkm-course-info-title-style {
+  font-size: 21px;
+}
+
+.mkm-course-info-category-style {
+  font-size: 15px;
+}
+
+.mkm-course-time-info {
+  float: none;
+
+}
+
+.mkm-course-progress > span {
+  font-size: 18px;
+}
+
+.mkm-wrap-video{
+  padding-right: 21px;
+  padding-left: 21px;
+}
+
+.mkm-prev .mkm-left-arrow{
+  left: 0;
+  top: 40%;
+  width: 23px;
+}
+
+.mkm-prev .mkm-right-arrow{
+  right: 0;
+  top: 42%;
+  width: 23px;
+}
+
+.mkm-courses-img{
+  padding-top: 30px;
+}
+
+.mkm-wrap-video-inside{
+  padding-top: 5px;
+}
+
+}
+
+/* @media screen and (max-width: 1250px) {
+
+  .mkm-wrap-video{
+    display: block;
+  }
+
+
+} */
+
+
+
+
+
 
 
 

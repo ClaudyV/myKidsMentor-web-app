@@ -11,7 +11,7 @@
         <div class="mykidsmentor-nav-elements-row">
 
           <div id="mkm-logo" class="mykidsmentor-logo">
-          <a routerLink="/"> <img class="mykidsmentor-logo-size" src="assets/img/my_kids_mentor_official_logo.png"> </a>
+          <a routerLink="/"> <img class="mykidsmentor-logo-size" src="assets/img/mkm-official-logo.png"> </a>
           </div>
 
           <div class="mykidsmentor-nav">
@@ -52,7 +52,7 @@
                           <img *ngIf="user.photoURL; else showpic" class="mykidsmentor-user-picture" src="{{user.photoURL}}" alt="mykidsmentor account">
                           <ng-template #showpic> <img  class="mykidsmentor-social" src="assets/img/mkm-account.png" alt="{{user.displayName}}"> </ng-template>
                           <div class="mykidsmentor-dropdown-content-user">
-                            <a href="#">帳號資料</a>
+                            <a routerLink="/account-info" >帳號資料</a>
                             <a href="#">我的課程</a>
                             <a class="mykidsmentor-last" (click)="userLogout()">登出</a>
                           </div>
@@ -138,7 +138,7 @@
                   <div class="mykidsmentor-dropdown-content">
                     <a href="#">會員中心</a>
                     <a href="#">加入會員</a>
-                    <a class="mykidsmentor-last" href="#">會員登入</a>
+                    <a class="mykidsmentor-last" (click)="openLoginDialog()">會員登入</a>
                   </div>
                 </li>
               </ul>
@@ -151,7 +151,7 @@
     <div class="container-full mykidsmentor-desktop-quotes">
       <div class="row mykidsmentor-qoutes-background">
         <div class="col-sm-4 mykidsmentor-qoutes">
-          2020年8月31日  31C
+         <span> {{yearNav}}年{{monthNav}}月{{dayNav}}日 </span>
         </div>
         <div class="col-8 mykidsmentor-qoutes">
           我們會成功的， 要繼續努力， 好不好？

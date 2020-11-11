@@ -28,6 +28,8 @@ import { SignupComponent } from './signup/signup.component';
 import {LayoutModule} from '@angular/cdk/layout';
 import { PwnotificationComponent } from './pwnotification/pwnotification.component';
 import { EverificationComponent } from './everification/everification.component';
+import { UsersComponent } from './users/users.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 
 @NgModule({
@@ -40,7 +42,8 @@ import { EverificationComponent } from './everification/everification.component'
     CourseComponent,
     SignupComponent,
     PwnotificationComponent,
-    EverificationComponent
+    EverificationComponent,
+    UsersComponent
   ],
   imports: [
     BrowserModule,
@@ -56,7 +59,8 @@ import { EverificationComponent } from './everification/everification.component'
     ReactiveFormsModule,
     MatProgressBarModule,
     MatDialogModule,
-    LayoutModule
+    LayoutModule,
+    NgbModule
   ],
   entryComponents: [
     LoginComponent,

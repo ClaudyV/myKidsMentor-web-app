@@ -13,6 +13,8 @@ import { MatDialog } from '@angular/material/dialog';
 })
 export class EverificationComponent implements OnInit {
 
+  getUserEmail;
+
   constructor(public PwNotificationDialogRef: MatDialogRef<EverificationComponent>,
               @Inject(MAT_DIALOG_DATA) public data: any,
               public auth: AngularFireAuth,
@@ -20,7 +22,10 @@ export class EverificationComponent implements OnInit {
               private router: Router,
               public dialog: MatDialog) { }
 
+
   ngOnInit(): void {
+    this.getUserEmail = this.data.userEmail;
+    console.log(this.getUserEmail);
   }
 
 }

@@ -5,12 +5,12 @@
     <div class="mykidsmentor-line3 line3"></div>
   </div>
   <div *ngIf="!isSmallScreen; else showMobileLoginPic" class="row">
-    <img class="mykidsmentor-login" src="assets/img/mykidsmentor_login.jpg" alt="mykidsmentor_login">
+    <img class="mykidsmentor-login" src="assets/img/mkm-signup.png" alt="mykidsmentor_login">
   </div>
 
   <ng-template #showMobileLoginPic>
     <div class="row">
-      <img class="mykidsmentor-login-mobile-pic" src="assets/img/mykidsmentor_login.jpg" alt="mykidsmentor_login">
+      <img class="mykidsmentor-login-mobile-pic" src="assets/img/mkm-signup.png" alt="mykidsmentor_login">
     </div>
   </ng-template>
 </div>
@@ -36,7 +36,7 @@
         </div>
 
         <div class="row">
-          <input type="password" placeholder="密碼 Password" name="password" #password="ngModel" ngModel required minlength="5"
+          <input type="password" placeholder="密碼 Password" name="password" autocomplete="on" #password="ngModel" ngModel required minlength="5"
           maxlength="30">
         </div>
 
@@ -78,6 +78,9 @@
       </div>
     </form>
   </div>
+
 </div>
+
+<div *ngIf="isLoading" class="loading"></div>
 
 

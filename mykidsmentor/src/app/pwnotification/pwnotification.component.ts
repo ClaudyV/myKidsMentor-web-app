@@ -14,6 +14,7 @@ import { MatDialog } from '@angular/material/dialog';
   styleUrls: ['./pwnotification.component.css']
 })
 export class PwnotificationComponent implements OnInit {
+  getUserEmail: any;
 
   constructor(public PwNotificationDialogRef: MatDialogRef<PwnotificationComponent>,
               @Inject(MAT_DIALOG_DATA) public data: any,
@@ -23,7 +24,8 @@ export class PwnotificationComponent implements OnInit {
               public dialog: MatDialog) { }
 
   ngOnInit(): void {
-    // const ad = resetUserPassword()
+    this.getUserEmail = this.data.userEmail;
+    console.log(this.getUserEmail);
   }
 
 

@@ -52,4 +52,16 @@
 
 ::ng-deep.mat-dialog-container {
   background: #ffc0bf;
+  height: 70px !important;
+  width: 700px !important;
   }
+
+@media screen and (max-width: 600px) {
+
+  ::ng-deep.mat-dialog-container {
+    background: #ffc0bf;
+    height: 110px !important;
+    width: 700px !important;
+    padding-left: 10px !important;
+    }
+}

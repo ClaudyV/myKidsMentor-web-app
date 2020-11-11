@@ -5,6 +5,7 @@ import { AuthenticationService } from './../service/authentication.service';
 import { SignupComponent } from './../signup/signup.component';
 import {BreakpointObserver} from '@angular/cdk/layout';
 import { PwnotificationComponent } from '../pwnotification/pwnotification.component';
+import { EverificationComponent } from '../everification/everification.component';
 
 @Component({
   selector: 'app-navbar',
@@ -21,6 +22,10 @@ export class NavbarComponent implements OnInit {
   bigHeightSignup = '680px';
   bigHeightLogin = '620px';
   matWidth = '515px';
+  dateNow = new Date();
+  yearNav = this.dateNow.getFullYear();
+  monthNav = this.dateNow.getMonth() + 1;
+  dayNav = this.dateNow.getDate();
 
   constructor(public dialog: MatDialog,
               private loginfo: AuthenticationService,
@@ -68,7 +73,9 @@ export class NavbarComponent implements OnInit {
           height: this.isSmallScreen ? this.smallHeight : this.bigHeightLogin,
           width: this.matWidth,
         }).afterClosed().subscribe(
-          showSignupModal => showSignupModal && this.openSignupDialog()
+          showSignupModal => {
+            showSignupModal && this.openSignupDialog();
+          console.log(showSignupModal)}
         );
 
   }
@@ -80,8 +87,7 @@ export class NavbarComponent implements OnInit {
       width: this.matWidth,
     }).afterClosed().subscribe(
       showLoginModal => {
-        showLoginModal.bool && this.openLoginDialog();
-        console.log(showLoginModal.data);
+        showLoginModal && this.openLoginDialog();
       }
       );
   }

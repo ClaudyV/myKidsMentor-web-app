@@ -25,6 +25,7 @@
   border-radius: 3px;
   position: relative;
   float: right;
+  cursor: pointer;
 }
 
  .line1 {
@@ -164,4 +165,35 @@ hr {
 button:focus {
   outline: none;
   box-shadow: -1px -1px 8px 0px #ffc1c0;
+}
+
+.loading {
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgb(0 0 0 / 39%);
+  background-image: url('../../assets/img/mkm-loading-gif.gif');
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+
+::ng-deep.mat-dialog-container {
+  background: #ffffff;
+  height: 690px !important;
+  width: 515px !important;
+  }
+
+@media screen and (max-width: 600px) {
+
+  ::ng-deep.mat-dialog-container {
+    background: #ffffff;
+    padding-top: 20px;
+    height: 570px !important;
+    width: 515px !important;
+    }
 }
