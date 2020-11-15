@@ -11,10 +11,12 @@ export class UsersService {
   constructor(private db: AngularFireDatabase) { }
 
   saveUser(user: firebase.User){
-    this.db.object('/users/' + user.uid).update({
-      name: user.displayName,
-      email: user.email
-    });
+    if(user){
+      this.db.object('/users/' + user.uid).update({
+        name: user.displayName,
+        email: user.email
+      });
+    }
   }
 
   getUserById(uid: string): Observable<any>{

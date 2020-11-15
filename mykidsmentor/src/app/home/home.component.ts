@@ -24,6 +24,7 @@ export class HomeComponent implements OnInit {
   matWidth = '515px';
   currentRate = 4;
   backgroudImage = '../../assets/img/mkm-taiwan.jpg';
+  board;
   @ViewChild('myCourses') myCourses: ElementRef;
   @ViewChild('newCourses') newCourses: ElementRef;
 
@@ -39,6 +40,7 @@ export class HomeComponent implements OnInit {
               }
 
   ngOnInit(): void {
+    // localStorage.setItem("scrollTop", String(document.body.scrollTop));
     this.title.setTitle('Home | My kid' + 's Mentor');
     this.meta.addTags([
       { name: 'og:url', content: '/' },
@@ -51,7 +53,18 @@ export class HomeComponent implements OnInit {
     this.myCoursesSlider();
 
     this.newCoursesSlider();
+
+    this.connectFourGaem();
+
+    // window.onload = function() {  
+    //   var scroll = parseInt(localStorage.getItem("scrollTop"));
+    //   //parseInt(localStorage.scrollTop);   
+    //   if (!isNaN(scroll))
+    //   document.body.scrollTop = scroll;
+    //   }
   }
+
+  
 
   myCoursesSlider(){
       // paddles
@@ -227,94 +240,485 @@ const dialogRef = this.dialog.open(SignupComponent, {
   );
 }
 
-// connectFourGaem(){
+connectFourGaem(){
 
-//   // Create variables for use in our game.
-// const Game: any = {};
+  // Create variables for use in our game.
+  var Game: any = {};
 
-// // Global game config
-// Game.config = {
-//   startingPlayer: 'black', // Choose 'black' or 'red'.
-//   takenMsg: 'This position is already taken. Please make another choice.',
-//   drawMsg: 'This game is a draw.',
-//   winMsg: 'The winner is: ',
-//   countToWin: 4,
+  // Global game config
+  Game.config = {
+    startingPlayer: "black", // Choose 'black' or 'red'.
+    takenMsg: "This position is already taken. Please make another choice.",
+    drawMsg: "This game is a draw.",
+    winMsg: "The winner is: ",
+    countToWin: 4,
 
-//   // note: board dimensions are zero-indexed
-//   boardLength: 6,
-//   boardHeight: 5,
-// };
+    // note: board dimensions are zero-indexed
+    boardLength: 6,
+    boardHeight: 5,
+  };
 
-// // Global Game State
-// Game.board = [[0, 0, 0, 0, 0, 0, 0],
-//               [0, 0, 0, 0, 0, 0, 0],
-//               [0, 0, 0, 0, 0, 0, 0],
-//               [0, 0, 0, 0, 0, 0, 0],
-//               [0, 0, 0, 0, 0, 0, 0],
-//               [0, 0, 0, 0, 0, 0, 0]];
+  // Global Game State
+  Game.board = [[0,0,0,0,0,0,0],
+                [0,0,0,0,0,0,0],
+                [0,0,0,0,0,0,0],
+                [0,0,0,0,0,0,0],
+                [0,0,0,0,0,0,0],
+                [0,0,0,0,0,0,0]];
 
-// Game.currentPlayer = Game.config.startingPlayer;
+  Game.currentPlayer = Game.config.startingPlayer;
 
 
-// const prefixEl = document.querySelector('#prefix');
-// const primaryTextEl = document.querySelector('.primary');
-// const secondaryTextEl = document.querySelector('.secondary');
-// const currentPlayerNameEl = document.querySelector('#current-player');
-// const otherPlayerNameEl = document.querySelector('#other-player');
-// const playAgainEl = document.querySelector('#play-again');
-// const playAgainBtnEl = document.querySelector('#play-again-btn');
-// const gameBoardEl = document.querySelector('#board');
+  // General-purpose actions in the game.
 
-// // playAgainBtnEl.addEventListener('click', () => location.reload());
-// // gameBoardEl.addEventListener('click', placeGamePiece);
-// // currentPlayerNameEl.addEventListener("keydown", Game.do.handleNameChange);
-// // otherPlayerNameEl.addEventListener("keydown", Game.do.handleNameChange);
+  Game.do = (function() {
+    /**
+     * A function for adding a disc to our Connect Four board state.
+     *
+     * @param number x_pos The x-position of the location chosen.
+     * @param number y_pos The y-position of the location chosen.
+     */
+    function addDiscToBoard(x_pos, y_pos) {
+      Game.board[y_pos][x_pos] = Game.currentPlayer;
+    }
 
-// // function placeGamePiece(e) {
-// //     if (e.target.tagName !== 'BUTTON') { return; }
+    /**
+     * Print the contents of our Game.board state to the html page.
+     */
+    function printBoard() {
+      var row, cell;
+      for (var y = 0; y <= Game.config.boardHeight; y++) {
+        for (var x = 0; x <= Game.config.boardLength; x++) {
+          if (Game.check.isPositionTaken(x, y)) {
+            row = document.querySelector('tr:nth-child(' + (1 + y) + ')');
+            cell = row.querySelector('td:nth-child(' + (1 + x) + ')');
+            cell.firstElementChild.classList.add(Game.board[y][x]);
+          }
+        }
+      }
+    }
 
-// //     const targetCell = e.target.parentElement;
-// //     const targetRow = targetCell.parentElement;
-// //     const targetRowCells = [...targetRow.children];
-// //     const gameBoardRowsEls = [...document.querySelectorAll('#board tr')];
+    /**
+     * A function for changing players both in state and on the screen.
+     */
+    function changePlayer() {
+      var currentPlayerNameEl = document.querySelector('#current-player');
+      var otherPlayerNameEl = document.querySelector('#other-player');
 
-// //     // Detect the x and y position of the button clicked.
-// //     let y_pos = gameBoardRowsEls.indexOf(targetRow);
-// //     let x_pos = targetRowCells.indexOf(targetCell);
+      // Switch players
+      var otherPlayer = Game.currentPlayer
+      var otherPlayerName = currentPlayerNameEl.textContent;
+      var currentPlayerName = otherPlayerNameEl.textContent;
+      Game.currentPlayer = (Game.currentPlayer === 'black') ? 'red' : 'black';
 
-// //     // Ensure the piece falls to the bottom of the column.
-// //     y_pos = Game.do.dropToBottom(x_pos, y_pos);
 
-// //     if (Game.check.isPositionTaken(x_pos, y_pos)) {
-// //       alert(Game.config.takenMsg);
-// //       return;
-// //     }
+      // Update the players in the UI.
+      currentPlayerNameEl.classList.remove(otherPlayer);
+      currentPlayerNameEl.classList.add(Game.currentPlayer);
+      currentPlayerNameEl.textContent = currentPlayerName;
 
-// //     // Add the piece to the board.
-// //     Game.do.addDiscToBoard(x_pos, y_pos);
-// //     Game.do.printBoard();
+      otherPlayerNameEl.classList.remove(Game.currentPlayer);
+      otherPlayerNameEl.classList.add(otherPlayer);
+      otherPlayerNameEl.textContent = otherPlayerName;
 
-// //     // Check to see if we have a winner.
-// //     if (Game.check.isVerticalWin() || Game.check.isHorizontalWin() || Game.check.isDiagonalWin()) {
-// //       gameBoardEl.removeEventListener('click', placeGamePiece);
-// //       prefixEl.textContent = Game.config.winMsg;
-// //       currentPlayerNameEl.contentEditable = false;
-// //       secondaryTextEl.remove();
-// //       playAgainEl.classList.add('show');
-// //       return;
-// //     } else if (Game.check.isGameADraw()) {
-// //       gameBoardEl.removeEventListener('click', placeGamePiece);
-// //       primaryTextEl.textContent = Game.config.drawMsg;
-// //       secondaryTextEl.remove();
-// //       playAgainEl.classList.add('show');
-// //       return;
-// //     }
+    }
 
-// //     // Change player.
-// //     Game.do.changePlayer();
+    /**
+     * If there are empty positions below the one chosen, return the new y-position
+     * we should drop the piece to.
+     *
+     * @param number x_pos The x-position of the location chosen.
+     * @param number y_pos The y-position of the location chosen.
+     * @return number - The y-position the disc should fall into.
+     */
+    function dropToBottom(x_pos, y_pos) {
+      // Start at the bottom of the column, and step up, checking to make sure
+      // each position has been filled. If one hasn't, return the empty position.
+      for (var y = Game.config.boardHeight; y > y_pos; y--) {
+        if (!Game.check.isPositionTaken(x_pos, y)) {
+          return y;
+        }
+      }
+      return y_pos;
+    }
 
-// // }
+    /**
+     * Handle edge-cases in name changes
+     * @param event
+     */
+    function handleNameChange(event) {
+      // Prevent the default "newline" behavior when hitting "Enter"
+      if (event.keyCode === 13) {
+        event.preventDefault();
+        document.body.focus();
+      }
+    }
 
-// }
+    return {
+      addDiscToBoard,
+      printBoard,
+      changePlayer,
+      dropToBottom,
+      handleNameChange
+    };
+  })();
+
+
+
+  // General-purpose status checks for the game.
+
+  Game.check = (function() {
+    /**
+     * Test to ensure the chosen location isn't taken.
+     *
+     * @param number x_pos The x-position of the location chosen.
+     * @param number y_pos The y-position of the location chosen.
+     * @return bool returns true or false for the question "Is this spot taken?".
+     */
+    function isPositionTaken(x_pos, y_pos) {
+      return Game.board[y_pos][x_pos] !== 0;
+    }
+
+    /**
+     * Determine if the game is a draw (all peices on the board are filled).
+     *
+     * @return bool Returns true or false for the question "Is this a draw?".
+     */
+    function isGameADraw() {
+      for (var y = 0; y <= Game.config.boardHeight; y++) {
+        for (var x = 0; x <= Game.config.boardLength; x++) {
+          if (!isPositionTaken(x, y)) {
+            return false;
+          }
+        }
+      }
+      return true;
+    }
+
+    /**
+     * Test to see if somebody got four consecutive horizontal pieces.
+     *
+     * @return bool Returns true if a win was found, and otherwise false.
+     */
+    function isHorizontalWin() {
+      var currentValue = null,
+          previousValue = 0,
+          tally = 0;
+
+      // Scan each row in series, tallying the length of each series. If a series
+      // ever reaches four, return true for a win.
+      for (var y = 0; y <= Game.config.boardHeight; y++) {
+        for (var x = 0; x <= Game.config.boardLength; x++) {
+          currentValue = Game.board[y][x];
+          if (currentValue === previousValue && currentValue !== 0) {
+            tally += 1;
+          } else {
+            // Reset the tally if you find a gap.
+            tally = 0;
+          }
+          if (tally === Game.config.countToWin - 1) {
+            return true;
+          }
+          previousValue = currentValue;
+        }
+
+        // After each row, reset the tally and previous value.
+        tally = 0;
+        previousValue = 0;
+      }
+
+      // No horizontal win was found.
+      return false;
+    }
+
+    /**
+     * Test to see if somebody got four consecutive vertical pieces.
+     *
+     * @return bool Returns true if a win was found, and otherwise false.
+     */
+    function isVerticalWin() {
+      var currentValue = null,
+          previousValue = 0,
+          tally = 0;
+
+      // Scan each column in series, tallying the length of each series. If a
+      // series ever reaches four, return true for a win.
+      for (var x = 0; x <= Game.config.boardLength; x++) {
+        for (var y = 0; y <= Game.config.boardHeight; y++) {
+          currentValue = Game.board[y][x];
+          if (currentValue === previousValue && currentValue !== 0) {
+            tally += 1;
+          } else {
+            // Reset the tally if you find a gap.
+            tally = 0;
+          }
+          if (tally === Game.config.countToWin - 1) {
+            return true;
+          }
+          previousValue = currentValue;
+        }
+
+        // After each column, reset the tally and previous value.
+        tally = 0;
+        previousValue = 0;
+      }
+
+      // No vertical win was found.
+      return false;
+    }
+
+    /**
+     * Test to see if somebody got four consecutive diagonel pieces.
+     *
+     * @return bool Returns true if a win was found, and otherwise false.
+     */
+    function isDiagonalWin() {
+      var x = null,
+          y = null,
+          xtemp = null,
+          ytemp = null,
+          currentValue = null,
+          previousValue = 0,
+          tally = 0;
+
+      // Test for down-right diagonals across the top.
+      for (x = 0; x <= Game.config.boardLength; x++) {
+        xtemp = x;
+        ytemp = 0;
+
+        while (xtemp <= Game.config.boardLength && ytemp <= Game.config.boardHeight) {
+          currentValue = Game.board[ytemp][xtemp];
+          if (currentValue === previousValue && currentValue !== 0) {
+            tally += 1;
+          } else {
+            // Reset the tally if you find a gap.
+            tally = 0;
+          }
+          if (tally === Game.config.countToWin - 1) {
+            return true;
+          }
+          previousValue = currentValue;
+
+          // Shift down-right one diagonal index.
+          xtemp++;
+          ytemp++;
+        }
+        // Reset the tally and previous value when changing diagonals.
+        tally = 0;
+        previousValue = 0;
+      }
+
+      // Test for down-left diagonals across the top.
+      for (x = 0; x <= Game.config.boardLength; x++) {
+        xtemp = x;
+        ytemp = 0;
+
+        while (0 <= xtemp && ytemp <= Game.config.boardHeight) {
+          currentValue = Game.board[ytemp][xtemp];
+          if (currentValue === previousValue && currentValue !== 0) {
+            tally += 1;
+          } else {
+            // Reset the tally if you find a gap.
+            tally = 0;
+          }
+          if (tally === Game.config.countToWin - 1) {
+            return true;
+          }
+          previousValue = currentValue;
+
+          // Shift down-left one diagonal index.
+          xtemp--;
+          ytemp++;
+        }
+        // Reset the tally and previous value when changing diagonals.
+        tally = 0;
+        previousValue = 0;
+      }
+
+      // Test for down-right diagonals down the left side.
+      for (y = 0; y <= Game.config.boardHeight; y++) {
+        xtemp = 0;
+        ytemp = y;
+
+        while (xtemp <= Game.config.boardLength && ytemp <= Game.config.boardHeight) {
+          currentValue = Game.board[ytemp][xtemp];
+          if (currentValue === previousValue && currentValue !== 0) {
+            tally += 1;
+          } else {
+            // Reset the tally if you find a gap.
+            tally = 0;
+          }
+          if (tally === Game.config.countToWin - 1) {
+            return true;
+          }
+          previousValue = currentValue;
+
+          // Shift down-right one diagonal index.
+          xtemp++;
+          ytemp++;
+        }
+        // Reset the tally and previous value when changing diagonals.
+        tally = 0;
+        previousValue = 0;
+      }
+
+      // Test for down-left diagonals down the right side.
+      for (y = 0; y <= Game.config.boardHeight; y++) {
+        xtemp = Game.config.boardLength;
+        ytemp = y;
+
+        while (0 <= xtemp && ytemp <= Game.config.boardHeight) {
+          currentValue = Game.board[ytemp][xtemp];
+          if (currentValue === previousValue && currentValue !== 0) {
+            tally += 1;
+          } else {
+            // Reset the tally if you find a gap.
+            tally = 0;
+          }
+          if (tally === Game.config.countToWin - 1) {
+            return true;
+          }
+          previousValue = currentValue;
+
+          // Shift down-left one diagonal index.
+          xtemp--;
+          ytemp++;
+        }
+        // Reset the tally and previous value when changing diagonals.
+        tally = 0;
+        previousValue = 0;
+      }
+
+      // No diagonal wins found. Return false.
+      return false;
+    }
+
+  return {
+    isPositionTaken,
+    isGameADraw,
+    isHorizontalWin,
+    isVerticalWin,
+    isDiagonalWin
+  }
+
+  })();
+
+  (function () {
+    // Manage focus rings on the playing board
+    var styleEl = document.querySelector('#a11y-styles') as HTMLInputElement;
+    document.addEventListener('mousedown', () => styleEl.innerHTML = '');
+    document.addEventListener('keydown', () => styleEl.innerHTML = '.board button:focus{border:5px solid #999}');
+  
+    // Add arrow-key navigation to the playing board
+    document.onkeydown = function(e: any) {
+      e = e || window.event;
+  
+      var arrowKeyCodes = [37, 38, 39, 40];
+      var isKeypressArrowKey = (arrowKeyCodes.indexOf(e.keyCode) >= 0);
+      var isBoardButtonActive = (document.activeElement.tagName == 'BUTTON');
+      var isContentEditableActiveTemp = (document.activeElement as HTMLElement)
+      var isContentEditableActive = isContentEditableActiveTemp.isContentEditable;
+
+  
+      if (!isKeypressArrowKey || isContentEditableActive) {
+        return;
+      }
+  
+      if (!isBoardButtonActive) {
+        // Focus on the first board location (top-left).
+        (document.querySelector('#board button') as HTMLInputElement).focus();
+      } else {
+        var activeCell = (document.activeElement as HTMLElement).parentElement;
+        var activeRow = activeCell.parentElement;
+        var activeRowCells = [...activeRow.children];
+        var activeCellIndex = activeRowCells.indexOf(activeCell);
+  
+        if (e.keyCode === 38) {
+          var rowBefore = activeRow.previousElementSibling;
+          if (rowBefore) (rowBefore.children[activeCellIndex].firstElementChild as HTMLInputElement).focus();
+        }
+        else if (e.keyCode === 40) {
+          var rowAfter = activeRow.nextElementSibling;
+          if (rowAfter) (rowAfter.children[activeCellIndex].firstElementChild as HTMLInputElement).focus();
+        }
+        else if (e.keyCode === 37) {
+          var cellBefore = activeCell.previousElementSibling;
+          if (cellBefore) (cellBefore.firstElementChild as HTMLInputElement).focus();
+        }
+        else if (e.keyCode === 39) {
+          var cellAfter = activeCell.nextElementSibling;
+          if (cellAfter) (cellAfter.firstElementChild as HTMLInputElement).focus();
+        }
+      };
+    }
+  })();
+  
+
+  // Setup the main game logic.
+
+(function () {
+  var prefixEl = document.querySelector('#prefix');
+  var primaryTextEl = document.querySelector('.primary');
+  var secondaryTextEl = document.querySelector('.secondary');
+  var currentPlayerNameEl = document.querySelector('#current-player');
+  var otherPlayerNameEl = document.querySelector('#other-player');
+  var playAgainEl = document.querySelector('#play-again');
+  var playAgainBtnEl = document.querySelector('#play-again-btn');
+  var gameBoardEl = document.querySelector('#board');
+
+  playAgainBtnEl.addEventListener('click', () => location.reload());
+  gameBoardEl.addEventListener('click', placeGamePiece);
+  currentPlayerNameEl.addEventListener("keydown", Game.do.handleNameChange);
+  otherPlayerNameEl.addEventListener("keydown", Game.do.handleNameChange);
+
+  function placeGamePiece(e) {
+    if (e.target.tagName !== 'BUTTON') return;
+
+    var targetCell = e.target.parentElement;
+    var targetRow = targetCell.parentElement;
+    var targetRowCells = [...targetRow.children];
+    var gameBoardRowsEls = [...document.querySelectorAll('#board tr')];
+
+    // Detect the x and y position of the button clicked.
+    var y_pos = gameBoardRowsEls.indexOf(targetRow);
+    var x_pos = targetRowCells.indexOf(targetCell);
+
+    // Ensure the piece falls to the bottom of the column.
+    y_pos = Game.do.dropToBottom(x_pos, y_pos);
+
+    if (Game.check.isPositionTaken(x_pos, y_pos)) {
+      alert(Game.config.takenMsg);
+      return;
+    }
+
+    // Add the piece to the board.
+    Game.do.addDiscToBoard(x_pos, y_pos);
+    Game.do.printBoard();
+
+    // Check to see if we have a winner.
+    if (Game.check.isVerticalWin() || Game.check.isHorizontalWin() || Game.check.isDiagonalWin()) {
+      gameBoardEl.removeEventListener('click', placeGamePiece);
+      prefixEl.textContent = Game.config.winMsg;
+      currentPlayerNameEl.contentEditable = false;
+      secondaryTextEl.remove();
+      playAgainEl.classList.add('show');
+      return;
+    } else if (Game.check.isGameADraw()) {
+      gameBoardEl.removeEventListener('click', placeGamePiece);
+      primaryTextEl.textContent = Game.config.drawMsg;
+      secondaryTextEl.remove();
+      playAgainEl.classList.add('show');
+      return;
+    }
+
+    // Change player.
+    Game.do.changePlayer();
+  };
+
+})();
+
+
+ 
+}
 
 }
