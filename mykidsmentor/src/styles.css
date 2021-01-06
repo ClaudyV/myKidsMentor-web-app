@@ -1,5 +1,27 @@
+@charset "UTF-8";
 @import '~bootstrap/dist/css/bootstrap.min.css';
 
+@font-face {
+  font-family: zhuyin1;
+  src: url('assets/data/zhuyin1.ttc');
+}
+@font-face {
+  font-family: zhuyin2;
+  src: url('assets/data/zhuyin2.ttc');
+}
+
+@font-face {
+  font-family: chinese;
+  src: url('assets/data/chinese.ttf');
+}
+
+.zy1{
+  font-family: zhuyin1;
+}
+
+.zy2{
+  font-family: zhuyin2;
+}
 
 * {
   margin: 0;
@@ -7,7 +29,7 @@
   box-sizing: border-box;}
 
 html {
-  font-family: sans-serif;
+  font-family: chinese !important;
   line-height: 1.15;
   -webkit-text-size-adjust: 100%;
   -ms-text-size-adjust: 100%;
@@ -18,13 +40,13 @@ html {
 
 body {
   margin: 0;
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: chinese !important;
   overflow-x: hidden;}
 
 
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+html, body { height: 100%;}
+body { margin: 0; font-family: chinese !important;}
 
 .mat-form-field-appearance-legacy .mat-form-field-suffix .mat-icon-button .mat-icon {
   font-size: x-large !important;

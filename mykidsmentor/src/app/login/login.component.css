@@ -1,5 +1,5 @@
 .mykidsmentor-login {
-  width: 515px;
+  width: 530px;
   /* height: 250px; */
 }
 
@@ -25,6 +25,7 @@
   border-radius: 3px;
   position: relative;
   float: right;
+  cursor: pointer;
 }
 
  .line1 {
@@ -78,6 +79,11 @@ input:focus {
   box-shadow: -1px -1px 8px 0px #ffc1c0;
 }
 
+button:focus {
+  outline: none;
+  box-shadow: -1px -1px 8px 0px #ffc1c0;
+}
+
 input:active {
   border-radius: 43px;
 }
@@ -94,6 +100,10 @@ input:-webkit-autofill {
     transition: background-color 5000s ease-in-out 0s;
 }
 
+button:-webkit-autofill {
+  transition: background-color 5000s ease-in-out 0s;
+}
+
 .mkm-login-button {
   border-radius: 43px;
   background: #ffc1c0;
@@ -105,6 +115,8 @@ input:-webkit-autofill {
 
 .mkm-button {
   padding-top: 20px;
+  cursor: pointer;
+  color: #2d7d93;
 }
 
 .mkm-button-right {
@@ -165,16 +177,51 @@ hr {
   z-index: 100;
   width: 100vw;
   height: 100vh;
-  background-color: rgba(192, 192, 192, 0.5);
-  background-image: url("https://i.stack.imgur.com/MnyxU.gif");
+  background-color: rgb(0 0 0 / 39%);
+  background-image: url('../../assets/img/mkm-loading-gif.gif');
   background-repeat: no-repeat;
   background-position: center;
 }
 
 
 .mykidsmentor-login-mobile-pic {
-  width: calc(100vw - 72px) !important;
+  width: calc(100vw - 63px) !important;
 }
+
+
+@media screen and (max-width: 599px) {
+  .mkm-account {
+    padding-top: 20px;
+    padding-bottom: 30px;
+  }
+}
+
+::ng-deep.mat-dialog-container {
+  background: #ffffff;
+  height: 620px !important;
+  width: 515px !important;
+  }
+
+@media screen and (max-width: 600px) {
+
+  ::ng-deep.mat-dialog-container {
+    background: #ffffff;
+    height: 570px !important;
+    width: 515px !important;
+    }
+
+    .loading {
+      background-size: 300px 260px;
+    }
+}
+
+@media screen and (min-width: 601px) and (max-width: 1000px) {
+  .loading {
+    background-size: 350px 300px;
+  }
+}
+
+
 
 
 

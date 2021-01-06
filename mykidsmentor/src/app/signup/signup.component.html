@@ -4,9 +4,15 @@
     <div class="mykidsmentor-line line2"></div>
     <div class="mykidsmentor-line3 line3"></div>
   </div>
-  <div class="row">
-    <img class="mykidsmentor-login" src="assets/img/mykidsmentor_login.jpg" alt="mykidsmentor_login">
+  <div *ngIf="!isSmallScreen; else showMobileLoginPic" class="row">
+    <img class="mykidsmentor-signup" src="assets/img/mkm-signup.png" alt="mykidsmentor_login">
   </div>
+
+  <ng-template #showMobileLoginPic>
+    <div class="row">
+      <img class="mykidsmentor-signup-mobile-pic" src="assets/img/mkm-signup.png" alt="mykidsmentor_login">
+    </div>
+  </ng-template>
 </div>
 
 <div class="container">
@@ -20,35 +26,26 @@
     <form #formData="ngForm" (ngSubmit)="onSubmit(formData)" class="mykidsmentor-form">
 
       <div class="mykidsmentor-form-element">
+
         <div class="row">
-          <label class="mkm-label" for="uname">電子信箱 E-mail</label>
+          <input type="text" placeholder="姓名 Full name" name="firstname" #name="ngModel" ngModel required firstname>
         </div>
 
         <div class="row">
-          <input type="text" placeholder="email" name="email" #email="ngModel" ngModel required email>
-        </div>
-
-        <div class="row mkm-password">
-          <label class="mkm-label" for="psw">密碼 Password</label>
+          <input type="text" placeholder="電子信箱 E-mail" name="email" #email="ngModel" ngModel required email>
         </div>
 
         <div class="row">
-          <input type="password" placeholder="Choose app password" name="password" #password="ngModel" ngModel required minlength="5"
+          <input type="password" placeholder="密碼 Password" name="password" autocomplete="on" #password="ngModel" ngModel required minlength="5"
           maxlength="30">
         </div>
 
         <div class="row mkm-button">
-          <div class="col">
-            忘記密碼？
-          </div>
-
-          <div class="col mkm-button-right">
             <button class="mkm-login-button mkm-label" type="submit">註冊</button>
-          </div>
         </div>
 
         <div class="row mkm-account">
-          <span> 有建立帳號嗎？<a (click)="close(true)" class="mykidsmentor-no-account"> 登入帳號 </a>  </span>
+          <span> 有建立帳號嗎？<a (click)="close(true)" class="mykidsmentor-account"> 登入帳號 </a>  </span>
         </div>
 
         <div class="row">
@@ -81,6 +78,9 @@
       </div>
     </form>
   </div>
+
 </div>
+
+<div *ngIf="isLoading" class="loading"></div>
 
 

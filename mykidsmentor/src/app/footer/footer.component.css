@@ -1,0 +1,45 @@
+.mkm-footer{
+  min-height: 80vh;
+  display: flex;
+  padding-top: 15px;
+  flex-direction: column;
+  background: url('../../assets/img/mykidsmentro-intro-pic.png') no-repeat center;
+  background-size: cover;
+}
+
+
+
+.mkm-footer-link{
+  font-size: 25px;
+  color: #2d7d93;
+}
+
+.mkm-footer-link-detail{
+  color: #2d7d93;
+  text-decoration: none;
+  font-size: 16px;
+}
+
+.mykidsmentor-logo-size{
+  height: 155px;
+}
+
+.mkm-footer-content{
+  padding-top: 25px;
+  padding-left: 27px;
+  color: #fff;
+  font-size: 40px;
+}
+
+@media screen and (max-width: 768px) {
+  .mkm-footer-content{
+    padding-left: 0px;
+  }
+  .footer-copyright{
+    margin-top: 0px !important;
+  }
+}
+
+.footer-copyright{
+  margin-top: 402px;
+}

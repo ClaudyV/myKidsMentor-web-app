@@ -1,0 +1,54 @@
+.mkm-container-sidebar {
+  display: flex;
+}
+
+  .mkm-container-sidebar .mkm-sidebar {
+    height: 75vh;
+    width: 20%;
+    background-color: #fff4f3;
+    border-right: 30px solid #ffc1c0;
+    border-left: 30px solid #ffc1c0;
+  }
+
+    .mkm-container-sidebar .mkm-sidebar .mkm-account-links {
+      margin: 50px
+    }
+
+    .mkm-container-sidebar .mkm-sidebar .mkm-account-links a {
+      display: block;
+      text-align: center;
+      color: #38839a;
+      text-decoration: none;
+      font-size: 21px;
+      padding: 20px;
+    }
+
+      .mkm-container-sidebar .mkm-sidebar .mkm-username .mkm-username-style {
+        color: #707070;
+        text-align: center;
+      }
+
+    .mkm-container-sidebar .mkm-sidebar .mkm-account-profile{
+      padding: 23px;
+    }
+      .mkm-container-sidebar .mkm-sidebar .mkm-account-profile .mkm-mouse {
+        width: 53px;
+        height: 55px;
+        transform: rotate(40deg);
+        margin-bottom: -32px;
+        float: right;
+      }
+      .mkm-container-sidebar .mkm-sidebar .mkm-account-profile .mkm-profile-picture{
+        border-radius: 100px;
+        width: 200px;
+        height: 200px;
+        border: 3px solid #5d98aa;
+      }
+
+    .mkm-container-sidebar .mkm-sidebar .mkm-account-left {
+      float: left;
+    }
+
+    .mkm-container-sidebar .mkm-sidebar .mkm-account-right {
+      float: right;
+    }

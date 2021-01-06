@@ -27,6 +27,10 @@ import { CourseComponent } from './course/course.component';
 import { SignupComponent } from './signup/signup.component';
 import {LayoutModule} from '@angular/cdk/layout';
 import { PwnotificationComponent } from './pwnotification/pwnotification.component';
+import { EverificationComponent } from './everification/everification.component';
+import { UsersComponent } from './users/users.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { FooterComponent } from './footer/footer.component';
 
 
 @NgModule({
@@ -38,7 +42,10 @@ import { PwnotificationComponent } from './pwnotification/pwnotification.compone
     HomeComponent,
     CourseComponent,
     SignupComponent,
-    PwnotificationComponent
+    PwnotificationComponent,
+    EverificationComponent,
+    UsersComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
@@ -54,12 +61,14 @@ import { PwnotificationComponent } from './pwnotification/pwnotification.compone
     ReactiveFormsModule,
     MatProgressBarModule,
     MatDialogModule,
-    LayoutModule
+    LayoutModule,
+    NgbModule
   ],
   entryComponents: [
     LoginComponent,
     SignupComponent,
-    PwnotificationComponent
+    PwnotificationComponent,
+    EverificationComponent
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -5,7 +5,8 @@ import { AngularFireAuth } from '@angular/fire/auth';
 import { Router } from '@angular/router';
 import { AuthenticationService } from './../service/authentication.service';
 import { MatDialog } from '@angular/material/dialog';
-import {BreakpointObserver} from '@angular/cdk/layout';
+
+
 
 @Component({
   selector: 'app-pwnotification',
@@ -13,6 +14,7 @@ import {BreakpointObserver} from '@angular/cdk/layout';
   styleUrls: ['./pwnotification.component.css']
 })
 export class PwnotificationComponent implements OnInit {
+  getUserEmail: any;
 
   constructor(public PwNotificationDialogRef: MatDialogRef<PwnotificationComponent>,
               @Inject(MAT_DIALOG_DATA) public data: any,
@@ -22,6 +24,10 @@ export class PwnotificationComponent implements OnInit {
               public dialog: MatDialog) { }
 
   ngOnInit(): void {
+    this.getUserEmail = this.data.userEmail;
+    console.log(this.getUserEmail);
   }
+
+
 
 }

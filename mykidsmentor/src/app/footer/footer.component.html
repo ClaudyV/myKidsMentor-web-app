@@ -1,0 +1,119 @@
+<footer class="mkm-footer">
+     <!-- Footer Links -->
+  <div class="container-fluid text-center text-md-left">
+
+     <!-- Grid row -->
+     <div class="row">
+ 
+       <!-- Grid column -->
+       <div class="col-md-6 mt-md-0 mt-3">
+ 
+         <!-- Content -->
+         <a routerLink="/"><img class="mykidsmentor-logo-size" src="assets/img/mkm-official-logo.png"></a>
+         <h1 class="text-uppercase mkm-footer-content">心 伴</h1>
+ 
+       </div>
+       <!-- Grid column -->
+ 
+       <hr class="clearfix w-100 d-md-none pb-3">
+ 
+       <!-- Grid column -->
+       <div class="col-md-1 mb-md-0 mb-3">
+ 
+         <!-- Links -->
+         <h3 class="text-uppercase mkm-footer-link">課程</h3>
+ 
+         <ul class="list-unstyled">
+           <li>
+             <a *ngIf="!user; else showcourse" (click)="openLoginDialog()" routerLink="/course" class="mkm-footer-link-detail">最新課程</a>
+             <ng-template #showcourse> <a routerLink="/course" class="mkm-footer-link-detail">最新課程</a> </ng-template>
+           </li>
+           <li>
+             <a class="mkm-footer-link-detail" href="#!">熱門課程</a>
+           </li>
+           <li>
+             <a class="mkm-footer-link-detail" href="#!">分類課程</a>
+           </li>
+         </ul>
+ 
+       </div>
+       <!-- Grid column -->
+
+       <!-- Grid column -->
+       <div class="col-md-1 mb-md-0 mb-3">
+ 
+          <!-- Links -->
+          <h3 class="text-uppercase mkm-footer-link">文章</h3>
+  
+          <ul class="list-unstyled">
+            <li>
+              <a class="mkm-footer-link-detail" href="#!">最新文章</a>
+            </li>
+            <li>
+              <a class="mkm-footer-link-detail" href="#!">熱門文章</a>
+            </li>
+            <li>
+              <a class="mkm-footer-link-detail" href="#!">分類文章</a>
+            </li>
+            <li>
+              <a class="mkm-footer-link-detail" href="#!">作者群</a>
+            </li>
+          </ul>
+  
+        </div>
+        <!-- Grid column -->
+ 
+       <!-- Grid column -->
+       <div class="col-md-1 mb-md-0 mb-3">
+ 
+         <!-- Links -->
+         <h3 class="text-uppercase mkm-footer-link">關於</h3>
+ 
+         <ul class="list-unstyled">
+           <li>
+             <a class="mkm-footer-link-detail" href="#!">心伴理念</a>
+           </li>
+           <li>
+             <a class="mkm-footer-link-detail" href="#!">服務</a>
+           </li>
+           <li>
+             <a class="mkm-footer-link-detail" href="#!">師資介紹</a>
+           </li>
+         </ul>
+ 
+       </div>
+       <!-- Grid column -->
+
+       <!-- Grid column -->
+       <div class="col-md-1 mb-md-0 mb-3">
+ 
+          <!-- Links -->
+          <h3 class="text-uppercase mkm-footer-link">會員</h3>
+  
+          <ul class="list-unstyled">
+            <li>
+              <a class="mkm-footer-link-detail" href="#!">會員中心</a>
+            </li>
+            <li>
+              <a class="mkm-footer-link-detail" href="#!">加入會員</a>
+            </li>
+            <li>
+              <a class="mkm-footer-link-detail" href="#!">會員登入</a>
+            </li>
+          </ul>
+  
+        </div>
+        <!-- Grid column -->
+ 
+     </div>
+     <!-- Grid row -->
+ 
+   </div>
+   <!-- Footer Links -->
+ 
+   <!-- Copyright -->
+   <div class="footer-copyright text-center py-3 mkm-footer-link-detail">Copyright © {{year}} All rights reserved |
+     <a class="mkm-footer-link-detail" href=""> My Kid's Mentor</a>
+   </div>
+   <!-- Copyright -->
+</footer>

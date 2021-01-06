@@ -98,8 +98,8 @@ export class LoginComponent implements OnInit {
       this.isLoading = false;
       this.loginDialogRef.close(false);
       this.dialog.open(PwnotificationComponent, {
-        height: '70px',
-        width: '570px',
+        panelClass : 'verifyClass',
+        data: {userEmail: formData.email}
       }).afterClosed().subscribe(
         result => {}
       );
