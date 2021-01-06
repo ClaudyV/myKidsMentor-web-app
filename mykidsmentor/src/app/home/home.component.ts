@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef, Input } from '@angular/core';
 import { Title, Meta } from '@angular/platform-browser';
 import { Breakpoints, BreakpointState, BreakpointObserver } from '@angular/cdk/layout';
 import { Observable } from 'rxjs';
@@ -6,6 +6,9 @@ import { LoginComponent } from '../login/login.component';
 import { SignupComponent } from '../signup/signup.component';
 import { MatDialog } from '@angular/material/dialog';
 import { map } from 'rxjs/operators';
+import lottie from 'lottie-web';
+import { SharedService } from '../service/shared.service';
+
 declare let $: any;
 
 @Component({
@@ -25,22 +28,30 @@ export class HomeComponent implements OnInit {
   currentRate = 4;
   backgroudImage = '../../assets/img/mkm-taiwan.jpg';
   board;
+  saveScroll;
+  isZhuyin: boolean;
+  iscurrentPlayer;
+  isCurrentPlayerValue;
   @ViewChild('myCourses') myCourses: ElementRef;
   @ViewChild('newCourses') newCourses: ElementRef;
+  @ViewChild('scrollBehavior') scrollBehavior: ElementRef;
+  
 
   constructor(private title: Title,
               private meta: Meta,
               public dialog: MatDialog,
-              breakpointObserver: BreakpointObserver) {
+              breakpointObserver: BreakpointObserver, 
+              private sharedServ: SharedService) {
                 this.isSmallScreen = breakpointObserver.observe('(max-width: 599px)').pipe(map(result => !result.matches));
                 this.isSmallScreenValue = breakpointObserver.observe('(max-width: 959px)')
                 .pipe(map(result => !result.matches));
                 this.isSmallScreenBanner = breakpointObserver.observe('(max-width: 700px)')
                 .pipe(map(result => !result.matches));
+                // this.isZhuyin = this.sharedServ.isZhuyinService();
+                // console.log(this.isZhuyin)
               }
 
   ngOnInit(): void {
-    // localStorage.setItem("scrollTop", String(document.body.scrollTop));
     this.title.setTitle('Home | My kid' + 's Mentor');
     this.meta.addTags([
       { name: 'og:url', content: '/' },
@@ -54,17 +65,28 @@ export class HomeComponent implements OnInit {
 
     this.newCoursesSlider();
 
-    this.connectFourGaem();
+    this.connectFourGame();
 
-    // window.onload = function() {  
-    //   var scroll = parseInt(localStorage.getItem("scrollTop"));
-    //   //parseInt(localStorage.scrollTop);   
-    //   if (!isNaN(scroll))
-    //   document.body.scrollTop = scroll;
-    //   }
+    this.introAnimation();
+
+    this.getCurrentGamePosition();
   }
 
+
+
   
+  getCurrentGamePosition(){
+    let reloading = sessionStorage.getItem('scrollTop')
+
+    if(reloading){
+      document.body.scrollTop = 1400;
+      sessionStorage.removeItem('scrollTop');
+    }
+  }
+
+  get isZhuyinBool(){
+    return this.sharedServ.isZhuyinService();
+  }
 
   myCoursesSlider(){
       // paddles
@@ -240,8 +262,7 @@ const dialogRef = this.dialog.open(SignupComponent, {
   );
 }
 
-connectFourGaem(){
-
+connectFourGame(){
   // Create variables for use in our game.
   var Game: any = {};
 
@@ -310,6 +331,13 @@ connectFourGaem(){
       var otherPlayerName = currentPlayerNameEl.textContent;
       var currentPlayerName = otherPlayerNameEl.textContent;
       Game.currentPlayer = (Game.currentPlayer === 'black') ? 'red' : 'black';
+      this.iscurrentPlayer = Game.currentPlayer;
+      if(this.iscurrentPlayer === 'red'){
+        this.isCurrentPlayerValue = true;
+      } else{
+        this.isCurrentPlayerValue = false;
+      }
+      console.log(this.iscurrentPlayer);
 
 
       // Update the players in the UI.
@@ -606,8 +634,14 @@ connectFourGaem(){
   (function () {
     // Manage focus rings on the playing board
     var styleEl = document.querySelector('#a11y-styles') as HTMLInputElement;
-    document.addEventListener('mousedown', () => styleEl.innerHTML = '');
-    document.addEventListener('keydown', () => styleEl.innerHTML = '.board button:focus{border:5px solid #999}');
+
+    
+      // document.addEventListener('mousedown', () => styleEl.innerHTML = '');  
+      document.addEventListener('keydown', () => {
+        styleEl.innerHTML = '.board button:focus{border:5px solid #999}'}); 
+   
+    
+    
   
     // Add arrow-key navigation to the playing board
     document.onkeydown = function(e: any) {
@@ -660,13 +694,19 @@ connectFourGaem(){
   var prefixEl = document.querySelector('#prefix');
   var primaryTextEl = document.querySelector('.primary');
   var secondaryTextEl = document.querySelector('.secondary');
-  var currentPlayerNameEl = document.querySelector('#current-player');
+  var currentPlayerNameEl: any = document.querySelector('#current-player');
   var otherPlayerNameEl = document.querySelector('#other-player');
   var playAgainEl = document.querySelector('#play-again');
   var playAgainBtnEl = document.querySelector('#play-again-btn');
   var gameBoardEl = document.querySelector('#board');
-
-  playAgainBtnEl.addEventListener('click', () => location.reload());
+  playAgainBtnEl.addEventListener('click', () => {
+    
+    // console.log(parseInt(sessionStorage.getItem('scrollTop')));
+    // document.body.scrollTop = 1400;
+    sessionStorage.setItem("scrollTop", String(document.body.scrollTop));
+    location.reload();
+    
+  });
   gameBoardEl.addEventListener('click', placeGamePiece);
   currentPlayerNameEl.addEventListener("keydown", Game.do.handleNameChange);
   otherPlayerNameEl.addEventListener("keydown", Game.do.handleNameChange);
@@ -719,6 +759,19 @@ connectFourGaem(){
 
 
  
+}
+
+introAnimation(){
+
+  let anim = document.getElementById('mkm-intro-animation');
+  lottie.loadAnimation({
+    container: anim, // the dom element that will contain the animation
+    renderer: 'svg',
+    loop: true,
+    autoplay: true,
+    path: 'assets/data/data.json' // the path to the animation json
+  });
+
 }
 
 }

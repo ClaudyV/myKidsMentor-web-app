@@ -1,4 +1,4 @@
-.mykidsmentor-intro {
+/* .mykidsmentor-intro {
 
   /* min-height: 80vh;
   display: flex;
@@ -8,7 +8,7 @@
   background: url('../../assets/img/mkm-introduction-banner.svg') no-repeat center;
   background-size: cover; */
 
-}
+/* }  */
 
 .road{
   animation: roadanimation 4s infinite linear;
@@ -65,7 +65,7 @@
   padding: 28px;
   height: 80px;
   font-weight: bold;
-  font-size: 40px;
+  font-size: 26px;
 }
 
 .mkm-flow-step-triangle{
@@ -273,6 +273,31 @@ ngb-rating {
   width: 60px;
 }
 
+.mkm-game{
+  padding-bottom: 100px;
+}
+
+.mkm-game-title{
+  color: #ffc0bf;
+  font-weight: bold;
+}
+
+.mkm-game-description{
+  color: #5b98a9;
+}
+
+.mkm-player{
+  color: #2d7d92;
+}
+
+.mkm-player-pink{
+  color: #ffc0bf !important;
+}
+
+.mkm-player-blue{
+  color: #5b98a9 !important;
+}
+
 @media screen and (min-width: 849px) and (max-width: 1144px) {
 
   .mkm-flow-step{
@@ -467,14 +492,15 @@ ngb-rating {
   height: 40px;
   line-height: 40px;
   width: 50%;
-  background: mediumseagreen;
+  background: #5b98a9;
   color: white;
   text-decoration: none;
   opacity: 0.9;
+  border-radius: 40px;
 }
 .play-again-btn:hover,
 .play-again-btn:focus {
-  background: #359660;
+  background: #ffc0bf;
 }
 .play-again:hover {
   opacity: 1;
@@ -551,6 +577,10 @@ ngb-rating {
 .center {
   text-align: center;
   padding-bottom: 20px;
+}
+
+.mkm-triangle-down{
+  height: 30px;
 }
 
 @media (max-width: 460px) {

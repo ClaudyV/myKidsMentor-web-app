@@ -5,12 +5,12 @@
     <div class="mykidsmentor-line3 line3"></div>
   </div>
   <div *ngIf="!isSmallScreen; else showMobileLoginPic" class="row">
-    <img class="mykidsmentor-login" src="assets/img/mkm-signup.png" alt="mykidsmentor_login">
+    <img class="mykidsmentor-signup" src="assets/img/mkm-signup.png" alt="mykidsmentor_login">
   </div>
 
   <ng-template #showMobileLoginPic>
     <div class="row">
-      <img class="mykidsmentor-login-mobile-pic" src="assets/img/mkm-signup.png" alt="mykidsmentor_login">
+      <img class="mykidsmentor-signup-mobile-pic" src="assets/img/mkm-signup.png" alt="mykidsmentor_login">
     </div>
   </ng-template>
 </div>

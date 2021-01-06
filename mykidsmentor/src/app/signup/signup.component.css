@@ -1,5 +1,5 @@
-.mykidsmentor-login {
-  width: 515px;
+.mykidsmentor-signup {
+  width: 530px;
   /* height: 250px; */
 }
 
@@ -158,8 +158,8 @@ hr {
   cursor: pointer;
 }
 
-.mykidsmentor-login-mobile-pic {
-  width: calc(100vw - 72px) !important;
+.mykidsmentor-signup-mobile-pic {
+  width: calc(100vw - 63px) !important;
 }
 
 button:focus {

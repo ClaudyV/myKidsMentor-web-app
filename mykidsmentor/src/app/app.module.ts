@@ -30,6 +30,7 @@ import { PwnotificationComponent } from './pwnotification/pwnotification.compone
 import { EverificationComponent } from './everification/everification.component';
 import { UsersComponent } from './users/users.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { FooterComponent } from './footer/footer.component';
 
 
 @NgModule({
@@ -43,7 +44,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     SignupComponent,
     PwnotificationComponent,
     EverificationComponent,
-    UsersComponent
+    UsersComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,

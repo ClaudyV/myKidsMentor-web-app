@@ -6,6 +6,7 @@ import { SignupComponent } from './../signup/signup.component';
 import {BreakpointObserver} from '@angular/cdk/layout';
 import { PwnotificationComponent } from '../pwnotification/pwnotification.component';
 import { EverificationComponent } from '../everification/everification.component';
+import { SharedService } from '../service/shared.service';
 
 @Component({
   selector: 'app-navbar',
@@ -26,10 +27,12 @@ export class NavbarComponent implements OnInit {
   yearNav = this.dateNow.getFullYear();
   monthNav = this.dateNow.getMonth() + 1;
   dayNav = this.dateNow.getDate();
+  zhuyinValue;
 
   constructor(public dialog: MatDialog,
               private loginfo: AuthenticationService,
-              breakpointObserver: BreakpointObserver) {
+              breakpointObserver: BreakpointObserver, 
+              private sharedServe: SharedService) {
                 this.isSmallScreen = breakpointObserver.isMatched('(max-width: 599px)');
               }
 
@@ -43,6 +46,22 @@ export class NavbarComponent implements OnInit {
             this.user = user;
           }
            });
+  }
+
+  isZhuyin(event){
+    console.log(event.target.checked);
+    if(event.target.checked){
+      this.zhuyinValue = true;
+      this.sharedServe.setZhuyin(this.zhuyinValue);
+    }
+  }
+
+  isNotZhuyin(event){
+    console.log(event.target.checked);
+    if(event.target.checked){
+      this.zhuyinValue = false;
+      this.sharedServe.setZhuyin(this.zhuyinValue);
+    }
   }
 
   userLogout() {

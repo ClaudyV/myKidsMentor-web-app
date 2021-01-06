@@ -1,5 +1,5 @@
 .mykidsmentor-login {
-  width: 515px;
+  width: 530px;
   /* height: 250px; */
 }
 
@@ -185,7 +185,7 @@ hr {
 
 
 .mykidsmentor-login-mobile-pic {
-  width: calc(100vw - 72px) !important;
+  width: calc(100vw - 63px) !important;
 }
 
 

@@ -9,7 +9,7 @@ import { Routes, RouterModule } from '@angular/router';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
-  { path: 'course', component: CourseComponent, canActivate: [AuthenticationService, AdminService] },
+  { path: 'course', component: CourseComponent, canActivate: [AuthenticationService] },
   { path: 'account-info', component: UsersComponent, canActivate: [AuthenticationService] },
   { path : '**' , redirectTo : '' , pathMatch : 'full'}
 ];
