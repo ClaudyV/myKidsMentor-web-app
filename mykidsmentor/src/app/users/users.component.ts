@@ -11,6 +11,12 @@ import { AuthenticationService } from '../service/authentication.service';
 export class UsersComponent implements OnInit {
 
   user: firebase.User;
+  sideBarItem = ['個人檔案', '訂單紀錄', '課程總覽', '收藏文章'];
+  selectedItem: any;
+  personalDoc: boolean = true;
+  orderRecord: boolean;
+  courseOverview: boolean;
+  favoriteArticles: boolean;
 
   constructor(private title: Title, private meta: Meta, private loginfo: AuthenticationService) { }
 
@@ -24,6 +30,7 @@ export class UsersComponent implements OnInit {
        });
 
     this.metaTags();
+    this.selectedItem = '個人檔案';
   }
 
    metaTags(){
@@ -36,6 +43,32 @@ export class UsersComponent implements OnInit {
     // { name: 'og:image', content: this.data.image }
   ]);
 
+  }
+
+  listClick(event:Event, item) {
+    this.selectedItem = item;
+
+    if (item === '個人檔案') {
+      this.personalDoc = true;
+      this.orderRecord = false;
+      this.courseOverview = false;
+      this.favoriteArticles = false;
+    } else if (item === '訂單紀錄') {
+      this.personalDoc = false;
+      this.orderRecord = true;
+      this.courseOverview = false;
+      this.favoriteArticles = false;
+    } else if (item === '課程總覽') {
+      this.personalDoc = false;
+      this.orderRecord = false;
+      this.courseOverview = true;
+      this.favoriteArticles = false;
+    } else if (item === '收藏文章') {
+      this.personalDoc = false;
+      this.orderRecord = false;
+      this.courseOverview = false;
+      this.favoriteArticles = true;
+    }
   }
 
 }

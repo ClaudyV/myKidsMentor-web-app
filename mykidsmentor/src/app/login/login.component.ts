@@ -7,7 +7,8 @@ import { AuthenticationService } from './../service/authentication.service';
 import { MatDialog } from '@angular/material/dialog';
 import {BreakpointObserver} from '@angular/cdk/layout';
 import { PwnotificationComponent } from './../pwnotification/pwnotification.component';
-
+import { map } from 'rxjs/operators';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-login',
@@ -18,7 +19,7 @@ export class LoginComponent implements OnInit {
 
 
   error: any;
-  isSmallScreen: boolean;
+  isSmallScreen: Observable<boolean>;
   isLoading: any;
   actionCodeSettings = {
     // After password reset, the user will be give the ability to go back
@@ -34,10 +35,8 @@ export class LoginComponent implements OnInit {
               private router: Router,
               public dialog: MatDialog,
               breakpointObserver: BreakpointObserver) {
-                this.isSmallScreen = breakpointObserver.isMatched('(max-width: 599px)');
+                this.isSmallScreen = breakpointObserver.observe('(max-width: 1324px)').pipe(map(result => !result.matches));
                 console.log(this.isSmallScreen);
-
-
               }
 
   ngOnInit(): void {

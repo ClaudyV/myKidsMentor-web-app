@@ -1,5 +1,5 @@
 .mykidsmentor-login {
-  width: 530px;
+  width: 530px !important;
   /* height: 250px; */
 }
 
@@ -185,7 +185,8 @@ hr {
 
 
 .mykidsmentor-login-mobile-pic {
-  width: calc(100vw - 63px) !important;
+  width: calc(100vw - 57px) !important;
+  height: calc(100vh - 500px) !important;
 }
 
 
@@ -206,7 +207,7 @@ hr {
 
   ::ng-deep.mat-dialog-container {
     background: #ffffff;
-    height: 570px !important;
+    height: 520px !important;
     width: 515px !important;
     }
 
@@ -218,6 +219,26 @@ hr {
 @media screen and (min-width: 601px) and (max-width: 1000px) {
   .loading {
     background-size: 350px 300px;
+  }
+}
+
+@media screen and (min-width: 601px) and (max-width: 1320px) and (orientation: landscape)  {
+  .mykidsmentor-login-mobile-pic {
+    width: calc(100vw - 650px) !important;
+    height: calc(100vh - 500px) !important;
+  }
+}
+
+@media screen and (min-width: 601px) and (max-width: 1320px) and (orientation: portrait)  {
+  .mykidsmentor-login-mobile-pic {
+    width: calc(100vw - 300px) !important;
+    height: calc(100vh - 900px) !important;
+  }
+}
+
+@media screen and (max-width: 1320px) {
+  .mykidsmentor-login-mobile-pic {
+    margin-top: -47.5px;
   }
 }
 

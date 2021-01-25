@@ -4,7 +4,7 @@
     <div class="mykidsmentor-line line2"></div>
     <div class="mykidsmentor-line3 line3"></div>
   </div>
-  <div *ngIf="!isSmallScreen; else showMobileLoginPic" class="row">
+  <div *ngIf="(isSmallScreen | async) ; else showMobileLoginPic" class="row">
     <img class="mykidsmentor-login" src="assets/img/mykidsmentor_login.jpg" alt="mykidsmentor_login">
   </div>
 

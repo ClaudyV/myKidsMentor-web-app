@@ -6,6 +6,8 @@ import { Router } from '@angular/router';
 import { AuthenticationService } from './../service/authentication.service';
 import { BreakpointObserver } from '@angular/cdk/layout';
 import { EverificationComponent } from './../everification/everification.component';
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 
 
 @Component({
@@ -17,8 +19,7 @@ export class SignupComponent implements OnInit {
 
 
   error: any;
-  @Output() messageEvent = new EventEmitter<string>();
-  isSmallScreen: boolean;
+  isSmallScreen: Observable<boolean>;
   userName;
   isLoading: boolean;
   actionCodeSettings = {
@@ -35,7 +36,7 @@ export class SignupComponent implements OnInit {
               private router: Router,
               public dialog: MatDialog,
               breakpointObserver: BreakpointObserver) {
-                this.isSmallScreen = breakpointObserver.isMatched('(max-width: 599px)');
+                this.isSmallScreen = breakpointObserver.observe('(max-width: 1324px)').pipe(map(result => !result.matches));
                 console.log(this.isSmallScreen);
               }
 

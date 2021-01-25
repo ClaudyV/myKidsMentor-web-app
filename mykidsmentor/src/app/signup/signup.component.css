@@ -181,6 +181,10 @@ button:focus {
   background-position: center;
 }
 
+.mykidsmentor-signup-mobile-pic {
+  width: calc(100vw - 57px) !important;
+  height: calc(100vh - 500px) !important;
+}
 
 ::ng-deep.mat-dialog-container {
   background: #ffffff;
@@ -196,4 +200,36 @@ button:focus {
     height: 570px !important;
     width: 515px !important;
     }
+
+    .loading {
+      background-size: 300px 260px;
+    }
 }
+
+@media screen and (min-width: 601px) and (max-width: 1000px) {
+  .loading {
+    background-size: 350px 300px;
+  }
+}
+
+@media screen and (min-width: 601px) and (max-width: 1320px) and (orientation: landscape)  {
+  .mykidsmentor-signup-mobile-pic {
+    width: calc(100vw - 650px) !important;
+    height: calc(100vh - 500px) !important;
+  }
+}
+
+@media screen and (min-width: 601px) and (max-width: 1320px) and (orientation: portrait)  {
+  .mykidsmentor-signup-mobile-pic {
+    width: calc(100vw - 300px) !important;
+    height: calc(100vh - 900px) !important;
+  }
+}
+
+@media screen and (max-width: 1320px) {
+  .mykidsmentor-signup-mobile-pic {
+    margin-top: -47.5px;
+  }
+}
+
+

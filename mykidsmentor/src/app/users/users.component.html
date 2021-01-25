@@ -5,7 +5,7 @@
         <img class="mkm-account-right" src="assets/img/mkm-account-right.png" alt="mkm-account-right"> -->
 
         <div class="mkm-account-profile"> 
-            <img class="mkm-mouse" src="assets/img/mkm-ico.png" alt="mouse">
+            <!-- <img class="mkm-mouse" src="assets/img/mkm-ico.png" alt="mouse"> -->
             <img class="mkm-profile-picture" src="{{user.photoURL}}" alt="{{user.displayName}}">
         </div>
 
@@ -14,17 +14,97 @@
         </div>
 
         <div class="mkm-account-links">
-            
-            <a href="#">個人檔案</a>
-            <a href="#">訂單紀錄</a>
-            <a href="#">課程總覽</a>
-            <a href="#">收藏文章</a>
-
+            <ul> 
+                <li [ngClass]="{'activateLink': selectedItem === item}" *ngFor="let item of sideBarItem" (click)="listClick($event, item)">{{ item }}</li>
+            </ul>
         </div>
     </div>
 
     <div class="mkm-page-content"> 
-        
+        <div class="user-content" *ngIf="personalDoc">
+            <div class="content"> 
+                <h1 class="content-title">個人檔案</h1>
+            </div>
+            <div class="container"> 
+                <div class="row">
+          
+                    <form #formData="ngForm" class="mykidsmentor-form">
+                
+                      <div class="mykidsmentor-form-element">
+                
+                        <div class="row">
+                            名字： 
+                          <input type="text" name="name" value="{{user.displayName}}" #email="ngModel" ngModel required>
+                        </div>
+
+                        <div class="row">
+                            電子郵件：
+                          <input type="text" name="name" value="{{user.displayName}}" #email="ngModel" ngModel required>
+                        </div>
+                
+                        <div class="row">
+                            密碼：
+                          <input type="password" placeholder="密碼 Password" name="password" autocomplete="on" #password="ngModel" ngModel required minlength="5">
+                        </div>
+                
+                        <div class="row mkm-button">
+                          <div class="col">
+                            <!-- <a (click)="resetUserPassword(formData.value, actionCodeSettings)">忘記密碼？</a> -->
+                          </div>
+                
+                          <div class="col mkm-button-right">
+                            <button class="mkm-login-button mkm-label" type="submit" >存</button>
+                          </div>
+                        </div>
+                
+                        <!-- <div class="row mkm-account">
+                          <span> 還沒有建立帳號嗎？<a class="mykidsmentor-no-account" (click)="close(true)"> 註冊帳號 </a>  </span>
+                        </div>
+                
+                        <div class="row">
+                          <div class="or-line">
+                            <hr><span class="mkm-space"> 或是用 </span><hr>
+                          </div>
+                        </div>
+                
+                        <div class="container-full">
+                
+                          <div class="row">
+                
+                            <div class="col">
+                              <div class="mkm-social">
+                                <a (click)="onUserLoginWithFb()"> <img style="height: 30px;" src="assets/img/facebook-login.png" alt="">帳號登入</a>
+                              </div>
+                
+                            </div>
+                
+                            <div class="col">
+                              <div class="mkm-social">
+                                <a (click)="onUserLoginWithGoogle()"> <img style="height: 30px;" src="assets/img/google-login.png" alt="">帳號登入</a>
+                              </div>
+                            </div>
+                
+                          </div>
+                
+                        </div> -->
+                
+                      </div>
+                    </form>
+                  </div>
+            </div>
+        </div>
+
+        <div class="user-content" *ngIf="orderRecord">
+            <h1>訂單紀錄</h1>
+        </div>
+
+        <div class="user-content" *ngIf="courseOverview">
+            <h1>課程總覽</h1>
+        </div>
+
+        <div class="user-content" *ngIf="favoriteArticles">
+            <h1>收藏文章</h1>
+        </div>
     </div>
 
 </div>
