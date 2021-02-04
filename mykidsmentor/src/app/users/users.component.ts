@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Title, Meta } from '@angular/platform-browser';
 import { AuthenticationService } from '../service/authentication.service';
+import { FormBuilder, Validators } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
+import { UsersService } from '../service/users.service';
 
 
 @Component({
@@ -18,7 +21,20 @@ export class UsersComponent implements OnInit {
   courseOverview: boolean;
   favoriteArticles: boolean;
 
-  constructor(private title: Title, private meta: Meta, private loginfo: AuthenticationService) { }
+  frmSetNewPassword = this.fb.group({
+    password: [null, [Validators.required]],
+    confirmPassword: [null, [Validators.required]]
+  });
+  error: any;
+  props: any;
+
+  constructor(private title: Title, 
+              private meta: Meta, 
+              private loginfo: AuthenticationService,
+              private userManage: UsersService,
+              private fb: FormBuilder, 
+              private route: ActivatedRoute, 
+              private router: Router) { }
 
   ngOnInit(): void {
 
@@ -68,6 +84,24 @@ export class UsersComponent implements OnInit {
       this.orderRecord = false;
       this.courseOverview = false;
       this.favoriteArticles = true;
+    }
+  }
+
+  setPassword() {
+    const password = this.frmSetNewPassword.controls['password'].value;
+    const confirmPassword = this.frmSetNewPassword.controls['confirmPassword'].value;
+  
+    console.log(password);
+    console.log(confirmPassword);
+    if (password !== confirmPassword) {
+      // react to error
+      return;
+    } else {
+      this.user.updatePassword(password).then(() => {
+        console.log("Password Updated");
+      }).catch((error) => {
+        console.log(error);
+      });
     }
   }
 

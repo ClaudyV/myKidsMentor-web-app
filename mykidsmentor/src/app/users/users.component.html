@@ -4,12 +4,12 @@
         <!-- <img class="mkm-account-left" src="assets/img/mkm-account-sidebar.png" alt="mkm-account-left">
         <img class="mkm-account-right" src="assets/img/mkm-account-right.png" alt="mkm-account-right"> -->
 
-        <div class="mkm-account-profile"> 
+        <div  *ngIf="user" class="mkm-account-profile"> 
             <!-- <img class="mkm-mouse" src="assets/img/mkm-ico.png" alt="mouse"> -->
             <img class="mkm-profile-picture" src="{{user.photoURL}}" alt="{{user.displayName}}">
         </div>
 
-        <div class="mkm-username"> 
+        <div *ngIf="user" class="mkm-username"> 
             <h1 class="mkm-username-style"> {{user.displayName}} </h1>
         </div>
 
@@ -28,32 +28,25 @@
             <div class="container"> 
                 <div class="row">
           
-                    <form #formData="ngForm" class="mykidsmentor-form">
+                    <form [formGroup]="frmSetNewPassword" (ngSubmit)="setPassword()" class="mykidsmentor-form">
                 
                       <div class="mykidsmentor-form-element">
-                
-                        <div class="row">
-                            名字： 
-                          <input type="text" name="name" value="{{user.displayName}}" #email="ngModel" ngModel required>
-                        </div>
 
                         <div class="row">
-                            電子郵件：
-                          <input type="text" name="name" value="{{user.displayName}}" #email="ngModel" ngModel required>
+                            <input type="password" placeholder="新密碼" name="password" autocomplete="on" formControlName="password">
                         </div>
                 
                         <div class="row">
-                            密碼：
-                          <input type="password" placeholder="密碼 Password" name="password" autocomplete="on" #password="ngModel" ngModel required minlength="5">
+                          <input type="password" placeholder="再一次秘密" name="confirmPassword" autocomplete="on" formControlName="confirmPassword">
                         </div>
                 
                         <div class="row mkm-button">
                           <div class="col">
-                            <!-- <a (click)="resetUserPassword(formData.value, actionCodeSettings)">忘記密碼？</a> -->
+                            
                           </div>
                 
                           <div class="col mkm-button-right">
-                            <button class="mkm-login-button mkm-label" type="submit" >存</button>
+                            <button class="mkm-login-button mkm-label" type="submit" [disabled]="!frmSetNewPassword.valid">存</button>
                           </div>
                         </div>
                 

@@ -2,13 +2,14 @@ import { map } from 'rxjs/operators';
 import { Injectable } from '@angular/core';
 import { AngularFireDatabase } from '@angular/fire/database';
 import { Observable } from 'rxjs';
+import { AngularFireAuth } from '@angular/fire/auth';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UsersService {
 
-  constructor(private db: AngularFireDatabase) { }
+  constructor(private db: AngularFireDatabase, private userAuth: AngularFireAuth) { }
 
   saveUser(user: firebase.User){
     if(user){
@@ -29,5 +30,9 @@ export class UsersService {
                       return objectUser;
                     })
                   );
+  }
+
+  resetPassword(code, newPassword) {
+    return this.userAuth.confirmPasswordReset(code, newPassword);
   }
 }
