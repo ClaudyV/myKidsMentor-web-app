@@ -148,9 +148,12 @@ hr {
 }
 
 .mkm-login-error {
-  padding-left: 15px;
   color: red;
-  padding-bottom: 15px;
+  text-align: center;
+}
+
+.icon {
+  display: grid;
 }
 
 .mykidsmentor-account {

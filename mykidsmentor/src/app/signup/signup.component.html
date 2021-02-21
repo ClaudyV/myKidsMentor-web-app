@@ -21,9 +21,15 @@
   </div>
   <div class="row">
 
-      <span class="mkm-login-error" *ngIf="error">{{ error }}</span>
+    <div style="margin: 0 auto;" *ngIf="error">
+      <h3 class="mkm-login-error"> 
+        <span class="material-icons icon"> 
+          dangerous 
+        </span> {{ error }}
+      </h3>
+    </div>
 
-    <form #formData="ngForm" (ngSubmit)="onSubmit(formData)" class="mykidsmentor-form">
+    <form id="signupFrom" #formData="ngForm" (ngSubmit)="onSubmit(formData)" class="mykidsmentor-form">
 
       <div class="mykidsmentor-form-element">
 

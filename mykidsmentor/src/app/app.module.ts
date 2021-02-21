@@ -31,6 +31,8 @@ import { EverificationComponent } from './everification/everification.component'
 import { UsersComponent } from './users/users.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FooterComponent } from './footer/footer.component';
+import {MatTableModule} from '@angular/material/table';
+import { MatPaginatorModule } from '@angular/material/paginator';
 
 
 @NgModule({
@@ -62,6 +64,8 @@ import { FooterComponent } from './footer/footer.component';
     MatProgressBarModule,
     MatDialogModule,
     LayoutModule,
+    MatTableModule,
+    MatPaginatorModule,
     NgbModule
   ],
   entryComponents: [

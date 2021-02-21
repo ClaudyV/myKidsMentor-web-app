@@ -8,7 +8,9 @@ import { BreakpointObserver } from '@angular/cdk/layout';
 import { EverificationComponent } from './../everification/everification.component';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
-
+export interface MessagesIndex {
+  [index: string]: string;
+}
 
 @Component({
   selector: 'app-signup',
@@ -25,9 +27,12 @@ export class SignupComponent implements OnInit {
   actionCodeSettings = {
     // After password reset, the user will be give the ability to go back
     // to this page.
-    url: 'http://localhost:4200/',
+    url: 'http://192.168.1.113:4200/',
     handleCodeInApp: false
   };
+  params = {
+    'invalid-email': '請輸入一個正確的電子郵件！'
+  } as MessagesIndex;
 
   constructor(public signupDialogRef: MatDialogRef<SignupComponent>,
               @Inject(MAT_DIALOG_DATA) public data: any,
@@ -46,6 +51,7 @@ export class SignupComponent implements OnInit {
 
   onSubmit(formData) {
     this.isLoading = true;
+    let form = document.getElementById('signupFrom');
     this.signup.createUser(formData).then(
       async (success) => {
       this.isLoading = false;
@@ -72,10 +78,16 @@ export class SignupComponent implements OnInit {
       this.router.navigate(['']);
       this.isLoading = false;
     }).catch(
-      (err) => {
-      console.log(err);
-      this.error = err;
+      (error) => {
+      console.log(error);
+      let code = error.code.split('/')[1];
+      if (this.params[code]) {
+        this.error = this.params[code];
+      }
       this.isLoading = false;
+      if(form) {
+        (form as HTMLFormElement).reset();
+      }
     });
   }
 

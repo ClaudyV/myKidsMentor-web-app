@@ -8,6 +8,59 @@
   padding: 10px;
 }
 
+.mkm-page-content .user-content .all-courses .completed-course {
+  display: flex;
+}
+
+.mkm-page-content .user-content .all-courses .completed-course .course-image .image {
+  width: 150px;
+}
+
+.mkm-page-content .user-content .all-courses .completed-course .course-image {
+  margin-right: 24px;
+}
+
+.mkm-page-content .user-content .all-courses .completed-course .course-title {
+  padding: 24px;
+}
+
+.mkm-page-content .user-content .all-courses .completed-course .course-title .title {
+  font-size: 20px;
+  color: #707070;
+}
+
+.mkm-page-content .user-content .all-courses .completed-course .course-progress {
+  
+}
+
+
+.change-password {
+  text-align: center; 
+  color: rgb(255, 0, 0);
+}
+
+.icon {
+  display: grid !important;}
+
+.success-password {
+  text-align: center; 
+  color: rgb(48, 199, 61);
+}
+
+.loading {
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgb(0 0 0 / 39%);
+  background-image: url('../../assets/img/mkm-loading-gif.gif');
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
   .mkm-container-sidebar .mkm-sidebar {
     height: 77vh;
     width: 20%;
@@ -76,6 +129,10 @@
   color: #ffc1c0;
   font-size: 30px;
   font-weight: 800;
+}
+
+.top {
+  margin-top: 32px;
 }
 
 .mykidsmentor-form {
@@ -214,14 +271,55 @@ hr {
   cursor: pointer;
 }
 
-    @media screen and (min-width: 700px) and (max-width: 1320px) {
-      .mkm-container-sidebar .mkm-sidebar {
-        height: 82vh;
-      }
-    }
+@media screen and (min-width: 700px) and (max-width: 1320px) {
+  .mkm-container-sidebar .mkm-sidebar {
+    height: 82vh;
+  }
+}
 
-    @media screen and (min-width: 700px) and (max-width: 1320px) and (orientation: landscape)  {
-      .mkm-container-sidebar .mkm-sidebar {
-        min-width: 40vh !important;
-      }
-    }
+@media screen and (min-width: 700px) and (max-width: 1320px) and (orientation: landscape)  {
+  .mkm-container-sidebar .mkm-sidebar {
+    min-width: 40vh !important;
+  }
+}
+
+/* @media screen and (max-width: 1419px) and (min-width: 1380px) {
+  .mkm-container-sidebar .mkm-sidebar .mkm-account-links ul li {
+    font-size: 19px;
+  }
+} */
+
+@media screen and (max-width: 1420px) {
+  .mkm-container-sidebar .mkm-sidebar .mkm-account-links {
+    margin: 26px;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .mkm-container-sidebar {
+    display: block;
+  }
+
+  .mkm-container-sidebar .mkm-sidebar {
+    height: auto;
+    width: auto;
+  }
+}
+
+@media screen and (max-width: 1020px) {
+  .mkm-page-content {
+    width: 100%;
+  }
+}
+
+table {
+  width: 100%;
+}
+
+.tableWidth {
+  width: 80%;
+}
+
+.tab {
+  display: none !important;
+}
