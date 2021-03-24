@@ -1,0 +1,101 @@
+
+
+  .content-title{
+    text-align: center;
+    color: #ffc1c0;
+    font-size: 30px;
+    font-weight: 800;
+  }
+
+  .user-content .all-courses {
+    margin-top: 32px;
+    height: calc(100vh - 320px);
+    overflow-y: auto;
+    border: 2px solid #ffc0bf;
+    overflow-x: hidden;
+  }
+
+ .user-content .all-courses .completed-course {
+    display: flex;
+    margin: 32px 16px;
+  }
+  
+  .user-content .all-courses .completed-course .wrapper1 {
+    width: 50%;
+    display: flex;
+  }
+
+  .user-content .all-courses .completed-course .wrapper2 {
+    width: 50%;
+  }
+
+  .user-content .all-courses .completed-course .wrapper2 .course-progress {
+    height: 44px;
+    background: #fff;
+    border-radius: 25px;
+    border: 2px solid #ffc0bf;
+    margin-top: 10px;
+  }
+
+  .user-content .all-courses .completed-course .wrapper2 .course-progress > span{
+    display: block;
+    height: 100%;
+    border-radius: 40px;
+    background-color: rgb(255 192 190);
+    color: #fff;
+    padding: 13px;
+    font-size: 16px;
+    line-height: 14px;
+  }
+  
+  .user-content .all-courses .completed-course .course-image .image {
+    width: 150px;
+  }
+  
+  .user-content .all-courses .completed-course .course-image {
+    margin-right: 12px;
+  }
+  
+  .user-content .all-courses .completed-course .course-title {
+    padding: 24px 12px;
+  }
+  
+  .user-content .all-courses .completed-course .course-title .title {
+    font-size: 20px;
+    color: #707070;
+  }
+
+  @media screen and (max-width: 480px) {
+    .user-content .all-courses .completed-course .course-image .image {
+      width: 110px;
+    }
+    .user-content .all-courses .completed-course .course-title .title {
+      font-size: 13px;
+    }
+
+    .user-content .all-courses .completed-course .wrapper2 .course-progress {
+      margin-top: 37px !important;
+    }
+
+    .user-content .all-courses .completed-course .wrapper2 .course-progress > span{
+      font-size: 10px;
+      line-height: 13px;
+    }
+  }
+
+  @media screen and (max-width: 1200px) {
+    .user-content .all-courses .completed-course .wrapper1 {
+      width: 40%;
+    }
+  
+    .user-content .all-courses .completed-course .wrapper2 {
+      width: 60%;
+    }
+    .user-content .all-courses .completed-course .wrapper1 {
+      display: block;
+    }
+
+    .user-content .all-courses .completed-course .wrapper2 .course-progress {
+      margin-top: 45px;
+    }
+  }

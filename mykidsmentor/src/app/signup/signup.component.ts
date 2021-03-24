@@ -27,7 +27,7 @@ export class SignupComponent implements OnInit {
   actionCodeSettings = {
     // After password reset, the user will be give the ability to go back
     // to this page.
-    url: 'http://192.168.1.113:4200/',
+    url: 'http://localhost:4200/',
     handleCodeInApp: false
   };
   params = {

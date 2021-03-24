@@ -13,6 +13,8 @@ export interface MessagesIndex {
   [index: string]: string;
 }
 
+import user from '../../app/datajson/user.json';
+
 export interface PeriodicElement {
   amount: number;
   courseBought: string;
@@ -47,7 +49,8 @@ const ELEMENT_DATA: PeriodicElement[] = [
 export class UsersComponent implements OnInit, AfterViewInit {
 
   user: firebase.User;
-  sideBarItem = ['訂單紀錄', '課程總覽', '收藏文章','修改密碼'];
+  sideBarItem = user.sideBar;
+  // sideBarItem = ['訂單紀錄', '課程總覽', '收藏文章','修改密碼'];
   selectedItem: any;
   changePassword: boolean = false;
   orderRecord: boolean = true;
@@ -111,31 +114,8 @@ export class UsersComponent implements OnInit, AfterViewInit {
 
   }
 
-  listClick(event:Event, item) {
-    this.selectedItem = item;
-
-    if (item === '訂單紀錄') {
-      this.changePassword = false;
-      this.orderRecord = true;
-      this.courseOverview = false;
-      this.favoriteArticles = false;
-    } else if (item === '課程總覽') {
-      this.changePassword = false;
-      this.orderRecord = false;
-      this.courseOverview = true;
-      this.favoriteArticles = false;
-    } else if (item === '收藏文章') {
-      this.changePassword = false;
-      this.orderRecord = false;
-      this.courseOverview = false;
-      this.favoriteArticles = true;
-    } else if (item === '修改密碼') {
-      this.changePassword = true;
-      this.orderRecord = false;
-      this.courseOverview = false;
-      this.favoriteArticles = false;
-    }
-
+  userLogout() {
+    this.loginfo.logout();
   }
 
   reauthenticate(currentPassword) {

@@ -71,7 +71,7 @@
   }
 
     .mkm-container-sidebar .mkm-sidebar .mkm-account-links {
-      margin: 50px
+      margin: 15px 50px;
     }
 
     .mkm-container-sidebar .mkm-sidebar .mkm-account-links ul li {
@@ -84,6 +84,11 @@
       cursor: pointer;
     }
 
+    .mkm-container-sidebar .mkm-sidebar .mkm-account-links ul li:focus {
+      outline: none;
+      box-shadow: none;
+    }
+
     .mkm-container-sidebar .mkm-sidebar .mkm-account-links ul li:hover {
       border-radius: 45px;
       padding: 20px;
@@ -92,6 +97,14 @@
       .mkm-container-sidebar .mkm-sidebar .mkm-username .mkm-username-style {
         color: #707070;
         text-align: center;
+      }
+
+      .mkm-container-sidebar .mkm-sidebar .mkm-username .mkm-username-email {
+        border: 1px solid;
+        color: #5e98aa;
+        border-radius: 30px;
+        text-align: center;
+        margin: 0px 15px 0px 15px;
       }
 
     .mkm-container-sidebar .mkm-sidebar .mkm-account-profile{
@@ -322,4 +335,8 @@ table {
 
 .tab {
   display: none !important;
+}
+.disabled {
+  background: #b1acab52;
+  border: 2px solid #b1acab52;
 }

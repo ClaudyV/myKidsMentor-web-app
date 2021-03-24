@@ -52,8 +52,11 @@
                           <img *ngIf="user.photoURL; else showpic" class="mykidsmentor-user-picture" src="{{user.photoURL}}" alt="mykidsmentor-account">
                           <ng-template #showpic> <img  class="mykidsmentor-social" src="assets/img/mkm-account.png" alt="{{user.displayName}}"> </ng-template>
                           <div class="mykidsmentor-dropdown-content-user">
-                            <a [ngClass]="{zy2: zhuyinValue}" routerLink="/account-info" >帳號資料</a>
-                            <a [ngClass]="{zy2: zhuyinValue}" href="#">我的課程</a>
+                            <a [ngClass]="{zy2: zhuyinValue}" routerLink="/user/account-info" >帳號資料</a>
+                            <a [ngClass]="{zy2: zhuyinValue}" routerLink="/user/mycourse">我的課程</a>
+                            <a [ngClass]="{zy2: zhuyinValue}" routerLink="/user/blog">收藏文章</a>
+                            <a [ngClass]="{zy2: zhuyinValue}" routerLink="/user/order-history">歷史訂單</a>
+                            <a [ngClass]="{zy2: zhuyinValue}" routerLink="/user/changepassword">修改密碼</a>
                             <a [ngClass]="{zy2: zhuyinValue}" class="mykidsmentor-last" (click)="userLogout()">登出</a>
                           </div>
                           <b *ngIf="user.displayName; else showEmail" class="mykidsmentor-username">{{ (user.displayName.length > 19)? (user.displayName | slice:0:19)+'..':(user.displayName)}}</b>
@@ -89,8 +92,10 @@
                         <b *ngIf="user.displayName; else showEmail" class="mykidsmentor-username">{{ (user.displayName.length > 20)? (user.displayName | slice:0:20)+'..':(user.displayName)}}</b>
                         <ng-template #showEmail><b class="mykidsmentor-username">{{ (user.email.length > 19)? (user.email | slice:0:19)+'..':(user.email)}}</b></ng-template>
                         <div class="mykidsmentor-dropdown-content-user">
-                          <a [ngClass]="{zy2: zhuyinValue}" routerLink="/account-info">帳號資料</a>
-                          <a [ngClass]="{zy2: zhuyinValue}" href="#">我的課程</a>
+                          <a [ngClass]="{zy2: zhuyinValue}" routerLink="user/account-info">帳號資料</a>
+                          <a [ngClass]="{zy2: zhuyinValue}" href="#">我的課程</a> 
+                          <a [ngClass]="{zy2: zhuyinValue}" href="#">收藏文章</a>
+                          <a [ngClass]="{zy2: zhuyinValue}" href="#">修改密碼</a>
                           <a [ngClass]="{zy2: zhuyinValue}" class="mykidsmentor-last" (click)="userLogout()">登出</a>
                         </div>
                       </div>
@@ -133,14 +138,14 @@
                 <li class="mykidsmentor-main-link">
                   <a [ngClass]="{zy2: zhuyinValue}" class="mykidsmentor-main-link-size" href="#contact">聯絡</a>
                 </li>
-                <li class="mykidsmentor-main-link">
+                <!-- <li class="mykidsmentor-main-link">
                   <a [ngClass]="{zy2: zhuyinValue}" class="mykidsmentor-main-link-size" href="#membership">會員</a>
                   <div class="mykidsmentor-dropdown-content">
                     <a [ngClass]="{zy2: zhuyinValue}" href="#">會員中心</a>
                     <a [ngClass]="{zy2: zhuyinValue}" href="#">加入會員</a>
                     <a [ngClass]="{zy2: zhuyinValue}" class="mykidsmentor-last" (click)="openLoginDialog()">會員登入</a>
                   </div>
-                </li>
+                </li> -->
               </ul>
             </div>
           </div>
