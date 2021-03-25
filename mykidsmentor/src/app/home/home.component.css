@@ -42,30 +42,50 @@
   }
 }
 
-
-
 .mkm-flow{
   width: 100%;
-  height: 200px;
+  height: 230px;
   background-color: #ffc0bf;
-  display: flex;
-  padding: 60px;
+  display: block;
+  padding: 12px;
   margin: 0 auto
 }
 
+.mkm-flow .mkm-steps {
+  display: flex;
+}
+
+.mkm-flow .mkm-flow-title {
+  padding: 32px 0px 32px 0px;
+  color: #ffffff;
+  width: 215px;
+  border-radius: 15px;
+  background-color: #88cbde;
+  text-align: center;
+  height: 50px;
+  font-weight: bold;
+  font-size: 26px;
+  box-shadow: 0px 9px 6px 0px #00000036;
+  margin: 5px 0px 30px 0px;
+  line-height: 2px;
+}
+
+.mkm-flow .step-arrow {
+  margin-right: 30px;
+}
+
 .mkm-flow-step{
-  cursor: pointer;
   color: #ffc0bf;
-  border: solid 2px;
   margin: 0 auto;
   width: 300px;
-  border-radius: 43px;
+  border-radius: 26px;
   background-color: #ffff;
   text-align: center;
   padding: 28px;
   height: 80px;
   font-weight: bold;
   font-size: 26px;
+  box-shadow: 0px 9px 6px 0px #00000036;
 }
 
 .mkm-flow-step-triangle{
@@ -321,7 +341,7 @@ ngb-rating {
 
   .mkm-flow{
     display: block;
-    height: 371px;
+    height: fit-content;
     padding: 30px;
   }
 
@@ -593,6 +613,12 @@ ngb-rating {
 }
 
 
+
+@media (max-width: 959px) {
+  .mkm-flow .mkm-steps {
+    display: block;
+  }
+}
 
 
 

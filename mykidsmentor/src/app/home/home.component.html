@@ -5,32 +5,44 @@
 
   <div class="container-full mkm-flow">
 
-    <div [ngClass]="{zy2: isZhuyinBool}"  (click)="openSignupDialog()" class="mkm-flow-step">
-  註冊或登入
+    <div style="display: flex;">
+      <div class="step-arrow">
+        <img src="assets/img/mkm-double-arrow.png" alt="mkm-triangle">
+      </div>
+      <div class="mkm-flow-title">
+        <span>購買課程步驟</span>
+      </div>
     </div>
+    <div class="mkm-steps">
 
-    <div class="mkm-flow-step-triangle">
-      <img *ngIf="(isSmallScreenValue | async); else showTriangle" src="assets/img/mkm-triangle.png" alt="mkm-triangle">
-      <ng-template #showTriangle>
-        <img class="mkm-triangle-down" src="assets/img/mkm-triangle-down.png" alt="mkm-triangle">
-      </ng-template>
+      <div [ngClass]="{zy2: isZhuyinBool}" class="mkm-flow-step">
+        註冊或登入
+      </div>
+      
+      <div class="mkm-flow-step-triangle">
+        <img *ngIf="(isSmallScreenValue | async); else showTriangle" src="assets/img/mkm-triangle.png" alt="mkm-triangle">
+        <ng-template #showTriangle>
+          <img class="mkm-triangle-down" src="assets/img/mkm-triangle-down.png" alt="mkm-triangle">
+        </ng-template>
+  
+      </div>
+  
+      <div [ngClass]="{zy2: isZhuyinBool}" class="mkm-flow-step">
+        選購課程
+      </div>
+  
+      <div class="mkm-flow-step-triangle">
+        <!-- <img [src]="isSmallScreen ?  : 'assets/img/mkm-triangle.png' " alt="mkm-triangle"> -->
+        <img *ngIf="(isSmallScreenValue | async); else showTriangle" src="assets/img/mkm-triangle.png" alt="mkm-triangle">
+        <ng-template #showTriangle>
+          <img src="assets/img/mkm-triangle-down.png" alt="mkm-triangle">
+        </ng-template>
+      </div>
+  
+      <div [ngClass]="{zy2: isZhuyinBool}" class="mkm-flow-step">
+        終身享有課程
+      </div>
 
-    </div>
-
-    <div [ngClass]="{zy2: isZhuyinBool}" class="mkm-flow-step">
-      選購課程
-    </div>
-
-    <div class="mkm-flow-step-triangle">
-      <!-- <img [src]="isSmallScreen ?  : 'assets/img/mkm-triangle.png' " alt="mkm-triangle"> -->
-      <img *ngIf="(isSmallScreenValue | async); else showTriangle" src="assets/img/mkm-triangle.png" alt="mkm-triangle">
-      <ng-template #showTriangle>
-        <img src="assets/img/mkm-triangle-down.png" alt="mkm-triangle">
-      </ng-template>
-    </div>
-
-    <div [ngClass]="{zy2: isZhuyinBool}" class="mkm-flow-step">
-      終身享有課程
     </div>
 
   </div>
@@ -765,7 +777,7 @@
       <section class="wrapper">
         <div class="center">
           <h1 class="mkm-game-title">心伴鼠鼠四子連線遊戲</h1>
-          <h3 class="mkm-game-description"> 遊戲說明：分為兩位玩家，雙方輪流把心伴鼠鼠放入棋盤，先連成四條線的獲勝！<br>
+          <h3 class="mkm-game-description"> 遊戲說明：分為兩位玩家，雙方輪流把心伴鼠鼠放入棋盤，先將四個連成一條線的獲勝！<br>
             *每一隻心伴鼠鼠都會從最底部開始疊放。<br>
             *無論直、橫、斜的方式都能連成一條線。<br>
             *玩家可以輸入自己的暱稱喔！</h3>
