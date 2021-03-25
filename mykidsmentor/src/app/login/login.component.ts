@@ -7,7 +7,11 @@ import { AuthenticationService } from './../service/authentication.service';
 import { MatDialog } from '@angular/material/dialog';
 import {BreakpointObserver} from '@angular/cdk/layout';
 import { PwnotificationComponent } from './../pwnotification/pwnotification.component';
-
+import { map } from 'rxjs/operators';
+import { Observable } from 'rxjs';
+export interface MessagesIndex {
+  [index: string]: string;
+}
 
 @Component({
   selector: 'app-login',
@@ -18,7 +22,7 @@ export class LoginComponent implements OnInit {
 
 
   error: any;
-  isSmallScreen: boolean;
+  isSmallScreen: Observable<boolean>;
   isLoading: any;
   actionCodeSettings = {
     // After password reset, the user will be give the ability to go back
@@ -27,6 +31,12 @@ export class LoginComponent implements OnInit {
     handleCodeInApp: false
   };
 
+  params = {
+    'wrong-password': '密碼錯了！ 請再試一次',
+    'too-many-requests': '您試太多次了， 請再一個小後試一次',
+    'invalid-email': '請輸入一個正確的電子郵件！'
+  } as MessagesIndex;
+
   constructor(public loginDialogRef: MatDialogRef<LoginComponent>,
               @Inject(MAT_DIALOG_DATA) public data: any,
               public auth: AngularFireAuth,
@@ -34,10 +44,8 @@ export class LoginComponent implements OnInit {
               private router: Router,
               public dialog: MatDialog,
               breakpointObserver: BreakpointObserver) {
-                this.isSmallScreen = breakpointObserver.isMatched('(max-width: 599px)');
+                this.isSmallScreen = breakpointObserver.observe('(max-width: 1324px)').pipe(map(result => !result.matches));
                 console.log(this.isSmallScreen);
-
-
               }
 
   ngOnInit(): void {
@@ -47,6 +55,7 @@ export class LoginComponent implements OnInit {
 
   onUserLogin(formData?) {
     this.isLoading = true;
+    let form = document.getElementById('loginForm');
     this.login.onLogin(formData).then(
       (success) => {
         if (formData) {
@@ -57,9 +66,16 @@ export class LoginComponent implements OnInit {
         console.log(success);
 
       }).catch(
-      (err) => {
+      (error) => {
         this.isLoading = false;
-        this.error = err;
+        let code = error.code.split('/')[1];
+        if (this.params[code]) {
+          this.error = this.params[code];
+        }
+        console.log(error.code);
+        if(form) {
+          (form as HTMLFormElement).reset();
+        }
       });
   }
 

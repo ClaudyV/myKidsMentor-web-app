@@ -6,7 +6,11 @@ import { Router } from '@angular/router';
 import { AuthenticationService } from './../service/authentication.service';
 import { BreakpointObserver } from '@angular/cdk/layout';
 import { EverificationComponent } from './../everification/everification.component';
-
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
+export interface MessagesIndex {
+  [index: string]: string;
+}
 
 @Component({
   selector: 'app-signup',
@@ -17,8 +21,7 @@ export class SignupComponent implements OnInit {
 
 
   error: any;
-  @Output() messageEvent = new EventEmitter<string>();
-  isSmallScreen: boolean;
+  isSmallScreen: Observable<boolean>;
   userName;
   isLoading: boolean;
   actionCodeSettings = {
@@ -27,6 +30,9 @@ export class SignupComponent implements OnInit {
     url: 'http://localhost:4200/',
     handleCodeInApp: false
   };
+  params = {
+    'invalid-email': '請輸入一個正確的電子郵件！'
+  } as MessagesIndex;
 
   constructor(public signupDialogRef: MatDialogRef<SignupComponent>,
               @Inject(MAT_DIALOG_DATA) public data: any,
@@ -35,7 +41,7 @@ export class SignupComponent implements OnInit {
               private router: Router,
               public dialog: MatDialog,
               breakpointObserver: BreakpointObserver) {
-                this.isSmallScreen = breakpointObserver.isMatched('(max-width: 599px)');
+                this.isSmallScreen = breakpointObserver.observe('(max-width: 1324px)').pipe(map(result => !result.matches));
                 console.log(this.isSmallScreen);
               }
 
@@ -45,6 +51,7 @@ export class SignupComponent implements OnInit {
 
   onSubmit(formData) {
     this.isLoading = true;
+    let form = document.getElementById('signupFrom');
     this.signup.createUser(formData).then(
       async (success) => {
       this.isLoading = false;
@@ -71,10 +78,16 @@ export class SignupComponent implements OnInit {
       this.router.navigate(['']);
       this.isLoading = false;
     }).catch(
-      (err) => {
-      console.log(err);
-      this.error = err;
+      (error) => {
+      console.log(error);
+      let code = error.code.split('/')[1];
+      if (this.params[code]) {
+        this.error = this.params[code];
+      }
       this.isLoading = false;
+      if(form) {
+        (form as HTMLFormElement).reset();
+      }
     });
   }
 

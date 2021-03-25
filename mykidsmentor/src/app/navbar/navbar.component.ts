@@ -28,6 +28,8 @@ export class NavbarComponent implements OnInit {
   monthNav = this.dateNow.getMonth() + 1;
   dayNav = this.dateNow.getDate();
   zhuyinValue;
+  toggleValue = false;
+  mouseOut = false;
 
   constructor(public dialog: MatDialog,
               private loginfo: AuthenticationService,
@@ -73,12 +75,10 @@ export class NavbarComponent implements OnInit {
     const mykidsmentorHamburger = document.querySelector('.mykidsmentor-hamburger');
     const mykidsmentorNavLinks = document.querySelector('.mykidsmentor-nav-links');
     const links = document.querySelectorAll('.mykidsmentor-nav-links li');
-
     mykidsmentorHamburger.addEventListener('click', () => {
+      this.toggleValue = !this.toggleValue;
       mykidsmentorNavLinks.classList.toggle('open');
       mykidsmentorHamburger.classList.toggle('toggle');
-      // myKidsMentorLogo.classList.add('mykidsmentor-logo-size-change');
-
       links.forEach(link => {
         link.classList.toggle('fade');
       });

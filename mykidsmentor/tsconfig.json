@@ -14,7 +14,8 @@
     "lib": [
       "es5", "es6", "dom", "dom.iterable"
     ],
-    "resolveJsonModule": true
+    "resolveJsonModule": true,
+    "allowSyntheticDefaultImports" : true
   },
   "angularCompilerOptions": {
     "fullTemplateTypeCheck": true,

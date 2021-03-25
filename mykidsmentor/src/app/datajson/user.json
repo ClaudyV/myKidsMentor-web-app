@@ -1,0 +1,24 @@
+{
+    "sideBar" : [
+        {
+            "title" : "帳號資料",
+            "path" : "/user/account-info"
+        },
+        {
+            "title" : "我的課程",
+            "path" : "/user/mycourse"
+        },
+        {
+            "title" : "收藏文章",
+            "path" : "/user/blog"
+        },
+        {
+            "title" : "歷史訂單",
+            "path" : "/user/order-history"
+        },
+        {
+            "title" : "修改密碼",
+            "path" : "/user/changepassword"
+        }
+    ]
+}

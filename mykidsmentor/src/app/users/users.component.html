@@ -4,27 +4,31 @@
         <!-- <img class="mkm-account-left" src="assets/img/mkm-account-sidebar.png" alt="mkm-account-left">
         <img class="mkm-account-right" src="assets/img/mkm-account-right.png" alt="mkm-account-right"> -->
 
-        <div class="mkm-account-profile"> 
-            <img class="mkm-mouse" src="assets/img/mkm-ico.png" alt="mouse">
-            <img class="mkm-profile-picture" src="{{user.photoURL}}" alt="{{user.displayName}}">
+        <div  *ngIf="user" class="mkm-account-profile"> 
+            <!-- <img class="mkm-mouse" src="assets/img/mkm-ico.png" alt="mouse"> -->
+            <img *ngIf="user.photoURL; else defaultImage" class="mkm-profile-picture" src="{{user.photoURL}}" alt="{{user.displayName}}">
+            <ng-template #defaultImage>
+              <img class="mkm-profile-picture" src="assets/img/mkm-ico.png" alt="{{user.displayName}}">
+            </ng-template>
         </div>
 
-        <div class="mkm-username"> 
+        <div *ngIf="user" class="mkm-username"> 
             <h1 class="mkm-username-style"> {{user.displayName}} </h1>
+            <h5 class="mkm-username-email">{{ user.email}}</h5>
         </div>
 
         <div class="mkm-account-links">
-            
-            <a href="#">個人檔案</a>
-            <a href="#">訂單紀錄</a>
-            <a href="#">課程總覽</a>
-            <a href="#">收藏文章</a>
-
+            <ul> 
+                <li routerLink="{{item.path}}" routerLinkActive="activateLink" *ngFor="let item of sideBarItem">{{ item.title }}</li>
+                <li (click)="userLogout()"> 登出 </li>
+            </ul>
         </div>
     </div>
 
     <div class="mkm-page-content"> 
-        
+      <router-outlet></router-outlet>
     </div>
 
 </div>
+
+<div *ngIf="isLoading" class="loading"></div>

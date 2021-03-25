@@ -2,47 +2,122 @@
   display: flex;
 }
 
+.mkm-page-content {
+  margin: 20px auto auto auto;
+  width: 50%;
+  padding: 10px;
+}
+
+.mkm-page-content .user-content .all-courses .completed-course {
+  display: flex;
+}
+
+.mkm-page-content .user-content .all-courses .completed-course .course-image .image {
+  width: 150px;
+}
+
+.mkm-page-content .user-content .all-courses .completed-course .course-image {
+  margin-right: 24px;
+}
+
+.mkm-page-content .user-content .all-courses .completed-course .course-title {
+  padding: 24px;
+}
+
+.mkm-page-content .user-content .all-courses .completed-course .course-title .title {
+  font-size: 20px;
+  color: #707070;
+}
+
+.mkm-page-content .user-content .all-courses .completed-course .course-progress {
+  
+}
+
+
+.change-password {
+  text-align: center; 
+  color: rgb(255, 0, 0);
+}
+
+.icon {
+  display: grid !important;}
+
+.success-password {
+  text-align: center; 
+  color: rgb(48, 199, 61);
+}
+
+.loading {
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgb(0 0 0 / 39%);
+  background-image: url('../../assets/img/mkm-loading-gif.gif');
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
   .mkm-container-sidebar .mkm-sidebar {
-    height: 75vh;
+    height: 77vh;
     width: 20%;
     background-color: #fff4f3;
     border-right: 30px solid #ffc1c0;
     border-left: 30px solid #ffc1c0;
+    min-width: 25vh !important;
   }
 
     .mkm-container-sidebar .mkm-sidebar .mkm-account-links {
-      margin: 50px
+      margin: 15px 50px;
     }
 
-    .mkm-container-sidebar .mkm-sidebar .mkm-account-links a {
+    .mkm-container-sidebar .mkm-sidebar .mkm-account-links ul li {
       display: block;
       text-align: center;
       color: #38839a;
       text-decoration: none;
       font-size: 21px;
       padding: 20px;
+      cursor: pointer;
     }
 
+    .mkm-container-sidebar .mkm-sidebar .mkm-account-links ul li:focus {
+      outline: none;
+      box-shadow: none;
+    }
+
+    .mkm-container-sidebar .mkm-sidebar .mkm-account-links ul li:hover {
+      border-radius: 45px;
+      padding: 20px;
+      background-color: #ffc1c0;
+    }
       .mkm-container-sidebar .mkm-sidebar .mkm-username .mkm-username-style {
         color: #707070;
         text-align: center;
       }
 
+      .mkm-container-sidebar .mkm-sidebar .mkm-username .mkm-username-email {
+        border: 1px solid;
+        color: #5e98aa;
+        border-radius: 30px;
+        text-align: center;
+        margin: 0px 15px 0px 15px;
+      }
+
     .mkm-container-sidebar .mkm-sidebar .mkm-account-profile{
       padding: 23px;
     }
-      .mkm-container-sidebar .mkm-sidebar .mkm-account-profile .mkm-mouse {
-        width: 53px;
-        height: 55px;
-        transform: rotate(40deg);
-        margin-bottom: -32px;
-        float: right;
-      }
-      .mkm-container-sidebar .mkm-sidebar .mkm-account-profile .mkm-profile-picture{
+
+      .mkm-container-sidebar .mkm-sidebar .mkm-account-profile .mkm-profile-picture {
         border-radius: 100px;
-        width: 200px;
-        height: 200px;
+        width: 150px;
+        height: 150px;
         border: 3px solid #5d98aa;
+        display: block !important;
+        margin: 0 auto !important;
       }
 
     .mkm-container-sidebar .mkm-sidebar .mkm-account-left {
@@ -52,3 +127,216 @@
     .mkm-container-sidebar .mkm-sidebar .mkm-account-right {
       float: right;
     }
+
+.activateLink {
+  border-radius: 45px;
+  background-color: #ffc1c0;
+}
+
+.user-content {
+  margin: 24px;
+}
+
+.content-title{
+  text-align: center;
+  color: #ffc1c0;
+  font-size: 30px;
+  font-weight: 800;
+}
+
+.top {
+  margin-top: 32px;
+}
+
+.mykidsmentor-form {
+  width: 100%;
+}
+
+.mykidsmentor-form-element {
+  padding-left: 30px;
+  padding-right: 30px;
+}
+
+
+input {
+  width: 100%;
+  padding: 10px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 2px solid #ffc1c0;
+  box-sizing: border-box;
+  border-radius: 43px;
+}
+
+
+.mykidsmentor-form {
+  width: 100%;
+}
+
+.mykidsmentor-form-element {
+  padding-left: 30px;
+  padding-right: 30px;
+}
+
+.mkm-label {
+  color: #ffc1c0;
+  font-size: 18px;
+}
+
+.mkm-password {
+  padding-top: 15px;
+}
+
+input:focus {
+  border-radius: 43px !important;
+  /* border: 2px solid #88cbde !important; */
+  outline: none;
+  box-shadow: -1px -1px 8px 0px #ffc1c0;
+}
+
+button:focus {
+  outline: none;
+  box-shadow: -1px -1px 8px 0px #ffc1c0;
+}
+
+input:active {
+  border-radius: 43px;
+}
+
+
+.mkm-dialog-title {
+  padding-top: 5px;
+  justify-content: center !important;
+  text-align: center;
+  color: #ffc1c0;
+}
+
+input:-webkit-autofill {
+    transition: background-color 5000s ease-in-out 0s;
+}
+
+button:-webkit-autofill {
+  transition: background-color 5000s ease-in-out 0s;
+}
+
+.mkm-login-button {
+  border-radius: 43px;
+  background: #ffc1c0;
+  color: #fff;
+  width: 100%;
+  border: 2px solid #ffc1c0;
+  padding: 10px 20px;
+}
+
+.mkm-button {
+  padding-top: 20px;
+  cursor: pointer;
+  color: #2d7d93;
+}
+
+.mkm-button-right {
+  padding-right: 0px;
+}
+
+.or-line {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+}
+
+hr {
+  border: 0;
+  border-top: 1px solid #88cbde;
+  flex: 1;
+  z-index: 1;
+}
+
+.mkm-space {
+  padding-right: 10px;
+  padding-left: 10px;
+  color: #88cbde;
+}
+
+.mkm-account {
+  justify-content: center;
+  padding-top: 10px;
+}
+
+.mkm-social {
+  border-radius: 43px;
+  background: #fff;
+  color: #88cbde;
+  width: 100%;
+  border: 2px solid #88cbde;
+  cursor: pointer;
+  text-align: center;
+}
+
+.mkm-login-error {
+  padding-left: 15px;
+  color: red;
+  padding-bottom: 15px;
+}
+
+.mykidsmentor-no-account {
+  color: #2d7d93;
+  cursor: pointer;
+}
+
+@media screen and (min-width: 700px) and (max-width: 1320px) {
+  .mkm-container-sidebar .mkm-sidebar {
+    height: 82vh;
+  }
+}
+
+@media screen and (min-width: 700px) and (max-width: 1320px) and (orientation: landscape)  {
+  .mkm-container-sidebar .mkm-sidebar {
+    min-width: 40vh !important;
+  }
+}
+
+/* @media screen and (max-width: 1419px) and (min-width: 1380px) {
+  .mkm-container-sidebar .mkm-sidebar .mkm-account-links ul li {
+    font-size: 19px;
+  }
+} */
+
+@media screen and (max-width: 1420px) {
+  .mkm-container-sidebar .mkm-sidebar .mkm-account-links {
+    margin: 26px;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .mkm-container-sidebar {
+    display: block;
+  }
+
+  .mkm-container-sidebar .mkm-sidebar {
+    height: auto;
+    width: auto;
+  }
+}
+
+@media screen and (max-width: 1020px) {
+  .mkm-page-content {
+    width: 100%;
+  }
+}
+
+table {
+  width: 100%;
+}
+
+.tableWidth {
+  width: 80%;
+}
+
+.tab {
+  display: none !important;
+}
+.disabled {
+  background: #b1acab52;
+  border: 2px solid #b1acab52;
+}

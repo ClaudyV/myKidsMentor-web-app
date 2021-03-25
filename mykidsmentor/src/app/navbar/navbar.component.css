@@ -330,6 +330,19 @@ nav {
   background-color: #ffc1c0;
   height: 55px;}
 
+@media only screen and (max-device-width: 1394px) and (orientation:landscape) {
+  /* For landscape layouts only */
+  .toggleLand {
+    display: none !important;
+  }
+}
+
+@media only screen and (max-device-width: 1394px) and (orientation:portrait) {
+  /* For portrait layouts only */
+  .toggleLand {
+    display: none !important;
+  }
+}
 
 @media screen and (max-width: 1394px) {
 
@@ -405,7 +418,6 @@ nav {
     transition: all 1s ease-out;
     pointer-events: none;
     border-left: 2px solid #ffffff;
-
   }
 
   .mykidsmentor-nav-links.open {
@@ -592,7 +604,7 @@ nav {
     border-bottom: 0px !important;
   }
 
-   .mykidsmentor-mobile-login {
+    .mykidsmentor-mobile-login {
     background-color: #5199ad !important;
     border-radius: 43px !important;
     color: #ffc0bf !important;

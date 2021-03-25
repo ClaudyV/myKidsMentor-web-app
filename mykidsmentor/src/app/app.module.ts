@@ -31,6 +31,13 @@ import { EverificationComponent } from './everification/everification.component'
 import { UsersComponent } from './users/users.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FooterComponent } from './footer/footer.component';
+import {MatTableModule} from '@angular/material/table';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MycourseComponent } from './users/mycourse/mycourse.component';
+import { BlogComponent } from './users/blog/blog.component';
+import { ChangepasswordComponent } from './users/changepassword/changepassword.component';
+import { AccountinfoComponent } from './users/accountinfo/accountinfo.component';
+import { CoursehistoryComponent } from './users/coursehistory/coursehistory.component';
 
 
 @NgModule({
@@ -45,7 +52,12 @@ import { FooterComponent } from './footer/footer.component';
     PwnotificationComponent,
     EverificationComponent,
     UsersComponent,
-    FooterComponent
+    FooterComponent,
+    MycourseComponent,
+    BlogComponent,
+    ChangepasswordComponent,
+    AccountinfoComponent,
+    CoursehistoryComponent
   ],
   imports: [
     BrowserModule,
@@ -62,6 +74,8 @@ import { FooterComponent } from './footer/footer.component';
     MatProgressBarModule,
     MatDialogModule,
     LayoutModule,
+    MatTableModule,
+    MatPaginatorModule,
     NgbModule
   ],
   entryComponents: [

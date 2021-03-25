@@ -92,6 +92,16 @@ body { margin: 0; font-family: chinese !important;}
    width: 570px;
 }
 
+th.mat-header-cell, td.mat-cell, td.mat-footer-cell {
+  border-bottom-color: #ffc0bf;
+}
+
+.mat-header-cell {
+  font-size: 20px;
+}
+
+
+
 
 
 
