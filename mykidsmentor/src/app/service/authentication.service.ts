@@ -84,7 +84,6 @@ export class AuthenticationService implements CanActivate {
 
   async createUser(formData) {
     this.userName = formData.value.firstname;
-    console.log(this.userName);
     return this.authLogin.createUserWithEmailAndPassword(formData.value.email, formData.value.password);
   }
 

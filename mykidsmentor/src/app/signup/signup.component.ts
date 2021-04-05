@@ -31,7 +31,8 @@ export class SignupComponent implements OnInit {
     handleCodeInApp: false
   };
   params = {
-    'invalid-email': '請輸入一個正確的電子郵件！'
+    'invalid-email': '請輸入一個正確的電子郵件！',
+    'email-already-in-use': '您輸入的電子郵件已經在使用了，請您再輸入新的'
   } as MessagesIndex;
 
   constructor(public signupDialogRef: MatDialogRef<SignupComponent>,
@@ -106,7 +107,6 @@ export class SignupComponent implements OnInit {
     this.isLoading = true;
     this.signup.onLoginWithGoogle().then(
       (success) => {
-      console.log(success);
       this.isLoading = false;
       this.signupDialogRef.close(false);
       this.router.navigate(['']);

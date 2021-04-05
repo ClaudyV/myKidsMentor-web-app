@@ -17,12 +17,5 @@ export class SharedService {
     isZhuyinService() {
         return this.zhuyin;
     }
-
-    set isZhuyin(value: boolean) {
-      sessionStorage.setItem('isZhuyin', String(value));
-    }
-
-    get isZhuyin(): boolean {
-        return <boolean> <unknown>sessionStorage.getItem('isZhuyin');
-    }
+    
 }

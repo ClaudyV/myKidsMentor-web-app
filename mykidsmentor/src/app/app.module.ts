@@ -38,6 +38,7 @@ import { BlogComponent } from './users/blog/blog.component';
 import { ChangepasswordComponent } from './users/changepassword/changepassword.component';
 import { AccountinfoComponent } from './users/accountinfo/accountinfo.component';
 import { CoursehistoryComponent } from './users/coursehistory/coursehistory.component';
+import {MatCheckboxModule} from '@angular/material/checkbox';
 
 
 @NgModule({
@@ -76,6 +77,7 @@ import { CoursehistoryComponent } from './users/coursehistory/coursehistory.comp
     LayoutModule,
     MatTableModule,
     MatPaginatorModule,
+    MatCheckboxModule,
     NgbModule
   ],
   entryComponents: [

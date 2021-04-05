@@ -1,0 +1,221 @@
+.content-title{
+    text-align: center;
+    color: #ffc1c0;
+    font-size: 30px;
+    font-weight: 800;
+    margin-bottom: 25px;
+  }
+
+.mkm-account-email {
+    padding: 23px;
+    margin: 0 auto;
+    width: fit-content;
+    margin-bottom: 25px;
+    font-size: 25px;
+    color: #2d7d93;
+}
+
+.mkm-account-profile{
+    padding: 23px;
+    margin: 0 auto;
+    width: 50%;
+    display: flex;
+    border: 6px solid #ffc1c0;
+    border-radius: 25px;
+    margin-bottom: 25px;
+  }
+
+    .mkm-account-profile .mkm-profile-picture {
+      border-radius: 100px;
+      width: 150px;
+      height: 150px;
+      border: 3px solid #5d98aa;
+      margin-right: 25px;
+    }
+
+    .mkm-account-profile .change-picture {
+        position: relative;
+    }
+
+    .mkm-account-profile .change-picture .container-pic {
+        margin: 0;
+        position: absolute;
+        top: 50%;
+        -ms-transform: translateY(-50%);
+        transform: translateY(-50%);
+        width: 100px;
+    }
+
+        .mkm-account-profile .change-picture .container-pic .change {
+            border: 1px solid #ffc1c0;
+            border-radius: 10px;
+            padding: 7px;
+            background: #ffc1c0;
+            color: #2d7d93;
+            font-weight: 500;
+        }
+
+        .mkm-account-profile .change-picture .container-pic .change:hover {
+            background: #2d7d93;
+            color: #ffc1c0;
+            border: 1px solid #2d7d93;
+        }
+
+    .mkm-account-profile .mouse-container {
+        
+    }
+
+        .mkm-account-profile .mouse-container .mouses {
+            display: flex;
+        }
+
+        .mkm-account-profile .mouse-container .save {
+            margin: 0 auto;
+            width: 37%;
+            display: flex;
+        }
+
+        .mkm-account-profile .mouse-container .save .save-button {
+            background: #89cbde;
+            border: 1px solid #89cbde;
+            border-radius: 7px;
+            padding-right: 5px;
+            padding-left: 5px;
+            margin-left: 5px;
+            margin-right: 5px;
+            width: 50px;
+            color: #2d7d93;
+        }
+
+        .mkm-account-profile .mouse-container .save .cancel-button {
+            background: #bebebe;
+            border: 1px solid #bebebe;
+            border-radius: 7px;
+            padding-right: 5px;
+            padding-left: 5px;
+            margin-left: 5px;
+            margin-right: 5px;
+            width: 50px;
+            color: #2d7d93;
+        }
+
+        .mkm-account-profile .name {
+            width: 150px;
+            margin-right: 25px;
+        }
+
+            .mkm-account-profile .name .name-style {
+                color: #707070;
+                font-size: 25px;
+                line-height: 36px;
+            }
+
+            .mkm-account-profile .change-name .change-button {
+                background: #ffc1c0;
+                border: 1px solid #ffc1c0;
+                border-radius: 10px;
+                width: 50px;
+                color: #2d7d93;
+                padding: 7px;
+            }
+
+            .mkm-account-profile .change-name .cancel-button {
+                background: #bebebe;
+                border: 1px solid #bebebe;
+                border-radius: 7px;
+                padding-right: 5px;
+                padding-left: 5px;
+                margin-left: 5px;
+                margin-right: 5px;
+                color: #2d7d93;
+            }
+
+            .mkm-account-profile .change-name .save-button {
+                background: #89cbde;
+                border: 1px solid #89cbde;
+                border-radius: 7px;
+                padding-right: 5px;
+                padding-left: 5px;
+                margin-left: 5px;
+                margin-right: 5px;
+                color: #2d7d93;
+            }
+
+            .mkm-account-profile .name .input-style {
+                border: 1px solid #e8e8e8;
+                border-radius: 25px;
+                padding: 2px;
+            }
+
+.transparent {
+    opacity: 0.2;
+}
+
+.border-picture {
+    width: fit-content;
+    border: 6px solid #ffc1c0;
+    border-radius: 25px;
+}
+
+.mouse-style {
+    border-radius: 100px;
+    width: 100px;
+    height: 100px;
+    border: 2px solid #5d98aa;
+    margin-right: 30px;
+    margin-left: 30px;
+    margin-bottom: 10px;
+}
+
+.checked-mouse {
+    display: block;
+    text-align: center;
+}
+
+.displayNone {
+    display: none;
+}
+
+@media screen and (max-width: 580px) {
+    .mkm-account-profile {
+        display: block;
+        width: fit-content;
+    }
+
+    .mkm-account-profile .mkm-profile-picture {
+        margin: 0px 35px 35px;
+    }
+
+    .beforeChangePicture {
+        margin: 0 auto;
+        width: 20%;
+    }
+    .mouse-style {
+        margin-right: 6px;
+        margin-left: 6px;
+    }
+
+    .mkm-account-profile  .mouse-container  .save {
+        width: 54%;
+    }
+
+    .mkm-account-email {
+        font-size: 17px;
+    }
+
+    .mkm-account-profile .name .input-style {
+        margin-bottom: 15px;
+    }
+
+    .mkm-account-profile .name {
+        margin: 0;
+        text-align: center;
+    }
+
+    .mkm-account-profile .change-name {
+        margin: 0 auto;
+        width: fit-content;
+    }
+
+  }
+

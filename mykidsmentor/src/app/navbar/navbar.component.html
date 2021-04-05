@@ -50,7 +50,7 @@
 
                         <li class="mykidsmentor-username-icon">
                           <img *ngIf="user.photoURL; else showpic" class="mykidsmentor-user-picture" src="{{user.photoURL}}" alt="mykidsmentor-account">
-                          <ng-template #showpic> <img  class="mykidsmentor-social" src="assets/img/mkm-account.png" alt="{{user.displayName}}"> </ng-template>
+                          <ng-template #showpic> <img  class="mykidsmentor-social" src="assets/img/mkm-ico.png" alt="{{user.displayName}}"> </ng-template>
                           <div class="mykidsmentor-dropdown-content-user">
                             <a [ngClass]="{zy2: zhuyinValue}" routerLink="/user/account-info" >帳號資料</a>
                             <a [ngClass]="{zy2: zhuyinValue}" routerLink="/user/mycourse">我的課程</a>

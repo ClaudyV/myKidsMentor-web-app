@@ -6,9 +6,14 @@
     <div class="mykidsmentor-line3 line3"></div>
   </div>
 
-  <div class="mkm-password-reset">
+  <div *ngIf="!warning; else showWarning" class="mkm-password-reset">
     請到 " <b>{{getUserEmail}}</b> " 電子信箱收取驗證信，點擊連結即可登入。
   </div>
+  <ng-template #showWarning> 
+    <div class="mkm-password-reset"> 
+      {{warning}}
+    </div>
+  </ng-template>
 
 </div>
 
