@@ -330,21 +330,21 @@ nav {
   background-color: #ffc1c0;
   height: 55px;}
 
-@media only screen and (max-device-width: 1394px) and (orientation:landscape) {
+@media only screen and (max-device-width: 1407px) and (orientation:landscape) {
   /* For landscape layouts only */
   .toggleLand {
     display: none !important;
   }
 }
 
-@media only screen and (max-device-width: 1394px) and (orientation:portrait) {
+@media only screen and (max-device-width: 1407px) and (orientation:portrait) {
   /* For portrait layouts only */
   .toggleLand {
     display: none !important;
   }
 }
 
-@media screen and (max-width: 1394px) {
+@media screen and (max-width: 1407px) {
 
   nav {
     height: 132px;
@@ -627,13 +627,13 @@ nav {
 
 }
 
-@media screen and (min-width: 747px) and (max-width: 1394px) {
+@media screen and (min-width: 747px) and (max-width: 1407px) {
   .mykidsmentor-nav-links {
     width: 67%;
   }
 }
 
-@media screen and (min-width: 1395px) {
+@media screen and (min-width: 1408px) {
 
   /* .mykidsmentor-mobile {
     display: none;

@@ -44,7 +44,7 @@ export class AccountinfoComponent implements OnInit {
         panelClass : 'verifyClass',
         data: 
         {
-          warning: "請您大狗勾一個"
+          warning: "請打勾一個頭像"
         }
       }).afterClosed().subscribe(
         result => {
@@ -58,7 +58,7 @@ export class AccountinfoComponent implements OnInit {
         panelClass : 'verifyClass',
         data: 
         {
-          warning: "請您大狗勾一個"
+          warning: "請打勾一個頭像"
         }
       }).afterClosed().subscribe(
         result => {
@@ -75,7 +75,7 @@ export class AccountinfoComponent implements OnInit {
             panelClass : 'verifyClass',
             data: 
             {
-              warning: "照片改善成功"
+              warning: "頭像修改成功"
             }
           }).afterClosed().subscribe(
             result => {
@@ -94,7 +94,7 @@ export class AccountinfoComponent implements OnInit {
             panelClass : 'verifyClass',
             data: 
             {
-              warning: "照片改善成功"
+              warning: "頭像修改成功"
             }
           }).afterClosed().subscribe(
             result => {
@@ -124,25 +124,38 @@ export class AccountinfoComponent implements OnInit {
 
   async onSubmitName() {
     const newName = this.frmSetNewName.controls['newName'].value;
-    console.log(newName);
-    this.user.updateProfile({
-      displayName: newName,
-      photoURL: this.user.photoURL
-    }).then(() => {
+    if(this.user.displayName === newName) {
       this.dialog.open(EverificationComponent, {
         panelClass : 'verifyClass',
         data: 
         {
-          warning: "新名字改善成功"
+          warning: "請您收入新的名字"
         }
       }).afterClosed().subscribe(
         result => {
           this.isChangingName = false;
         }
       );
-    }).catch((error) => {
-      alert(error);
-    });
+    } else {
+      this.user.updateProfile({
+        displayName: newName,
+        photoURL: this.user.photoURL
+      }).then(() => {
+        this.dialog.open(EverificationComponent, {
+          panelClass : 'verifyClass',
+          data: 
+          {
+            warning: "暱稱修改成功"
+          }
+        }).afterClosed().subscribe(
+          result => {
+            this.isChangingName = false;
+          }
+        );
+      }).catch((error) => {
+        alert(error);
+      });
+    }
   }
 
 }

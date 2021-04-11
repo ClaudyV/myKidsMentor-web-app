@@ -39,6 +39,8 @@ import { ChangepasswordComponent } from './users/changepassword/changepassword.c
 import { AccountinfoComponent } from './users/accountinfo/accountinfo.component';
 import { CoursehistoryComponent } from './users/coursehistory/coursehistory.component';
 import {MatCheckboxModule} from '@angular/material/checkbox';
+import {MatAutocompleteModule} from '@angular/material/autocomplete';
+import { ScrollingModule } from '@angular/cdk/scrolling';
 
 
 @NgModule({
@@ -78,6 +80,8 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
     MatTableModule,
     MatPaginatorModule,
     MatCheckboxModule,
+    MatAutocompleteModule,
+    ScrollingModule,
     NgbModule
   ],
   entryComponents: [

@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import {BreakpointObserver} from '@angular/cdk/layout';
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-blog',
@@ -7,7 +10,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BlogComponent implements OnInit {
 
-  constructor() { }
+  isSmallScreen: Observable<boolean>;
+
+  constructor(breakpointObserver: BreakpointObserver) {
+    this.isSmallScreen = breakpointObserver.observe('(max-width: 930px)').pipe(map(result => !result.matches));
+    console.log(this.isSmallScreen);
+   }
 
   ngOnInit(): void {
   }

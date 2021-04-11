@@ -19,7 +19,17 @@
                 <div class="row justify-content-end">
                   <div class="col-5">
                     <mat-form-field class="search-form-field" floatLabel="never">
-                      <input matInput [(ngModel)]="searchKey" placeholder="搜 尋" autocomplete="off">
+                      <input #autoCompleteInput 
+                            matInput 
+                            [(ngModel)]="searchKey" 
+                            [formControl]="myControl" 
+                            placeholder="搜 尋" 
+                            [matAutocomplete]="auto">
+                      <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
+                        <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+                          {{option}}
+                        </mat-option>
+                      </mat-autocomplete>
                       <button mat-button matSuffix mat-icon-button aria-label="Clear"*ngIf="!searchKey">
                         <mat-icon>search</mat-icon>
                       </button>
@@ -52,7 +62,7 @@
                           <img *ngIf="user.photoURL; else showpic" class="mykidsmentor-user-picture" src="{{user.photoURL}}" alt="mykidsmentor-account">
                           <ng-template #showpic> <img  class="mykidsmentor-social" src="assets/img/mkm-ico.png" alt="{{user.displayName}}"> </ng-template>
                           <div class="mykidsmentor-dropdown-content-user">
-                            <a [ngClass]="{zy2: zhuyinValue}" routerLink="/user/account-info" >帳號資料</a>
+                            <a [ngClass]="{zy2: zhuyinValue}" routerLink="/user/account-info" >帳戶資料</a>
                             <a [ngClass]="{zy2: zhuyinValue}" routerLink="/user/mycourse">我的課程</a>
                             <a [ngClass]="{zy2: zhuyinValue}" routerLink="/user/blog">收藏文章</a>
                             <a [ngClass]="{zy2: zhuyinValue}" routerLink="/user/order-history">歷史訂單</a>
@@ -92,7 +102,7 @@
                         <b *ngIf="user.displayName; else showEmail" class="mykidsmentor-username">{{ (user.displayName.length > 20)? (user.displayName | slice:0:20)+'..':(user.displayName)}}</b>
                         <ng-template #showEmail><b class="mykidsmentor-username">{{ (user.email.length > 19)? (user.email | slice:0:19)+'..':(user.email)}}</b></ng-template>
                         <div class="mykidsmentor-dropdown-content-user">
-                          <a [ngClass]="{zy2: zhuyinValue}" routerLink="user/account-info">帳號資料</a>
+                          <a [ngClass]="{zy2: zhuyinValue}" routerLink="user/account-info">帳戶資料</a>
                           <a [ngClass]="{zy2: zhuyinValue}" href="#">我的課程</a> 
                           <a [ngClass]="{zy2: zhuyinValue}" href="#">收藏文章</a>
                           <a [ngClass]="{zy2: zhuyinValue}" href="#">修改密碼</a>

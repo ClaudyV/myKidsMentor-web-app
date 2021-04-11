@@ -104,6 +104,18 @@ th.mat-header-cell, td.mat-cell, td.mat-footer-cell {
   background-color: #40ff58 !important;
 }
 
+.material-icons {
+  color: #707070;
+}
+
+input:focus{
+  outline: none;
+}
+
+/* .cdk-overlay-container {
+  position: relative !important;
+} */
+
 
 
 

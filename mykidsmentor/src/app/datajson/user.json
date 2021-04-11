@@ -1,7 +1,7 @@
 {
     "sideBar" : [
         {
-            "title" : "帳號資料",
+            "title" : "帳戶資料",
             "path" : "/user/account-info"
         },
         {

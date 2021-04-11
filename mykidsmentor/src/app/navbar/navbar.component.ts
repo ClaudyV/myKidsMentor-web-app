@@ -1,12 +1,14 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { LoginComponent } from '../login/login.component';
 import { AuthenticationService } from './../service/authentication.service';
 import { SignupComponent } from './../signup/signup.component';
 import {BreakpointObserver} from '@angular/cdk/layout';
-import { PwnotificationComponent } from '../pwnotification/pwnotification.component';
-import { EverificationComponent } from '../everification/everification.component';
 import { SharedService } from '../service/shared.service';
+import { FormControl } from '@angular/forms';
+import { Observable } from 'rxjs';
+import {map, startWith} from 'rxjs/operators';
+import { MatAutocompleteTrigger } from '@angular/material/autocomplete';
 
 @Component({
   selector: 'app-navbar',
@@ -30,6 +32,12 @@ export class NavbarComponent implements OnInit {
   zhuyinValue;
   toggleValue = false;
   mouseOut = false;
+  myControl = new FormControl();
+  options: string[] = ['One', 'Two', 'Three'];
+  filteredOptions: Observable<string[]>;
+  @ViewChild('autoCompleteInput', { read: MatAutocompleteTrigger })
+  autoComplete: MatAutocompleteTrigger;
+
 
   constructor(public dialog: MatDialog,
               private loginfo: AuthenticationService,
@@ -48,6 +56,23 @@ export class NavbarComponent implements OnInit {
             this.user = user;
           }
            });
+    this.filteredOptions = this.myControl.valueChanges.pipe(
+      startWith(''),
+      map(value => this._filter(value))
+    );
+    window.addEventListener('scroll', this.scrollEvent, true);
+  }
+
+  scrollEvent = (event: any): void => {
+    if(this.autoComplete.panelOpen)
+      this.autoComplete.closePanel();
+      // this.autoComplete.updatePosition();
+  };
+
+  private _filter(value: string): string[] {
+    const filterValue = value.toLowerCase();
+
+    return this.options.filter(option => option.toLowerCase().indexOf(filterValue) === 0);
   }
 
   isZhuyin(event){
