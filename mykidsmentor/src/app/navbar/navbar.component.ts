@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, OnChanges, SimpleChanges } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { LoginComponent } from '../login/login.component';
 import { AuthenticationService } from './../service/authentication.service';
@@ -9,6 +9,7 @@ import { FormControl } from '@angular/forms';
 import { Observable } from 'rxjs';
 import {map, startWith} from 'rxjs/operators';
 import { MatAutocompleteTrigger } from '@angular/material/autocomplete';
+import { Router, ActivatedRoute, NavigationEnd, NavigationStart } from '@angular/router';
 
 @Component({
   selector: 'app-navbar',
@@ -17,7 +18,6 @@ import { MatAutocompleteTrigger } from '@angular/material/autocomplete';
 })
 export class NavbarComponent implements OnInit {
 
-  searchKey: string; // Searck input
   user: firebase.User;
   userVerified;
   isSmallScreen: boolean;
@@ -37,12 +37,15 @@ export class NavbarComponent implements OnInit {
   filteredOptions: Observable<string[]>;
   @ViewChild('autoCompleteInput', { read: MatAutocompleteTrigger })
   autoComplete: MatAutocompleteTrigger;
+  searching: boolean = true;
 
 
   constructor(public dialog: MatDialog,
               private loginfo: AuthenticationService,
               breakpointObserver: BreakpointObserver, 
-              private sharedServe: SharedService) {
+              private sharedServe: SharedService,
+              private router: Router,
+              private route: ActivatedRoute) {
                 this.isSmallScreen = breakpointObserver.isMatched('(max-width: 599px)');
               }
 
@@ -61,6 +64,19 @@ export class NavbarComponent implements OnInit {
       map(value => this._filter(value))
     );
     window.addEventListener('scroll', this.scrollEvent, true);
+  
+    this.router.events.subscribe(
+      (event: any) => {
+        if (event instanceof NavigationStart) {
+          this.sharedServe.setQuotesValue(true);
+          this.sharedServe.currentSearching.subscribe(
+            (value) => {
+              this.searching = value;
+            }
+          );
+        }
+      });
+
   }
 
   scrollEvent = (event: any): void => {
@@ -71,7 +87,6 @@ export class NavbarComponent implements OnInit {
 
   private _filter(value: string): string[] {
     const filterValue = value.toLowerCase();
-
     return this.options.filter(option => option.toLowerCase().indexOf(filterValue) === 0);
   }
 
@@ -139,7 +154,25 @@ export class NavbarComponent implements OnInit {
 
   // This function clears the search input as soon as users click on close button
   onSearchClear() {
-    this.searchKey = ''; // Empty the user input when you click on close button
+    this.myControl.reset('');
   }
+
+  searchMade(event) {
+    this.sharedServe.setQuotesValue(false);
+    this.sharedServe.setSearchKeyWord(event.value);
+    sessionStorage.setItem('searchResult', event.value);
+    this.router.navigate(['search-result']);
+  }
+
+  inputOnEnter(event) {
+    this.sharedServe.setQuotesValue(false);
+    this.sharedServe.setSearchKeyWord(event);
+    sessionStorage.setItem('searchResult', event);
+    this.router.navigate(['search-result']);
+  }
+
+  // get quoteValue() {
+  //   return this.sharedServe.getQuotesValue();
+  // }
 
 }

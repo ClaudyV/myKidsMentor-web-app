@@ -1,11 +1,16 @@
 /* Navbar style starts here */
+header .mykidsmentor-desktop-quotes {
+  height: 55px;
+}
+
 nav {
   height: 160px;
   background: #2d7d93;}
 
   /* Container for the Navbar */
   .mykidsmentor-nav-elements {
-    display: block;}
+    display: block;
+    height: inherit;}
 
     /* Row that contains all elements of the Navbar */
     .mykidsmentor-nav-elements-row {
@@ -201,13 +206,14 @@ nav {
           width: 100%;}
 
           .mykidsmentor-nav-links {
-            padding-top: 15px ;
+            padding-top: 15px;
             display: flex;
             list-style: none;
             height: 100%;
             justify-content: space-around;
             align-items: center;
-            margin-left: auto;}
+            margin-left: auto;
+            margin-bottom: 0;}
 
             .mykidsmentor-nav-links li a {
               color: #2d7d93;
@@ -317,18 +323,17 @@ nav {
             border-bottom: 0px !important;
           }
 
-
 /* Quotes from Teachers */
 .mykidsmentor-qoutes {
   color: #ffffff;
   font-weight: bold;
   font-size: 18px;
-  top: 35%;
+  line-height: 50px;
   padding-left: 60px;}
 
 .mykidsmentor-qoutes-background {
-  background-color: #ffc1c0;
-  height: 55px;}
+  background-color: #89cbde;
+  height: inherit;}
 
 @media only screen and (max-device-width: 1407px) and (orientation:landscape) {
   /* For landscape layouts only */
@@ -396,6 +401,7 @@ nav {
     background-color: #89cbde;
     top: 2%;
     color: #2d7d92;
+    text-align: center;
   }
 
   .mykidsmentor-desktop-quotes {

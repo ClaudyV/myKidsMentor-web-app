@@ -41,6 +41,9 @@ import { CoursehistoryComponent } from './users/coursehistory/coursehistory.comp
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import { ScrollingModule } from '@angular/cdk/scrolling';
+import { SearchResultComponent } from './search-result/search-result.component';
+import { SearchCourseComponent } from './search-result/search-course/search-course.component';
+import { SearchBlogComponent } from './search-result/search-blog/search-blog.component';
 
 
 @NgModule({
@@ -60,7 +63,10 @@ import { ScrollingModule } from '@angular/cdk/scrolling';
     BlogComponent,
     ChangepasswordComponent,
     AccountinfoComponent,
-    CoursehistoryComponent
+    CoursehistoryComponent,
+    SearchResultComponent,
+    SearchCourseComponent,
+    SearchBlogComponent
   ],
   imports: [
     BrowserModule,

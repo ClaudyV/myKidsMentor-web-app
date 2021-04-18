@@ -21,19 +21,21 @@
                     <mat-form-field class="search-form-field" floatLabel="never">
                       <input #autoCompleteInput 
                             matInput 
-                            [(ngModel)]="searchKey" 
                             [formControl]="myControl" 
-                            placeholder="搜 尋" 
+                            placeholder="搜 尋"
+                            (keyup.enter)="inputOnEnter($event.target.value)"
                             [matAutocomplete]="auto">
-                      <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
+                      <mat-autocomplete autoActiveFirstOption 
+                                        #auto="matAutocomplete"
+                                        (optionSelected)="searchMade($event.option)">
                         <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
                           {{option}}
                         </mat-option>
                       </mat-autocomplete>
-                      <button mat-button matSuffix mat-icon-button aria-label="Clear"*ngIf="!searchKey">
+                      <button mat-button matSuffix mat-icon-button aria-label="Clear"*ngIf="!myControl.value">
                         <mat-icon>search</mat-icon>
                       </button>
-                      <button mat-button matSuffix mat-icon-button aria-label="Clear"*ngIf="searchKey" (click)="onSearchClear()">
+                      <button mat-button matSuffix mat-icon-button aria-label="Clear"*ngIf="myControl.value" (click)="onSearchClear()">
                         <mat-icon>close</mat-icon>
                       </button>
                     </mat-form-field>
@@ -163,13 +165,13 @@
       </div>
     </nav>
 
-    <div class="container-full mykidsmentor-desktop-quotes">
+    <div *ngIf="searching" class="container-full mykidsmentor-desktop-quotes">
       <div class="row mykidsmentor-qoutes-background">
         <div class="col-sm-4 mykidsmentor-qoutes">
          <span [ngClass]="{zy2: zhuyinValue}">  {{yearNav}}年{{monthNav}}月{{dayNav}}日 </span>
         </div>
         <div [ngClass]="{zy2: zhuyinValue}" class="col-8 mykidsmentor-qoutes">
-          我們會成功的， 要繼續努力， 好不好？
+          我們會成功的， 要繼續努力， 好不好？ ——— 小鹿
         </div>
       </div>
     </div>

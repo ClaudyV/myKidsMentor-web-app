@@ -638,7 +638,10 @@ connectFourGame(){
     
       // document.addEventListener('mousedown', () => styleEl.innerHTML = '');  
       document.addEventListener('keydown', () => {
-        styleEl.innerHTML = '.board button:focus{border:5px solid #999}'}); 
+        if(styleEl) {
+          styleEl.innerHTML = '.board button:focus{border:5px solid #999}'
+        }
+        }); 
    
     
     

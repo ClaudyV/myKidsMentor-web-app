@@ -1,0 +1,30 @@
+<div class="search-result">
+
+    <div class="left"> 
+
+        <div class="keyword"> 
+            <span class="text">搜尋關鍵字</span> <span class="comma">:</span> <span class="result">{{keyWord}} (共23項結果)</span>
+        </div>
+
+        <div class="switch">
+
+            <div routerLink="/search-result/course" routerLinkActive="activatedLink" class="course"> 
+                <img routerLinkActive="img" style="width: 20px;" src="assets/img/mkm-ico.png" alt=""> <span>課程</span> 
+            </div>
+
+            <div routerLink="/search-result/blog" routerLinkActive="activatedLink" class="blog">
+                <span>文章</span> <img style="width: 20px;" src="assets/img/mkm-ico-blue.png" alt="">
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="right"> 
+
+    </div>
+
+</div>
+<div class="search-result-content">
+<router-outlet></router-outlet>
+</div>

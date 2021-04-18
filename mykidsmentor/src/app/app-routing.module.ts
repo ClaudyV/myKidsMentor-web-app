@@ -1,5 +1,4 @@
 import { UsersComponent } from './users/users.component';
-import { AdminService } from './service/admin.service';
 import { AuthenticationService } from './service/authentication.service';
 import { CourseComponent } from './course/course.component';
 import { HomeComponent } from './home/home.component';
@@ -10,6 +9,9 @@ import { BlogComponent } from './users/blog/blog.component';
 import { ChangepasswordComponent } from './users/changepassword/changepassword.component';
 import { MycourseComponent } from './users/mycourse/mycourse.component';
 import { CoursehistoryComponent } from './users/coursehistory/coursehistory.component';
+import { SearchResultComponent } from './search-result/search-result.component';
+import { SearchCourseComponent } from './search-result/search-course/search-course.component';
+import { SearchBlogComponent } from './search-result/search-blog/search-blog.component';
 
 
 const routes: Routes = [
@@ -25,6 +27,12 @@ const routes: Routes = [
       { path: 'order-history', component: CoursehistoryComponent, canActivate: [AuthenticationService] }
     ]
   },
+  { path: 'search-result', redirectTo : 'search-result/course'},
+  { path: 'search-result', component: SearchResultComponent, 
+    children: [
+      { path: 'course', component: SearchCourseComponent },
+      { path: 'blog', component: SearchBlogComponent }
+    ] },
   { path : '**' , redirectTo : '' , pathMatch : 'full'}
 ];
 
