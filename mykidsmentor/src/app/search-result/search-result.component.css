@@ -37,7 +37,8 @@
         border-radius: 45px;
         margin-top: 25px;
         padding: 2px;
-        width: 40%;
+        width: 60%;
+        position: relative;
     }
 
         .left .switch .blog {
@@ -52,6 +53,20 @@
             font-size: 19px;
             outline: none;
             cursor: pointer;
+        }
+
+        .left .switch .active-img-pink {
+            width: 45px;
+            position: absolute;
+            left: -4%;
+            top: -40%;
+        }
+
+        .left .switch .active-img-blue {
+            width: 45px;
+            position: absolute;
+            top: -40%;
+            left: 89%;
         }
 
         .left .switch .course {
@@ -86,3 +101,44 @@
 .img {
     width: 150px;
 }
+
+.right .mkm-steps {
+    display: flex;
+  }
+  
+  .right .mkm-flow-title {
+    padding: 15px 0px 15px 0px;
+    color: #ffffff;
+    width: 154px;
+    border-radius: 15px;
+    background-color: #88cbde;
+    text-align: center;
+    font-weight: bold;
+    font-size: 18px;
+    box-shadow: 0px 9px 6px 0px #00000036;
+    margin: 0px 0px 13px 0px;
+    line-height: 2px;
+  }
+  
+  .right .step-arrow {
+    margin-right: 30px;
+  }
+  
+  .mkm-flow-step{
+    color: #ffc0bf;
+    margin: 0 auto;
+    width: 194px;
+    border-radius: 26px;
+    background-color: #ffff;
+    text-align: center;
+    padding: 13px;
+    height: 46px;
+    font-weight: bold;
+    font-size: 25px;
+    box-shadow: 0px 9px 6px 0px #00000036;
+    line-height: 18px;
+  }
+  
+  .mkm-flow-step-triangle{
+    text-align: center;
+  }

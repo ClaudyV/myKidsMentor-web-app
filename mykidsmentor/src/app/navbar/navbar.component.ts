@@ -158,17 +158,17 @@ export class NavbarComponent implements OnInit {
   }
 
   searchMade(event) {
-    this.sharedServe.setQuotesValue(false);
     this.sharedServe.setSearchKeyWord(event.value);
     sessionStorage.setItem('searchResult', event.value);
     this.router.navigate(['search-result']);
+    this.sharedServe.setQuotesValue(false);
   }
 
   inputOnEnter(event) {
-    this.sharedServe.setQuotesValue(false);
     this.sharedServe.setSearchKeyWord(event);
     sessionStorage.setItem('searchResult', event);
     this.router.navigate(['search-result']);
+    this.sharedServe.setQuotesValue(false);
   }
 
   // get quoteValue() {
