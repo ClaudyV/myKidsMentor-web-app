@@ -35,6 +35,7 @@ export class HomeComponent implements OnInit {
   @ViewChild('myCourses') myCourses: ElementRef;
   @ViewChild('newCourses') newCourses: ElementRef;
   @ViewChild('scrollBehavior') scrollBehavior: ElementRef;
+  urlTest = '../../assets/img/mkm-taiwan.jpg';
   
 
   constructor(private title: Title,
