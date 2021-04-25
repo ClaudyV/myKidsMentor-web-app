@@ -379,49 +379,49 @@ ngb-rating {
 
   .mkm-course-info-picture {
     margin-right: 5px;
-}
+  }
 
-.mkm-course-info-title-style {
-  font-size: 21px;
-}
+  .mkm-course-info-title-style {
+    font-size: 21px;
+  }
 
-.mkm-course-info-category-style {
-  font-size: 15px;
-}
+  .mkm-course-info-category-style {
+    font-size: 15px;
+  }
 
-.mkm-course-time-info {
-  float: none;
+  .mkm-course-time-info {
+    float: none;
 
-}
+  }
 
-.mkm-course-progress > span {
-  font-size: 18px;
-}
+  .mkm-course-progress > span {
+    font-size: 18px;
+  }
 
-.mkm-wrap-video{
-  padding-right: 21px;
-  padding-left: 21px;
-}
+  .mkm-wrap-video{
+    padding-right: 21px;
+    padding-left: 21px;
+  }
 
-.mkm-prev .mkm-left-arrow{
-  left: 0;
-  top: 40%;
-  width: 23px;
-}
+  .mkm-prev .mkm-left-arrow{
+    left: 0;
+    top: 40%;
+    width: 23px;
+  }
 
-.mkm-prev .mkm-right-arrow{
-  right: 0;
-  top: 42%;
-  width: 23px;
-}
+  .mkm-prev .mkm-right-arrow{
+    right: 0;
+    top: 42%;
+    width: 23px;
+  }
 
-.mkm-courses-img{
-  padding-top: 30px;
-}
+  .mkm-courses-img{
+    padding-top: 30px;
+  }
 
-.mkm-wrap-video-inside{
-  padding-top: 5px;
-}
+  .mkm-wrap-video-inside{
+    padding-top: 5px;
+  }
 
 }
 

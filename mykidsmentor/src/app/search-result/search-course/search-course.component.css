@@ -75,3 +75,41 @@
     font-size: 21px;
     color:rgba(255, 202, 38, 1);
   }
+
+  @media screen and (max-width: 400px) {
+    .mkm-video-mycourse{
+        width: auto !important;
+        height: auto !important;
+    }
+  }
+
+  @media screen and (max-width: 600px) {
+    .mkm-course-info-title-style {
+        font-size: 21px;
+    }
+    
+      .mkm-course-info-category-style {
+        font-size: 15px;
+    }
+    
+      .mkm-course-time-info {
+        float: none;
+    }
+  }
+
+
+
+
+  @media screen and (max-width: 900px) {
+    .mkm-search-course {
+        grid-template-columns: repeat(1, 1fr) !important;
+    }
+  }
+
+  @media screen and (max-width: 1330px) {
+    .mkm-search-course {
+        grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  

@@ -1,9 +1,9 @@
-<div class="search-result">
+<div class="search-result" [ngClass]="routeIsActive('/search-result/course') ? 'pink': 'blue'">
 
     <div class="left"> 
 
         <div class="keyword"> 
-            <span class="text">搜尋關鍵字</span> <span class="comma">:</span> <span class="result">{{keyWord}} (共23項結果)</span>
+            <span class="text">搜尋關鍵字</span> <span class="comma">:</span> <span class="result" [ngClass]="{'pink-color': routeIsActive('/search-result/blog')}">{{keyWord}} (共23項結果)</span>
         </div>
 
         <div class="switch">
@@ -21,8 +21,8 @@
 
     </div>
 
-    <div class="right"> 
-            <div style="display: flex;">
+    <div *ngIf="routeIsActive('/search-result/course')" class="right"> 
+            <div class="top-steps">
               <div class="step-arrow">
                 <img style="width: 35px;" src="assets/img/mkm-double-arrow.png" alt="mkm-triangle">
               </div>
@@ -63,6 +63,18 @@
             </div>
         
         
+    </div>
+
+    <div *ngIf="routeIsActive('/search-result/blog')" class="right">
+        <div class="like"> 
+            <div class="left-like">
+                <img style="width: 50px;" src="/assets/img/mkm-like.png" alt="My kid's mentor (like)"> 
+            </div>
+            <div class="right-like">
+                <span class="info">按下收藏文章</span>
+                <span class="info">方便之後查看</span>
+            </div>
+        </div>
     </div>
 
 </div>

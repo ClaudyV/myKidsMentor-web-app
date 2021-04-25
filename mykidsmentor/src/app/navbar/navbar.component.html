@@ -53,10 +53,14 @@
 
                     <ul class="mykidsmentor-social-icons">
                       <li class="mykidsmentor-social-icons-elements">
-                        <img class="mykidsmentor-social" src="assets/img/facebook.png" alt="facebook">
+                        <a href="https://www.facebook.com/兒童心伴課程平台-My-Kids-Mentor-101006101760403/">
+                          <img class="mykidsmentor-social" src="assets/img/facebook.png" alt="facebook">
+                        </a>
                       </li>
                       <li class="mykidsmentor-social-icons-elements">
-                        <img class="mykidsmentor-social" src="assets/img/instagram.png" alt="instagram">
+                        <a href="https://instagram.com/my_kids_mentor?igshid=1lplmftiw1v7h">
+                          <img class="mykidsmentor-social" src="assets/img/instagram.png" alt="instagram">
+                        </a>
                       </li>
                       <ng-template [ngIf]="user">
 
@@ -105,9 +109,10 @@
                         <ng-template #showEmail><b class="mykidsmentor-username">{{ (user.email.length > 19)? (user.email | slice:0:19)+'..':(user.email)}}</b></ng-template>
                         <div class="mykidsmentor-dropdown-content-user">
                           <a [ngClass]="{zy2: zhuyinValue}" routerLink="user/account-info">帳戶資料</a>
-                          <a [ngClass]="{zy2: zhuyinValue}" href="#">我的課程</a> 
-                          <a [ngClass]="{zy2: zhuyinValue}" href="#">收藏文章</a>
-                          <a [ngClass]="{zy2: zhuyinValue}" href="#">修改密碼</a>
+                          <a [ngClass]="{zy2: zhuyinValue}" routerLink="/user/mycourse">我的課程</a> 
+                          <a [ngClass]="{zy2: zhuyinValue}" routerLink="/user/blog">收藏文章</a>
+                          <a [ngClass]="{zy2: zhuyinValue}" routerLink="/user/order-history">歷史訂單</a>
+                          <a [ngClass]="{zy2: zhuyinValue}" routerLink="/user/changepassword">修改密碼</a>
                           <a [ngClass]="{zy2: zhuyinValue}" class="mykidsmentor-last" (click)="userLogout()">登出</a>
                         </div>
                       </div>
