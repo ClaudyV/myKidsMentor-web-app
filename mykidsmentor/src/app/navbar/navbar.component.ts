@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, OnChanges, SimpleChanges } from '@angular/core';
+import { Component, OnInit, ViewChild, OnChanges, SimpleChanges, ChangeDetectorRef } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { LoginComponent } from '../login/login.component';
 import { AuthenticationService } from './../service/authentication.service';
@@ -7,7 +7,7 @@ import {BreakpointObserver} from '@angular/cdk/layout';
 import { SharedService } from '../service/shared.service';
 import { FormControl } from '@angular/forms';
 import { Observable } from 'rxjs';
-import {map, startWith} from 'rxjs/operators';
+import {map, startWith, switchMap} from 'rxjs/operators';
 import { MatAutocompleteTrigger } from '@angular/material/autocomplete';
 import { Router, ActivatedRoute, NavigationEnd, NavigationStart } from '@angular/router';
 
@@ -16,7 +16,7 @@ import { Router, ActivatedRoute, NavigationEnd, NavigationStart } from '@angular
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.css']
 })
-export class NavbarComponent implements OnInit {
+export class NavbarComponent implements OnInit, OnChanges {
 
   user: firebase.User;
   userVerified;
@@ -38,6 +38,7 @@ export class NavbarComponent implements OnInit {
   @ViewChild('autoCompleteInput', { read: MatAutocompleteTrigger })
   autoComplete: MatAutocompleteTrigger;
   searching: boolean = true;
+  userDb;
 
 
   constructor(public dialog: MatDialog,
@@ -45,9 +46,13 @@ export class NavbarComponent implements OnInit {
               breakpointObserver: BreakpointObserver, 
               private sharedServe: SharedService,
               private router: Router,
-              private route: ActivatedRoute) {
+              private route: ActivatedRoute,
+              private cdr: ChangeDetectorRef) {
                 this.isSmallScreen = breakpointObserver.isMatched('(max-width: 599px)');
               }
+  ngOnChanges(changes: SimpleChanges): void {
+    throw new Error("Method not implemented.");
+  }
 
   ngOnInit(): void {
 
@@ -59,6 +64,21 @@ export class NavbarComponent implements OnInit {
             this.user = user;
           }
            });
+
+    this.loginfo.getCurrentUser()
+        .pipe(
+          switchMap(user => {
+            console.log(user);
+            return  this.loginfo.getCurrentUserDb();
+          }),
+          map(user => user)
+        )
+        .subscribe(user => {
+          console.log(user)
+          if(user){
+            this.userDb = user;
+          }
+        });
     this.filteredOptions = this.myControl.valueChanges.pipe(
       startWith(''),
       map(value => this._filter(value))
@@ -72,6 +92,7 @@ export class NavbarComponent implements OnInit {
           this.sharedServe.currentSearching.subscribe(
             (value) => {
               this.searching = value;
+              this.cdr.detectChanges();
             }
           );
         }

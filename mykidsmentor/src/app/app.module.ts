@@ -44,6 +44,11 @@ import { ScrollingModule } from '@angular/cdk/scrolling';
 import { SearchResultComponent } from './search-result/search-result.component';
 import { SearchCourseComponent } from './search-result/search-course/search-course.component';
 import { SearchBlogComponent } from './search-result/search-blog/search-blog.component';
+import { NewcourseComponent } from './newcourse/newcourse.component';
+import { PopularcourseComponent } from './popularcourse/popularcourse.component';
+import { SlideshowComponent } from './slideshow/slideshow.component';
+import { SlidecourseComponent } from './slidecourse/slidecourse.component';
+import { AdminCoursesComponent } from './users/admin-courses/admin-courses.component';
 
 
 @NgModule({
@@ -66,7 +71,12 @@ import { SearchBlogComponent } from './search-result/search-blog/search-blog.com
     CoursehistoryComponent,
     SearchResultComponent,
     SearchCourseComponent,
-    SearchBlogComponent
+    SearchBlogComponent,
+    NewcourseComponent,
+    PopularcourseComponent,
+    SlideshowComponent,
+    SlidecourseComponent,
+    AdminCoursesComponent
   ],
   imports: [
     BrowserModule,

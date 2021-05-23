@@ -73,6 +73,7 @@
                             <a [ngClass]="{zy2: zhuyinValue}" routerLink="/user/blog">收藏文章</a>
                             <a [ngClass]="{zy2: zhuyinValue}" routerLink="/user/order-history">歷史訂單</a>
                             <a [ngClass]="{zy2: zhuyinValue}" routerLink="/user/changepassword">修改密碼</a>
+                            <a [ngClass]="{zy2: zhuyinValue}" *ngIf="userDb?.isAdmin" routerLink="/user/admin-courses">課程管理</a>
                             <a [ngClass]="{zy2: zhuyinValue}" class="mykidsmentor-last" (click)="userLogout()">登出</a>
                           </div>
                           <b *ngIf="user.displayName; else showEmail" class="mykidsmentor-username">{{ (user.displayName.length > 19)? (user.displayName | slice:0:19)+'..':(user.displayName)}}</b>
@@ -130,9 +131,9 @@
                 <li class="mykidsmentor-main-link">
                   <a [ngClass]="{zy2: zhuyinValue}" class="mykidsmentor-main-link-size"> 課程 </a>
                   <div id="mykidsmentor-close" class="mykidsmentor-dropdown-content">
-                    <a [ngClass]="{zy2: zhuyinValue}" *ngIf="!user; else showcourse" (click)="openLoginDialog()" routerLink="/course">最新課程</a>
-                    <ng-template #showcourse> <a routerLink="/course">最新課程</a> </ng-template>
-                    <a [ngClass]="{zy2: zhuyinValue}" href="#">熱門課程</a>
+                    <a [ngClass]="{zy2: zhuyinValue}" *ngIf="!user; else showcourse" (click)="openLoginDialog()" routerLink="/new-course">最新課程</a>
+                    <ng-template #showcourse> <a routerLink="/new-course">最新課程</a> </ng-template>
+                    <a [ngClass]="{zy2: zhuyinValue}" routerLink="/popular-course">熱門課程</a>
                     <a [ngClass]="{zy2: zhuyinValue}" class="mykidsmentor-last" href="#">分類課程</a>
                   </div>
                 </li>

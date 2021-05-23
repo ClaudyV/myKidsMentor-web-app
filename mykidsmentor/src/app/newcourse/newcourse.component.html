@@ -1,0 +1,72 @@
+<div class="wrap">
+    <div class="mkm-steps">
+        <div class="mkm-flow-step"> 註冊或登入 </div>
+        <div class="mkm-flow-step-triangle">
+            <img src="assets/img/mkm-triangle.png" alt="mkm-triangle" style="width: 32px;">
+        </div>
+        <div class="mkm-flow-step"> 選購課程 </div>
+        <div class="mkm-flow-step-triangle">
+            <img src="assets/img/mkm-triangle.png" alt="mkm-triangle" style="width: 32px;">
+        </div>
+        <div class="mkm-flow-step"> 終身享有課程 </div>
+    </div>
+    <div class="img-top"> 
+        <img src="assets/img/mkm-new-courses.jpg" alt="mkm-triangle" class="mkm-newcourses">
+    </div>
+
+    <div class="mkm-slide-wrapper">
+        <app-slideshow [courses] = "courses"></app-slideshow>
+    </div>
+    <div class="comment-section"> 
+      <div class="mkm-comments">
+        <div class="title"> 
+            <span class="title-style">評論回饋</span>
+        </div>
+      </div>
+      <div class="container">
+          <div class="row justify-content-start">
+            <div class="col-4 pink">
+              <span class="title">孩子開始在心伴學習之後，孩子開始在心伴學習之後，孩子開始在心伴學習之後</span>
+              <span class="title end">小米媽媽</span>
+            </div>
+            <div class="col-4">
+            </div>
+          </div>
+          <div class="row justify-content-center">
+            <div class="col-4">
+            </div>
+            <div class="col-4 blue">
+              <span class="title">孩子開始在心伴學習之後，孩子開始在心伴學習之後，孩子開始在心伴學習之後, 孩子開始在心伴學習之後</span>
+              <span class="title end">小米媽媽</span>
+            </div>
+          </div>
+          <div class="row justify-content-end">
+            <div class="col-4 pink">
+              <span class="title">孩子開始在心伴學習之後，孩子開始在心伴學習之後，孩子開始在心伴學習之後, 孩子開始在心伴學習之後</span>
+              <span class="title end">小米媽媽</span>
+            </div>
+            <div class="col-4">
+    
+            </div>
+          </div>
+          <div class="row justify-content-around">
+            <div class="col-4 blue">
+              <span class="title">孩子開始在心伴學習之後，孩子開始在心伴學習之後，孩子開始在心伴學習之後, 孩子開始在心伴學習之後</span>
+              <span class="title end">小米媽媽</span>
+            </div>
+            <div class="col-4 pink">
+              <span class="title">孩子開始在心伴學習之後，孩子開始在心伴學習之後，孩子開始在心伴學習之後, 孩子開始在心伴學習之後</span>
+              <span class="title end">小米媽媽</span>
+            </div>
+          </div>
+      </div>
+    </div>
+    
+    <div class="new-course-section"> 
+      <div class="new-courses" *ngFor="let course of courses">
+        <app-slidecourse [course]="course"></app-slidecourse>
+      </div>
+    </div>
+        
+    
+</div>

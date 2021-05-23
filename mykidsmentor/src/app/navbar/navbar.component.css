@@ -363,7 +363,8 @@ nav {
 }
 
   .mykidsmentor-logo-size {
-    height: 130px;
+    width: 100px;
+    height: 100px;
   }
 
   .mykidsmentor-switch {
@@ -506,7 +507,7 @@ nav {
     position: absolute;
     cursor: pointer;
     right: 5%;
-    top: 50%;
+    top: 38%;
     transform: translate(-5%, -50%);
     z-index: 2;
     background: #5199ae;

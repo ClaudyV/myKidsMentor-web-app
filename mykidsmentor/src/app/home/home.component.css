@@ -97,7 +97,6 @@
 }
 
 .mkm-courses-img{
-  padding-top: 60px;
   width: 100%;
 }
 
@@ -316,6 +315,10 @@ ngb-rating {
 
 .mkm-player-blue{
   color: #5b98a9 !important;
+}
+
+.mkm-slide-wrapper {
+  padding: 5% 5%;
 }
 
 @media screen and (min-width: 849px) and (max-width: 1144px) {

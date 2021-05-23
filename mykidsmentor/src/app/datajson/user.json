@@ -19,6 +19,10 @@
         {
             "title" : "修改密碼",
             "path" : "/user/changepassword"
+        },
+        {
+            "title" : "課程管理",
+            "path" : "/user/admin-courses"
         }
     ]
 }
