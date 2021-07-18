@@ -54,8 +54,39 @@
         <img class="mkm-courses-img" src="assets/img/mkm-mycourses-banner.png" alt="mkm-mycourses">
       </ng-template>
 
-      <div class="mkm-slide-wrapper">
-        <app-slideshow *ngIf="courses" [courses] = "courses"></app-slideshow>
+      <div class="mkm-slide-wrapper" *ngIf="!loading">
+        <app-slideshow *ngIf="courses" [courses] = "courses" [loading] = "loading"></app-slideshow>
+      </div>
+      <div class="mkm-slide-wrapper" *ngIf="loading">
+        <div class="main"> 
+          <div class="slide-show-content" [ngStyle]="{ 'grid-template-columns': 'repeat(' + loadingCount + ', 1fr)'}">
+            <div class="slide-loading" *ngFor="let item of [].constructor(loadingCount)">
+              <div class="slide-img">
+              </div>
+              <div class="slide-detail">
+                <div class="star">
+                </div>
+                <div class="slide-bottom">
+                  <div class="profile"> 
+
+                  </div>
+                  <div class="desc"> 
+                    <div class="title"> 
+                      
+                    </div>
+                    <div class="type"> 
+                      
+                    </div>
+                    <div class="time"> 
+                      
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
       </div>
 
   </div>
@@ -67,8 +98,39 @@
         <img class="mkm-courses-img" src="assets/img/mkm-new-courses-banner.png" alt="mkm-mycourses">
       </ng-template>
 
-    <div class="mkm-slide-wrapper">
+    <div class="mkm-slide-wrapper" *ngIf="!loading">
       <app-slideshow *ngIf="courses" [courses] = "courses"></app-slideshow>
+    </div>
+    <div class="mkm-slide-wrapper" *ngIf="loading">
+      <div class="main"> 
+        <div class="slide-show-content" [ngStyle]="{ 'grid-template-columns': 'repeat(' + loadingCount + ', 1fr)'}">
+          <div class="slide-loading" *ngFor="let item of [].constructor(loadingCount)">
+            <div class="slide-img">
+            </div>
+            <div class="slide-detail">
+              <div class="star">
+              </div>
+              <div class="slide-bottom">
+                <div class="profile"> 
+
+                </div>
+                <div class="desc"> 
+                  <div class="title"> 
+                    
+                  </div>
+                  <div class="type"> 
+                    
+                  </div>
+                  <div class="time"> 
+                    
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
     </div>
 
   </div>

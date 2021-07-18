@@ -70,7 +70,7 @@
         height: 250px;
         border-bottom: 3px solid #5d98aa;
         display: block;
-        /* background: url('../../assets/img/mkm-taiwan.jpg') no-repeat center; */
+        cursor: pointer;
         background-size: cover;
       }
       
@@ -113,18 +113,19 @@
       }
       
       .mkm-course-info-picture{
-        margin-right: 25px;
+        width: 20%;
+        margin-right: 10px;
       }
       
       .mkm-course-info-title-style{
         color: #5d98aa;
         font-weight: bold;
-        font-size: 30px;
+        font-size: 18px;
       }
       
       .mkm-course-info-section{
         display: block;
-        width: 100%;
+        width: 50%;
       }
       
       .mkm-course-info-category-style{
@@ -134,7 +135,6 @@
       }
       
       .mkm-course-time-info{
-        float: right;
         color: #7d7d7d;
         font-size: 15px;
       }
@@ -148,6 +148,7 @@
         height: 45px;  /* Can be anything */
         background: #fff;
         border-radius: 25px;
+        opacity: 0.8;
       }
       
         .mkm-course-progress .progress{
@@ -156,8 +157,8 @@
           border-radius: 40px;
           background-color: rgb(255 192 190);
           color: #fff;
-          padding: 22px;
           font-size: 20px;
+          padding: 22px;
         }
         .mkm-course-progress .progress-style {
           padding: 13px;
@@ -195,6 +196,20 @@
           bottom: 0;
           width: 3em;
       }
+      .mkm-learning {
+        width: 30%;
+        align-items: center;
+        text-align: center;
+        justify-content: center;
+        display: flex;
+      }
+      .mkm-button-learning {
+        background: #5d98aa;
+        color: #ffffff;
+        padding: 7px 7px;
+        border: none;
+        border-radius: 8px;
+      }
 @media screen and (max-width: 280px) {
 
     .mkm-course-wrapper {
@@ -204,6 +219,61 @@
         display: block;
     }
 }
+
+@media screen and (max-width: 450px) {
+  .mkm-image-course {
+    height: 175px;
+  }
+    .mkm-course-progress {
+      height: 35px;
+  }
+
+  .mkm-course-progress .progress-style {
+    padding: 8px;
+    font-size: 15px;
+  }
+
+  .mkm-course-rate {
+    justify-content: center;
+  }
+
+  .mkm-course-info {
+    display: block;
+  }
+
+  .mkm-course-info-picture {
+    width: 100%;
+    text-align: center;
+  }
+
+  .mkm-course-info-section {
+    width: 100%;
+    text-align: center;
+  }
+
+  .mkm-course-info-title-style {
+    margin-bottom: 5px;
+  }
+
+  .mkm-course-info-category-style {
+    margin-bottom: 5px;
+  }
+  .mkm-course-time {
+    margin-bottom: 5px;
+  }
+  .mkm-learning {
+    width: 100%;
+    margin-bottom: 5px;
+  }
+
+  .mkm-course-progress .progress{
+    padding: 0px;
+  }
+  .prog {
+    padding: 17px !important;
+  }
+}
+
 @media screen and (max-width: 700px) {
     .mkm-course-info-title-style {
         font-size: 16px !important;
@@ -216,11 +286,20 @@
     .mkm-course-progress .progress {
         font-size: 16px !important;
     }
+    .mkm-course-time-info {
+      font-size: 12px !important;
+    }
+}
+
+@media screen and (max-width: 1100px) {
+  .mkm-course-time-info {
+    font-size: 14px;
+  }
 }
 
 @media screen and (max-width: 1200px) {
     .mkm-course-info-title-style {
-        font-size: 25px;
+        font-size: 20px;
       }
     
     .mkm-course-info-category-style {

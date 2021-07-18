@@ -14,8 +14,39 @@
         <img src="assets/img/mkm-new-courses.jpg" alt="mkm-triangle" class="mkm-newcourses">
     </div>
 
-    <div class="mkm-slide-wrapper">
-        <app-slideshow [courses] = "courses"></app-slideshow>
+    <div class="mkm-slide-wrapper" *ngIf="!loading">
+        <app-slideshow *ngIf="courses" [courses] = "courses"></app-slideshow>
+    </div>
+    <div class="mkm-slide-wrapper" *ngIf="loading">
+      <div class="main"> 
+        <div class="slide-show-content" [ngStyle]="{ 'grid-template-columns': 'repeat(' + loadingCount + ', 1fr)'}">
+          <div class="slide-loading" *ngFor="let item of [].constructor(loadingCount)">
+            <div class="slide-img">
+            </div>
+            <div class="slide-detail">
+              <div class="star">
+              </div>
+              <div class="slide-bottom">
+                <div class="profile"> 
+
+                </div>
+                <div class="desc"> 
+                  <div class="title"> 
+                    
+                  </div>
+                  <div class="type"> 
+                    
+                  </div>
+                  <div class="time"> 
+                    
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
     </div>
     <div class="comment-section"> 
       <div class="mkm-comments">
@@ -64,7 +95,7 @@
     
     <div class="new-course-section"> 
       <div class="new-courses" *ngFor="let course of courses">
-        <app-slidecourse [course]="course"></app-slidecourse>
+        <app-slidecourse *ngIf="courses" [course]="course"></app-slidecourse>
       </div>
     </div>
         

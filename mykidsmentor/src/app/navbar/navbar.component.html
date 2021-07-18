@@ -53,12 +53,12 @@
 
                     <ul class="mykidsmentor-social-icons">
                       <li class="mykidsmentor-social-icons-elements">
-                        <a href="https://www.facebook.com/兒童心伴課程平台-My-Kids-Mentor-101006101760403/">
+                        <a target="_blank" href="https://www.facebook.com/兒童心伴課程平台-My-Kids-Mentor-101006101760403/">
                           <img class="mykidsmentor-social" src="assets/img/facebook.png" alt="facebook">
                         </a>
                       </li>
                       <li class="mykidsmentor-social-icons-elements">
-                        <a href="https://instagram.com/my_kids_mentor?igshid=1lplmftiw1v7h">
+                        <a target="_blank" href="https://instagram.com/my_kids_mentor?igshid=1lplmftiw1v7h">
                           <img class="mykidsmentor-social" src="assets/img/instagram.png" alt="instagram">
                         </a>
                       </li>
@@ -76,7 +76,7 @@
                             <a [ngClass]="{zy2: zhuyinValue}" *ngIf="userDb?.isAdmin" routerLink="/user/admin-courses">課程管理</a>
                             <a [ngClass]="{zy2: zhuyinValue}" class="mykidsmentor-last" (click)="userLogout()">登出</a>
                           </div>
-                          <b *ngIf="user.displayName; else showEmail" class="mykidsmentor-username">{{ (user.displayName.length > 19)? (user.displayName | slice:0:19)+'..':(user.displayName)}}</b>
+                          <b *ngIf="user.displayName; else showEmail" class="mykidsmentor-username">{{ (user.displayName.length > 19)? (user.displayName | slice:0:19)+'...':(user.displayName)}}</b>
                           <ng-template #showEmail><b class="mykidsmentor-username">{{ (user.email.length > 19)? (user.email | slice:0:19)+'..':(user.email)}}</b></ng-template>
                         </li>
 
@@ -131,7 +131,7 @@
                 <li class="mykidsmentor-main-link">
                   <a [ngClass]="{zy2: zhuyinValue}" class="mykidsmentor-main-link-size"> 課程 </a>
                   <div id="mykidsmentor-close" class="mykidsmentor-dropdown-content">
-                    <a [ngClass]="{zy2: zhuyinValue}" *ngIf="!user; else showcourse" (click)="openLoginDialog()" routerLink="/new-course">最新課程</a>
+                    <a [ngClass]="{zy2: zhuyinValue}" *ngIf="!user; else showcourse" routerLink="/new-course">最新課程</a>
                     <ng-template #showcourse> <a routerLink="/new-course">最新課程</a> </ng-template>
                     <a [ngClass]="{zy2: zhuyinValue}" routerLink="/popular-course">熱門課程</a>
                     <a [ngClass]="{zy2: zhuyinValue}" class="mykidsmentor-last" href="#">分類課程</a>

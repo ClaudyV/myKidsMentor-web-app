@@ -20,20 +20,20 @@ import { AdminCoursesComponent } from './users/admin-courses/admin-courses.compo
 const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'course', component: CourseComponent, canActivate: [AuthenticationService] },
-  { path: 'new-course', component: NewcourseComponent, canActivate: [AuthenticationService] },
-  { path: 'popular-course', component: PopularcourseComponent, canActivate: [AuthenticationService] },
+  { path: 'new-course', component: NewcourseComponent },
+  { path: 'popular-course', component: PopularcourseComponent },
   { path: 'user', redirectTo : 'user/account-info'},
   { path: 'user', component: UsersComponent, canActivate: [AuthenticationService],
     children: [
       { path: 'account-info', component: AccountinfoComponent, canActivate: [AuthenticationService] },
-      { path: 'blog', component: BlogComponent, canActivate: [AuthenticationService] },
+      { path: 'blog', component: BlogComponent },
       { path: 'changepassword', component: ChangepasswordComponent, canActivate: [AuthenticationService] },
       { path: 'mycourse', component: MycourseComponent, canActivate: [AuthenticationService] },
       { path: 'order-history', component: CoursehistoryComponent, canActivate: [AuthenticationService] },
       { path: 'admin-courses', component: AdminCoursesComponent, canActivate: [AuthenticationService] }
     ]
   },
-  { path: 'search-result', redirectTo : 'search-result/course'},
+  { path: 'search-result', redirectTo : 'search-result'},
   { path: 'search-result', component: SearchResultComponent, 
     children: [
       { path: 'course', component: SearchCourseComponent },

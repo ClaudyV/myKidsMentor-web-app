@@ -40,6 +40,9 @@ export class HomeComponent implements OnInit {
   @ViewChild('scrollBehavior') scrollBehavior: ElementRef;
   urlTest = '../../assets/img/mkm-taiwan.jpg';
   courses:any;
+  loading = true;
+  loadingMedim;
+  loadingCount = 3;
   
 
   constructor(private title: Title,
@@ -54,20 +57,22 @@ export class HomeComponent implements OnInit {
                 .pipe(map(result => !result.matches));
                 this.isSmallScreenBanner = breakpointObserver.observe('(max-width: 700px)')
                 .pipe(map(result => !result.matches));
-                // this.isZhuyin = this.sharedServ.isZhuyinService();
-                // console.log(this.isZhuyin)
+                breakpointObserver.observe(['(max-width: 1024px)',
+                '(max-width: 650px)']).subscribe((state:BreakpointState) => {
+                  this.loadingCount = 3;
+                  if (state.breakpoints['(max-width: 1024px)']) {
+                    this.loadingCount = 2;
+                  } 
+                  if(state.breakpoints['(max-width: 650px)']) {
+                    this.loadingCount = 1;
+                  }
+                });
               }
 
   ngOnInit(): void {
-    this.categories.getAllCategories()
-                    .subscribe(categories => console.log(categories));
-    this.courseService.getAllCourses()
-    .subscribe(
-      courses => {
-        console.log(courses);
-        this.courses = courses;
-      }
-    )
+
+    console.log(this.loadingMedim);
+    this.getAllCourses();
     this.title.setTitle('Home | My kid' + 's Mentor');
     this.meta.addTags([
       { name: 'og:url', content: '/' },
@@ -83,9 +88,23 @@ export class HomeComponent implements OnInit {
     this.getCurrentGamePosition();
   }
 
+  getAllCategories() {
+    this.categories.getAllCategories()
+                    .subscribe(categories => console.log(categories));
+  }
 
+  getAllCourses() {
+    this.loading = true;
+    this.courseService.getAllCourses()
+    .subscribe(
+      courses => {
+        console.log(courses);
+        this.courses = courses;
+        this.loading = false;
+      }
+    );
+  }
 
-  
   getCurrentGamePosition(){
     let reloading = sessionStorage.getItem('scrollTop')
 

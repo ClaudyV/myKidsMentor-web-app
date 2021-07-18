@@ -1,0 +1,19 @@
+.table {
+    width:100%;
+}
+.field {
+    width:100%;
+}
+
+.wrapper {
+    padding: 20px;
+    overflow: auto;
+    height: 600px;
+}
+
+.image {
+    font-size: 15px;
+    color: rgba(0,0,0,.54);
+    display: block;
+    margin-bottom: 15px;
+}

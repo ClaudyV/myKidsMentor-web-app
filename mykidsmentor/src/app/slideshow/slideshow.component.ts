@@ -10,6 +10,7 @@ import {BreakpointObserver, Breakpoints, BreakpointState} from '@angular/cdk/lay
 export class SlideshowComponent implements OnInit, OnChanges {
 
   @Input() courses:any;
+  @Input() loading:boolean;
   @ViewChild('slideshow',{static: true}) slideshow: ElementRef |undefined;
   @ViewChild('track',{static: true}) track: ElementRef|undefined;
 
@@ -44,7 +45,8 @@ export class SlideshowComponent implements OnInit, OnChanges {
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-
+    console.log(changes);
+    console.log(this.loading);
   }
 
   ngOnInit(): void {
@@ -113,7 +115,6 @@ export class SlideshowComponent implements OnInit, OnChanges {
         this.offsetWidth =  (this.slideWidth-this.videoMargin)*this.idx;
         this.track.nativeElement.style.transform = "translateX(-"+this.offsetWidth.toString()+"px)";
       }
-
   }
 
 }

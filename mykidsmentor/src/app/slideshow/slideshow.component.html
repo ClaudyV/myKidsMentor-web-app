@@ -1,8 +1,8 @@
 <div class="main">
-    
-    <div class="slideshow-block" #slideshow>
-      <div class="slideshow-inner">
-        <div class="track" #track>
+  <div class="slideshow-block" #slideshow>
+    <div class="slideshow-inner">
+      <div class="track" #track>
+        <ng-container>
           <div *ngFor="let course of courses;let i = index">
             <div class="video-block" #videoBlock
             [style.width.px]="videoSize">
@@ -11,24 +11,25 @@
               </div>
             </div>
           </div>
-        </div>
-      </div>
-      <div class="mkm-arrow">
-        <div (click)="scrollLeft()" class="arr prev">
-          <img class="arr-width" [ngClass]="idx===0?'disable-arrow':'arrow'" src="assets/img/mkm-slider-left-mycourse.png" alt="mkm-arrow">
-        </div>
-        <div (click)="scrollRight()" class="arr next">
-          <img class="arr-width" [ngClass]="(idx===numNavBtn-1)?'disable-arrow':'arrow'" src="assets/img/mkm-slider-right-mycourse.png" alt="mkm-arrow">
-        </div>
+        </ng-container>
       </div>
     </div>
-    <div *ngIf="!xlmore && (courses.length <= 3)" class="slideshow-nav">
-        <div *ngFor="let item of [].constructor(numNavBtn);let i = index">
-          <div [ngClass]="(i)===idx?'active-nav-btn':'nav-btn'"
-            (click)="moveTo(i)">
-          </div>
+    <div class="mkm-arrow" *ngIf="!loading">
+      <div (click)="scrollLeft()" class="arr prev">
+        <img class="arr-width" [ngClass]="idx===0?'disable-arrow':'arrow'" src="assets/img/mkm-slider-left-mycourse.png" alt="mkm-arrow">
+      </div>
+      <div (click)="scrollRight()" class="arr next">
+        <img class="arr-width" [ngClass]="(idx===numNavBtn-1)?'disable-arrow':'arrow'" src="assets/img/mkm-slider-right-mycourse.png" alt="mkm-arrow">
+      </div>
+    </div>
+  </div>
+  <div class="slideshow-nav" *ngIf="!loading">
+      <div *ngFor="let item of [].constructor(numNavBtn);let i = index">
+        <div [ngClass]="(i)===idx?'active-nav-btn':'nav-btn'"
+          (click)="moveTo(i)">
         </div>
       </div>
   </div>
+</div>
   
   

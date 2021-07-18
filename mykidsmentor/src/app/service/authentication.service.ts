@@ -54,7 +54,7 @@ export class AuthenticationService implements CanActivate {
                        switchMap(user => {
                          try
                          {
-                          return this.serviceUser.getUserById(user.uid);
+                          return this.serviceUser.getUserById(user?.uid);
                          }
                          catch (error)
                          {

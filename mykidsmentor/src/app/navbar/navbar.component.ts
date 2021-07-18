@@ -10,6 +10,7 @@ import { Observable } from 'rxjs';
 import {map, startWith, switchMap} from 'rxjs/operators';
 import { MatAutocompleteTrigger } from '@angular/material/autocomplete';
 import { Router, ActivatedRoute, NavigationEnd, NavigationStart } from '@angular/router';
+import { CoursesService } from '../service/courses.service';
 
 @Component({
   selector: 'app-navbar',
@@ -33,7 +34,7 @@ export class NavbarComponent implements OnInit, OnChanges {
   toggleValue = false;
   mouseOut = false;
   myControl = new FormControl();
-  options: string[] = ['One', 'Two', 'Three'];
+  options: string[] = [];
   filteredOptions: Observable<string[]>;
   @ViewChild('autoCompleteInput', { read: MatAutocompleteTrigger })
   autoComplete: MatAutocompleteTrigger;
@@ -47,7 +48,8 @@ export class NavbarComponent implements OnInit, OnChanges {
               private sharedServe: SharedService,
               private router: Router,
               private route: ActivatedRoute,
-              private cdr: ChangeDetectorRef) {
+              private cdr: ChangeDetectorRef,
+              private courseService: CoursesService) {
                 this.isSmallScreen = breakpointObserver.isMatched('(max-width: 599px)');
               }
   ngOnChanges(changes: SimpleChanges): void {
@@ -55,9 +57,8 @@ export class NavbarComponent implements OnInit, OnChanges {
   }
 
   ngOnInit(): void {
-
+    this.getAllCourses();
     this.navbarEvent();
-
     this.loginfo.getCurrentUser()
         .subscribe(user => {
           if(user && user.emailVerified){
@@ -68,21 +69,15 @@ export class NavbarComponent implements OnInit, OnChanges {
     this.loginfo.getCurrentUser()
         .pipe(
           switchMap(user => {
-            console.log(user);
             return  this.loginfo.getCurrentUserDb();
           }),
           map(user => user)
         )
         .subscribe(user => {
-          console.log(user)
           if(user){
             this.userDb = user;
           }
         });
-    this.filteredOptions = this.myControl.valueChanges.pipe(
-      startWith(''),
-      map(value => this._filter(value))
-    );
     window.addEventListener('scroll', this.scrollEvent, true);
   
     this.router.events.subscribe(
@@ -100,6 +95,27 @@ export class NavbarComponent implements OnInit, OnChanges {
 
   }
 
+  getAllCourses() {
+    this.courseService.getAllCourses()
+    .subscribe(
+      courses => {
+        console.log(courses);
+        this.filterName(courses);
+      }
+    );
+  }
+
+  filterName(data:any) {
+    this.options = [];
+    data.filter(course => {
+      this.options.push(course.title);
+    });
+    this.filteredOptions = this.myControl.valueChanges.pipe(
+      startWith(''),
+      map(value => this._filter(value))
+    );
+  }
+
   scrollEvent = (event: any): void => {
     if(this.autoComplete.panelOpen)
       this.autoComplete.closePanel();
@@ -108,7 +124,7 @@ export class NavbarComponent implements OnInit, OnChanges {
 
   private _filter(value: string): string[] {
     const filterValue = value.toLowerCase();
-    return this.options.filter(option => option.toLowerCase().indexOf(filterValue) === 0);
+    return this.options.filter(option => option.toLowerCase().indexOf(filterValue) === 0).slice(0, 4);
   }
 
   isZhuyin(event){
@@ -149,20 +165,20 @@ export class NavbarComponent implements OnInit, OnChanges {
 
   openLoginDialog() {
 
-        this.dialog.open(LoginComponent, {
-          height: this.isSmallScreen ? this.smallHeight : this.bigHeightLogin,
-          width: this.matWidth,
-        }).afterClosed().subscribe(
-          showSignupModal => {
-            showSignupModal && this.openSignupDialog();
-          console.log(showSignupModal)}
-        );
+    this.dialog.open(LoginComponent, {
+      height: this.isSmallScreen ? this.smallHeight : this.bigHeightLogin,
+      width: this.matWidth,
+    }).afterClosed().subscribe(
+      showSignupModal => {
+        showSignupModal && this.openSignupDialog();
+      console.log(showSignupModal)}
+    );
 
   }
 
   openSignupDialog() {
 
-    const dialogRef = this.dialog.open(SignupComponent, {
+    this.dialog.open(SignupComponent, {
       height: this.isSmallScreen ? this.smallHeight : this.bigHeightSignup,
       width: this.matWidth,
     }).afterClosed().subscribe(
@@ -180,20 +196,14 @@ export class NavbarComponent implements OnInit, OnChanges {
 
   searchMade(event) {
     this.sharedServe.setSearchKeyWord(event.value);
-    sessionStorage.setItem('searchResult', event.value);
-    this.router.navigate(['search-result']);
+    this.router.navigate(['search-result/course'], {queryParams : {keyword: event.value}});
     this.sharedServe.setQuotesValue(false);
   }
 
   inputOnEnter(event) {
-    this.sharedServe.setSearchKeyWord(event);
-    sessionStorage.setItem('searchResult', event);
-    this.router.navigate(['search-result']);
+    this.sharedServe.setSearchKeyWord(this.myControl.value);
+    this.router.navigate(['search-result/course'], {queryParams : {keyword: this.myControl.value}});
     this.sharedServe.setQuotesValue(false);
   }
-
-  // get quoteValue() {
-  //   return this.sharedServe.getQuotesValue();
-  // }
 
 }

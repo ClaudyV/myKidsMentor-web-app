@@ -6,7 +6,7 @@
 
 .mkm-video-mycourse{
     margin: 30px auto;
-    height: 405px !important;
+    height: auto !important;
     width: 390px !important;
     border: 1px solid #89cbde;
   }
