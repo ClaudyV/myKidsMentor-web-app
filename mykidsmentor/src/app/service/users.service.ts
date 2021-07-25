@@ -15,7 +15,8 @@ export class UsersService {
     if(user){
       this.db.object('/users/' + user.uid).update({
         name: user.displayName,
-        email: user.email
+        email: user.email,
+        image: user.photoURL
       });
     }
   }
@@ -26,10 +27,26 @@ export class UsersService {
                   .pipe(
                     map(user => {
                       const objectUser: any = user.payload.val();
-                      objectUser.id = user.payload.key;
+                      if(objectUser) {
+                        objectUser.id = user.payload.key;
+                      }
                       return objectUser;
                     })
                   );
+  }
+
+  getAllUsers():Observable<any> {
+    return this.db.list('/users')
+    .snapshotChanges()
+    .pipe(
+      map(
+        (users: any[]) => users.map(
+          user => (
+            { id: user.key, ...user.payload.val() }
+            )
+        )
+      )
+    ); 
   }
 
   resetPassword(code, newPassword) {

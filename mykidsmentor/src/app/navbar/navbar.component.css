@@ -1,11 +1,16 @@
 /* Navbar style starts here */
+header .mykidsmentor-desktop-quotes {
+  height: 55px;
+}
+
 nav {
   height: 160px;
   background: #2d7d93;}
 
   /* Container for the Navbar */
   .mykidsmentor-nav-elements {
-    display: block;}
+    display: block;
+    height: inherit;}
 
     /* Row that contains all elements of the Navbar */
     .mykidsmentor-nav-elements-row {
@@ -201,13 +206,14 @@ nav {
           width: 100%;}
 
           .mykidsmentor-nav-links {
-            padding-top: 15px ;
+            padding-top: 15px;
             display: flex;
             list-style: none;
             height: 100%;
             justify-content: space-around;
             align-items: center;
-            margin-left: auto;}
+            margin-left: auto;
+            margin-bottom: 0;}
 
             .mykidsmentor-nav-links li a {
               color: #2d7d93;
@@ -317,34 +323,33 @@ nav {
             border-bottom: 0px !important;
           }
 
-
 /* Quotes from Teachers */
 .mykidsmentor-qoutes {
   color: #ffffff;
   font-weight: bold;
   font-size: 18px;
-  top: 35%;
+  line-height: 50px;
   padding-left: 60px;}
 
 .mykidsmentor-qoutes-background {
-  background-color: #ffc1c0;
-  height: 55px;}
+  background-color: #89cbde;
+  height: inherit;}
 
-@media only screen and (max-device-width: 1394px) and (orientation:landscape) {
+@media only screen and (max-device-width: 1407px) and (orientation:landscape) {
   /* For landscape layouts only */
   .toggleLand {
     display: none !important;
   }
 }
 
-@media only screen and (max-device-width: 1394px) and (orientation:portrait) {
+@media only screen and (max-device-width: 1407px) and (orientation:portrait) {
   /* For portrait layouts only */
   .toggleLand {
     display: none !important;
   }
 }
 
-@media screen and (max-width: 1394px) {
+@media screen and (max-width: 1407px) {
 
   nav {
     height: 132px;
@@ -358,7 +363,8 @@ nav {
 }
 
   .mykidsmentor-logo-size {
-    height: 130px;
+    width: 100px;
+    height: 100px;
   }
 
   .mykidsmentor-switch {
@@ -396,6 +402,7 @@ nav {
     background-color: #89cbde;
     top: 2%;
     color: #2d7d92;
+    text-align: center;
   }
 
   .mykidsmentor-desktop-quotes {
@@ -500,7 +507,7 @@ nav {
     position: absolute;
     cursor: pointer;
     right: 5%;
-    top: 50%;
+    top: 38%;
     transform: translate(-5%, -50%);
     z-index: 2;
     background: #5199ae;
@@ -627,13 +634,13 @@ nav {
 
 }
 
-@media screen and (min-width: 747px) and (max-width: 1394px) {
+@media screen and (min-width: 747px) and (max-width: 1407px) {
   .mykidsmentor-nav-links {
     width: 67%;
   }
 }
 
-@media screen and (min-width: 1395px) {
+@media screen and (min-width: 1408px) {
 
   /* .mykidsmentor-mobile {
     display: none;

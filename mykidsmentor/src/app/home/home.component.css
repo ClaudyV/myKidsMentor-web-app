@@ -42,30 +42,50 @@
   }
 }
 
-
-
 .mkm-flow{
   width: 100%;
-  height: 200px;
+  height: 230px;
   background-color: #ffc0bf;
-  display: flex;
-  padding: 60px;
+  display: block;
+  padding: 12px;
   margin: 0 auto
 }
 
+.mkm-flow .mkm-steps {
+  display: flex;
+}
+
+.mkm-flow .mkm-flow-title {
+  padding: 32px 0px 32px 0px;
+  color: #ffffff;
+  width: 215px;
+  border-radius: 15px;
+  background-color: #88cbde;
+  text-align: center;
+  height: 50px;
+  font-weight: bold;
+  font-size: 26px;
+  box-shadow: 0px 9px 6px 0px #00000036;
+  margin: 5px 0px 30px 0px;
+  line-height: 2px;
+}
+
+.mkm-flow .step-arrow {
+  margin-right: 30px;
+}
+
 .mkm-flow-step{
-  cursor: pointer;
   color: #ffc0bf;
-  border: solid 2px;
   margin: 0 auto;
   width: 300px;
-  border-radius: 43px;
+  border-radius: 26px;
   background-color: #ffff;
   text-align: center;
   padding: 28px;
   height: 80px;
   font-weight: bold;
   font-size: 26px;
+  box-shadow: 0px 9px 6px 0px #00000036;
 }
 
 .mkm-flow-step-triangle{
@@ -77,7 +97,6 @@
 }
 
 .mkm-courses-img{
-  padding-top: 60px;
   width: 100%;
 }
 
@@ -298,6 +317,112 @@ ngb-rating {
   color: #5b98a9 !important;
 }
 
+.mkm-slide-wrapper {
+  padding: 5% 5%;
+}
+
+.main {
+  position: relative;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+  .main .slide-show-content {
+    display: grid;
+    transition: transform 0.5s;
+    gap: 24px;
+    box-sizing: border-box;
+    width: 100%;
+    grid-template-columns: repeat(3, 1fr);
+  }
+    .main .slide-show-content .slide-loading {
+      border: 1px solid #89cbde;
+      height: fit-content;
+      flex-shrink: 0;
+      background-color: transparent;
+      box-sizing: border-box;
+    }
+
+    .main .slide-show-content .slide-loading .slide-img {
+      height: 250px;
+      border-bottom: 1px solid #89cbde;
+      animation: loader 2s infinite ease-in-out;
+      -webkit-animation: loader 2s infinite ease-in-out;
+    }
+
+    .main .slide-show-content .slide-loading .slide-detail {
+      padding: 15px;
+      height: 150px;
+    }
+      .main .slide-show-content .slide-loading .slide-detail .star {
+        width: 50%;
+        height: 20px;
+        animation: loader 2s infinite ease-in-out;
+        -webkit-animation: loader 2s infinite ease-in-out;
+      }
+        .main .slide-show-content .slide-loading .slide-detail .slide-bottom {
+          margin-top: 16px;
+          display: flex;
+          column-gap: 20px;
+        }
+          .main .slide-show-content .slide-loading .slide-detail .slide-bottom .profile {
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            border: 2px solid #89cbde;
+            animation: loader 2s infinite ease-in-out;
+            -webkit-animation: loader 2s infinite ease-in-out;
+          }
+          .main .slide-show-content .slide-loading .slide-detail .slide-bottom .desc {
+            display: flex;
+            flex-direction: column;
+            row-gap: 16px;
+            width: 45%;
+          }
+            .main .slide-show-content .slide-loading .slide-detail .slide-bottom .desc .title {
+              height: 20px;
+              width: 100%;
+              animation: loader 2s infinite ease-in-out;
+              -webkit-animation: loader 2s infinite ease-in-out;
+            }
+
+            .main .slide-show-content .slide-loading .slide-detail .slide-bottom .desc .type {
+              height: 15px;
+              width: 100%;
+              animation: loader 2s infinite ease-in-out;
+              -webkit-animation: loader 2s infinite ease-in-out;
+            }
+
+            .main .slide-show-content .slide-loading .slide-detail .slide-bottom .desc .time {
+              height: 15px;
+              width: 100%;
+              animation: loader 2s infinite ease-in-out;
+              -webkit-animation: loader 2s infinite ease-in-out;
+            }
+
+  @keyframes loader {
+    0% {
+        background-color: rgba(165, 165, 165, 0.1);
+    }
+    50% {
+        background-color: rgba(116, 115, 115, 0.3);
+    }
+    100% {
+        background-color: rgba(165, 165, 165, 0.1);
+    }
+  }
+  
+  @-webkit-keyframes loader {
+    0% {
+        background-color: rgba(165, 165, 165, 0.1);
+    }
+    50% {
+        background-color: rgba(165, 165, 165, 0.3);
+    }
+    100% {
+        background-color: rgba(165, 165, 165, 0.1);
+    }
+  }
 @media screen and (min-width: 849px) and (max-width: 1144px) {
 
   .mkm-flow-step{
@@ -321,7 +446,7 @@ ngb-rating {
 
   .mkm-flow{
     display: block;
-    height: 371px;
+    height: fit-content;
     padding: 30px;
   }
 
@@ -359,49 +484,49 @@ ngb-rating {
 
   .mkm-course-info-picture {
     margin-right: 5px;
-}
+  }
 
-.mkm-course-info-title-style {
-  font-size: 21px;
-}
+  .mkm-course-info-title-style {
+    font-size: 21px;
+  }
 
-.mkm-course-info-category-style {
-  font-size: 15px;
-}
+  .mkm-course-info-category-style {
+    font-size: 15px;
+  }
 
-.mkm-course-time-info {
-  float: none;
+  .mkm-course-time-info {
+    float: none;
 
-}
+  }
 
-.mkm-course-progress > span {
-  font-size: 18px;
-}
+  .mkm-course-progress > span {
+    font-size: 18px;
+  }
 
-.mkm-wrap-video{
-  padding-right: 21px;
-  padding-left: 21px;
-}
+  .mkm-wrap-video{
+    padding-right: 21px;
+    padding-left: 21px;
+  }
 
-.mkm-prev .mkm-left-arrow{
-  left: 0;
-  top: 40%;
-  width: 23px;
-}
+  .mkm-prev .mkm-left-arrow{
+    left: 0;
+    top: 40%;
+    width: 23px;
+  }
 
-.mkm-prev .mkm-right-arrow{
-  right: 0;
-  top: 42%;
-  width: 23px;
-}
+  .mkm-prev .mkm-right-arrow{
+    right: 0;
+    top: 42%;
+    width: 23px;
+  }
 
-.mkm-courses-img{
-  padding-top: 30px;
-}
+  .mkm-courses-img{
+    padding-top: 30px;
+  }
 
-.mkm-wrap-video-inside{
-  padding-top: 5px;
-}
+  .mkm-wrap-video-inside{
+    padding-top: 5px;
+  }
 
 }
 
@@ -541,12 +666,12 @@ ngb-rating {
   padding: 0 1.25em 0 0.25em;
 }
 .primary [contenteditable="true"].red::after {
-  background: url('../../assets/img/mkm-ico.png') no-repeat center; 
+  background: url('../../assets/img/mkm-ico-blue.png') no-repeat center; 
   background-size: 15px 17px;
   left: 78px;
 }
 .primary [contenteditable="true"].black::after {
-  background: url('../../assets/img/mkm-ico-blue.png') no-repeat center; 
+  background: url('../../assets/img/mkm-ico.png') no-repeat center; 
   background-size: 15px 17px;
   left: 78px;
 }
@@ -592,7 +717,11 @@ ngb-rating {
   }
 }
 
-
+@media (max-width: 959px) {
+  .mkm-flow .mkm-steps {
+    display: block;
+  }
+}
 
 
 

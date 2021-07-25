@@ -5,32 +5,44 @@
 
   <div class="container-full mkm-flow">
 
-    <div [ngClass]="{zy2: isZhuyinBool}"  (click)="openSignupDialog()" class="mkm-flow-step">
-  註冊或登入
+    <div style="display: flex;">
+      <div class="step-arrow">
+        <img src="assets/img/mkm-double-arrow.png" alt="mkm-triangle">
+      </div>
+      <div class="mkm-flow-title">
+        <span>購買課程步驟</span>
+      </div>
     </div>
+    <div class="mkm-steps">
 
-    <div class="mkm-flow-step-triangle">
-      <img *ngIf="(isSmallScreenValue | async); else showTriangle" src="assets/img/mkm-triangle.png" alt="mkm-triangle">
-      <ng-template #showTriangle>
-        <img class="mkm-triangle-down" src="assets/img/mkm-triangle-down.png" alt="mkm-triangle">
-      </ng-template>
+      <div [ngClass]="{zy2: isZhuyinBool}" class="mkm-flow-step">
+        註冊或登入
+      </div>
+      
+      <div class="mkm-flow-step-triangle">
+        <img *ngIf="(isSmallScreenValue | async); else showTriangle" src="assets/img/mkm-triangle.png" alt="mkm-triangle">
+        <ng-template #showTriangle>
+          <img class="mkm-triangle-down" src="assets/img/mkm-triangle-down.png" alt="mkm-triangle">
+        </ng-template>
+  
+      </div>
+  
+      <div [ngClass]="{zy2: isZhuyinBool}" class="mkm-flow-step">
+        選購課程
+      </div>
+  
+      <div class="mkm-flow-step-triangle">
+        <!-- <img [src]="isSmallScreen ?  : 'assets/img/mkm-triangle.png' " alt="mkm-triangle"> -->
+        <img *ngIf="(isSmallScreenValue | async); else showTriangle" src="assets/img/mkm-triangle.png" alt="mkm-triangle">
+        <ng-template #showTriangle>
+          <img src="assets/img/mkm-triangle-down.png" alt="mkm-triangle">
+        </ng-template>
+      </div>
+  
+      <div [ngClass]="{zy2: isZhuyinBool}" class="mkm-flow-step">
+        終身享有課程
+      </div>
 
-    </div>
-
-    <div [ngClass]="{zy2: isZhuyinBool}" class="mkm-flow-step">
-      選購課程
-    </div>
-
-    <div class="mkm-flow-step-triangle">
-      <!-- <img [src]="isSmallScreen ?  : 'assets/img/mkm-triangle.png' " alt="mkm-triangle"> -->
-      <img *ngIf="(isSmallScreenValue | async); else showTriangle" src="assets/img/mkm-triangle.png" alt="mkm-triangle">
-      <ng-template #showTriangle>
-        <img src="assets/img/mkm-triangle-down.png" alt="mkm-triangle">
-      </ng-template>
-    </div>
-
-    <div [ngClass]="{zy2: isZhuyinBool}" class="mkm-flow-step">
-      終身享有課程
     </div>
 
   </div>
@@ -42,354 +54,40 @@
         <img class="mkm-courses-img" src="assets/img/mkm-mycourses-banner.png" alt="mkm-mycourses">
       </ng-template>
 
-    <div id="mkm-wrap-video-mycourse" class="mkm-wrap-video">
-
-      <div #myCourses id="mkm-wrap-video-inside-mycourse" class="mkm-wrap-video-inside">
-
-        <div class="mkm-video-mycourse">
-
-          <div class="mkm-image-course" [ngStyle]="{'background-image': 'url(../../assets/img/mkm-taiwan.jpg)'}">
-
-            <div class="mkm-course-progress-bar">
-
-              <div class="mkm-course-progress">
-                <span [ngClass]="{zy2: isZhuyinBool}" style="width: 50%">完成 50%</span>
-              </div>
-
-            </div>
-
-          </div>
-
-          <div class="mkm-course-rate">
-
-            <ngb-rating [max]="5" [(rate)]="currentRate" [readonly]="true"></ngb-rating>
-            <div [ngClass]="{zy2: isZhuyinBool}" class="mkm-discussion"> 評論 (30)</div>
-
-          </div>
-
-          <div class="mkm-course-info">
-
-            <div class="mkm-course-info-picture">
-
-              <img class="mkm-course-profile-picture" src="assets/img/mkm-dev.jpeg">
-
-            </div>
-
-            <div class="mkm-course-info-section">
-
-              <div class="mkm-course-info-title">
-                <h2 [ngClass]="{zy2: isZhuyinBool}" class="mkm-course-info-title-style">我的第一個課程</h2>
-              </div>
-
-              <div class="mkm-course-info-category">
-                <h3 [ngClass]="{zy2: isZhuyinBool}" class="mkm-course-info-category-style">情接管理科技 ｜ 國小4年紀</h3>
-              </div>
-
-              <div class="mkm-course-time">
-                <span [ngClass]="{zy2: isZhuyinBool}" class="mkm-course-time-info"> 課程總時長300分鐘</span>
-              </div>
-
-
-            </div>
-
-
-
-
-          </div>
-
-
-
-        </div>
-
-        <div class="mkm-video-mycourse">
-
-          <div class="mkm-image-course" [ngStyle]="{'background-image': 'url(../../assets/img/mkm-child.jpg)'}">
-
-            <!-- <img class="img-fluid mkm-image-content" src="assets/img/mkm-taiwan.jpg" alt="Taiwan"> -->
-            <div class="mkm-course-progress-bar">
-
-              <div class="mkm-course-progress">
-                <span style="width: 40%">完成 40%</span>
-              </div>
-
-            </div>
-
-
-          </div>
-
-          <div class="mkm-course-rate">
-
-            <ngb-rating [max]="5" [(rate)]="currentRate" [readonly]="true"></ngb-rating>
-            <div class="mkm-discussion"> 評論 (30)</div>
-
-          </div>
-
-          <div class="mkm-course-info">
-
-            <div class="mkm-course-info-picture">
-
-              <img class="mkm-course-profile-picture" src="assets/img/mkm-dev.jpeg">
-
-            </div>
-
-            <div class="mkm-course-info-section">
-
-              <div class="mkm-course-info-title">
-                <h2 class="mkm-course-info-title-style">我的第一個課程</h2>
-              </div>
-
-              <div class="mkm-course-info-category">
-                <h3 class="mkm-course-info-category-style">情接管理科技 ｜ 國小4年紀</h3>
-              </div>
-
-              <div class="mkm-course-time">
-                <span class="mkm-course-time-info"> 課程總時長300分鐘</span>
-              </div>
-
-
-            </div>
-
-
-
-
-          </div>
-
-
-
-        </div>
-
-        <div class="mkm-video-mycourse">
-
-          <div class="mkm-image-course" [ngStyle]="{'background-image': 'url(../../assets/img/mkm-children.jpg)'}">
-
-            <div class="mkm-course-progress-bar">
-
-              <div class="mkm-course-progress">
-                <span style="width: 100%; padding-top: 0px;"><img class="mkm-mouse" src="assets/img/mkm-ico.png" alt="mkm mouse"> 恭喜完成課程！ 有空再看一次</span>
-              </div>
-
-            </div>
-
-
-          </div>
-
-          <div class="mkm-course-rate">
-
-            <ngb-rating [max]="5" [(rate)]="currentRate" [readonly]="true"></ngb-rating>
-            <div class="mkm-discussion"> 評論 (30)</div>
-
-          </div>
-
-          <div class="mkm-course-info">
-
-            <div class="mkm-course-info-picture">
-
-              <img class="mkm-course-profile-picture" src="assets/img/mkm-dev.jpeg">
-
-            </div>
-
-            <div class="mkm-course-info-section">
-
-              <div class="mkm-course-info-title">
-                <h2 class="mkm-course-info-title-style">我的第一個課程</h2>
-              </div>
-
-              <div class="mkm-course-info-category">
-                <h3 class="mkm-course-info-category-style">情接管理科技 ｜ 國小4年紀</h3>
-              </div>
-
-              <div class="mkm-course-time">
-                <span class="mkm-course-time-info"> 課程總時長300分鐘</span>
-              </div>
-
-
-            </div>
-
-
-
-
-          </div>
-
-
-        </div>
-
-        <div class="mkm-video-mycourse">
-
-          <div class="mkm-image-course" [ngStyle]="{'background-image': 'url(../../assets/img/mkm-taiwan.jpg)'}">
-
-            <div class="mkm-course-progress-bar">
-
-              <div class="mkm-course-progress">
-                <span style="width: 50%">完成 50%</span>
-              </div>
-
-            </div>
-
-          </div>
-
-          <div class="mkm-course-rate">
-
-            <ngb-rating [max]="5" [(rate)]="currentRate" [readonly]="true"></ngb-rating>
-            <div class="mkm-discussion"> 評論 (30)</div>
-
-          </div>
-
-          <div class="mkm-course-info">
-
-            <div class="mkm-course-info-picture">
-
-              <img class="mkm-course-profile-picture" src="assets/img/mkm-dev.jpeg">
-
-            </div>
-
-            <div class="mkm-course-info-section">
-
-              <div class="mkm-course-info-title">
-                <h2 class="mkm-course-info-title-style">我的第一個課程</h2>
-              </div>
-
-              <div class="mkm-course-info-category">
-                <h3 class="mkm-course-info-category-style">情接管理科技 ｜ 國小4年紀</h3>
-              </div>
-
-              <div class="mkm-course-time">
-                <span class="mkm-course-time-info"> 課程總時長300分鐘</span>
-              </div>
-
-
-            </div>
-
-
-
-
-          </div>
-
-
-
-        </div>
-
-        <div class="mkm-video-mycourse">
-
-          <div class="mkm-image-course" [ngStyle]="{'background-image': 'url(../../assets/img/mkm-child.jpg)'}">
-
-            <!-- <img class="img-fluid mkm-image-content" src="assets/img/mkm-taiwan.jpg" alt="Taiwan"> -->
-            <div class="mkm-course-progress-bar">
-
-              <div class="mkm-course-progress">
-                <span style="width: 40%">完成 40%</span>
-              </div>
-
-            </div>
-
-
-          </div>
-
-          <div class="mkm-course-rate">
-
-            <ngb-rating [max]="5" [(rate)]="currentRate" [readonly]="true"></ngb-rating>
-            <div class="mkm-discussion"> 評論 (30)</div>
-
-          </div>
-
-          <div class="mkm-course-info">
-
-            <div class="mkm-course-info-picture">
-
-              <img class="mkm-course-profile-picture" src="assets/img/mkm-dev.jpeg">
-
-            </div>
-
-            <div class="mkm-course-info-section">
-
-              <div class="mkm-course-info-title">
-                <h2 class="mkm-course-info-title-style">我的第一個課程</h2>
-              </div>
-
-              <div class="mkm-course-info-category">
-                <h3 class="mkm-course-info-category-style">情接管理科技 ｜ 國小4年紀</h3>
-              </div>
-
-              <div class="mkm-course-time">
-                <span class="mkm-course-time-info"> 課程總時長300分鐘</span>
-              </div>
-
-
-            </div>
-
-
-
-
-          </div>
-
-
-
-        </div>
-
-        <div class="mkm-video-mycourse">
-
-          <div class="mkm-image-course" [ngStyle]="{'background-image': 'url(../../assets/img/mkm-children.jpg)'}">
-
-            <div class="mkm-course-progress-bar">
-
-              <div class="mkm-course-progress">
-                <span style="width: 100%; padding-top: 0px;"><img class="mkm-mouse" src="assets/img/mkm-ico.png" alt="mkm mouse"> 恭喜完成課程！ 有空再看一次</span>
-              </div>
-
-            </div>
-
-
-          </div>
-
-          <div class="mkm-course-rate">
-
-            <ngb-rating [max]="5" [(rate)]="currentRate" [readonly]="true"></ngb-rating>
-            <div class="mkm-discussion"> 評論 (30)</div>
-
-          </div>
-
-          <div class="mkm-course-info">
-
-            <div class="mkm-course-info-picture">
-
-              <img class="mkm-course-profile-picture" src="assets/img/mkm-dev.jpeg">
-
-            </div>
-
-            <div class="mkm-course-info-section">
-
-              <div class="mkm-course-info-title">
-                <h2 class="mkm-course-info-title-style">我的第一個課程</h2>
-              </div>
-
-              <div class="mkm-course-info-category">
-                <h3 class="mkm-course-info-category-style">情接管理科技 ｜ 國小4年紀</h3>
-              </div>
-
-              <div class="mkm-course-time">
-                <span class="mkm-course-time-info"> 課程總時長300分鐘</span>
-              </div>
-
-
-            </div>
-
-
-
-
-          </div>
-
-
-        </div>
-
+      <div class="mkm-slide-wrapper" *ngIf="!loading">
+        <app-slideshow *ngIf="courses" [courses] = "courses" [loading] = "loading"></app-slideshow>
       </div>
+      <div class="mkm-slide-wrapper" *ngIf="loading">
+        <div class="main"> 
+          <div class="slide-show-content" [ngStyle]="{ 'grid-template-columns': 'repeat(' + loadingCount + ', 1fr)'}">
+            <div class="slide-loading" *ngFor="let item of [].constructor(loadingCount)">
+              <div class="slide-img">
+              </div>
+              <div class="slide-detail">
+                <div class="star">
+                </div>
+                <div class="slide-bottom">
+                  <div class="profile"> 
 
-      <div class="mkm-prev">
-        <img (click)="myCoursescrollLeft()" id="mycourse-left-arrow" class="mkm-left-arrow arrow hidden" src="assets/img/mkm-slider-left-mycourse.png">
+                  </div>
+                  <div class="desc"> 
+                    <div class="title"> 
+                      
+                    </div>
+                    <div class="type"> 
+                      
+                    </div>
+                    <div class="time"> 
+                      
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
 
-        <img (click)="myCoursescrollRight()" id="mycourse-right-arrow" class="mkm-right-arrow arrow" src="assets/img/mkm-slider-right-mycourse.png">
+        </div>
       </div>
-
-
-    </div>
 
   </div>
 
@@ -400,351 +98,39 @@
         <img class="mkm-courses-img" src="assets/img/mkm-new-courses-banner.png" alt="mkm-mycourses">
       </ng-template>
 
-    <div id="mkm-wrap-video-newcourse" class="mkm-wrap-video">
-
-      <div #newCourses id="mkm-wrap-video-inside-newcourse" class="mkm-wrap-video-inside">
-
-        <div class="mkm-video-newcourse">
-
-          <div class="mkm-image-course" [ngStyle]="{'background-image': 'url(../../assets/img/mkm-taiwan.jpg)'}">
-
-            <div class="mkm-course-progress-bar">
-
-              <div class="mkm-course-progress">
-                <span style="width: 50%">完成 50%</span>
-              </div>
-
+    <div class="mkm-slide-wrapper" *ngIf="!loading">
+      <app-slideshow *ngIf="courses" [courses] = "courses"></app-slideshow>
+    </div>
+    <div class="mkm-slide-wrapper" *ngIf="loading">
+      <div class="main"> 
+        <div class="slide-show-content" [ngStyle]="{ 'grid-template-columns': 'repeat(' + loadingCount + ', 1fr)'}">
+          <div class="slide-loading" *ngFor="let item of [].constructor(loadingCount)">
+            <div class="slide-img">
             </div>
+            <div class="slide-detail">
+              <div class="star">
+              </div>
+              <div class="slide-bottom">
+                <div class="profile"> 
 
-          </div>
-
-          <div class="mkm-course-rate">
-
-            <ngb-rating [max]="5" [(rate)]="currentRate" [readonly]="true"></ngb-rating>
-            <div class="mkm-discussion"> 評論 (30)</div>
-
-          </div>
-
-          <div class="mkm-course-info">
-
-            <div class="mkm-course-info-picture">
-
-              <img class="mkm-course-profile-picture" src="assets/img/mkm-dev.jpeg">
-
+                </div>
+                <div class="desc"> 
+                  <div class="title"> 
+                    
+                  </div>
+                  <div class="type"> 
+                    
+                  </div>
+                  <div class="time"> 
+                    
+                  </div>
+                </div>
+              </div>
             </div>
-
-            <div class="mkm-course-info-section">
-
-              <div class="mkm-course-info-title">
-                <h2 class="mkm-course-info-title-style">我的第一個課程</h2>
-              </div>
-
-              <div class="mkm-course-info-category">
-                <h3 class="mkm-course-info-category-style">情接管理科技 ｜ 國小4年紀</h3>
-              </div>
-
-              <div class="mkm-course-time">
-                <span class="mkm-course-time-info"> 課程總時長300分鐘</span>
-              </div>
-
-
-            </div>
-
-
-
-
           </div>
-
-
-
-        </div>
-
-        <div class="mkm-video-newcourse">
-
-          <div class="mkm-image-course" [ngStyle]="{'background-image': 'url(../../assets/img/mkm-child.jpg)'}">
-
-            <div class="mkm-course-progress-bar">
-
-              <div class="mkm-course-progress">
-                <span style="width: 40%">完成 40%</span>
-              </div>
-
-            </div>
-
-
-          </div>
-
-          <div class="mkm-course-rate">
-
-            <ngb-rating [max]="5" [(rate)]="currentRate" [readonly]="true"></ngb-rating>
-            <div class="mkm-discussion"> 評論 (30)</div>
-
-          </div>
-
-          <div class="mkm-course-info">
-
-            <div class="mkm-course-info-picture">
-
-              <img class="mkm-course-profile-picture" src="assets/img/mkm-dev.jpeg">
-
-            </div>
-
-            <div class="mkm-course-info-section">
-
-              <div class="mkm-course-info-title">
-                <h2 class="mkm-course-info-title-style">我的第一個課程</h2>
-              </div>
-
-              <div class="mkm-course-info-category">
-                <h3 class="mkm-course-info-category-style">情接管理科技 ｜ 國小4年紀</h3>
-              </div>
-
-              <div class="mkm-course-time">
-                <span class="mkm-course-time-info"> 課程總時長300分鐘</span>
-              </div>
-
-
-            </div>
-
-
-
-
-          </div>
-
-
-
-        </div>
-
-        <div class="mkm-video-newcourse">
-
-          <div class="mkm-image-course" [ngStyle]="{'background-image': 'url(../../assets/img/mkm-children.jpg)'}">
-
-            <div class="mkm-course-progress-bar">
-
-              <div class="mkm-course-progress">
-                <span style="width: 100%; padding-top: 0px;"><img class="mkm-mouse" src="assets/img/mkm-ico.png" alt="mkm mouse"> 恭喜完成課程！ 有空再看一次</span>
-              </div>
-
-            </div>
-
-
-          </div>
-
-          <div class="mkm-course-rate">
-
-            <ngb-rating [max]="5" [(rate)]="currentRate" [readonly]="true"></ngb-rating>
-            <div class="mkm-discussion"> 評論 (30)</div>
-
-          </div>
-
-          <div class="mkm-course-info">
-
-            <div class="mkm-course-info-picture">
-
-              <img class="mkm-course-profile-picture" src="assets/img/mkm-dev.jpeg">
-
-            </div>
-
-            <div class="mkm-course-info-section">
-
-              <div class="mkm-course-info-title">
-                <h2 class="mkm-course-info-title-style">我的第一個課程</h2>
-              </div>
-
-              <div class="mkm-course-info-category">
-                <h3 class="mkm-course-info-category-style">情接管理科技 ｜ 國小4年紀</h3>
-              </div>
-
-              <div class="mkm-course-time">
-                <span class="mkm-course-time-info"> 課程總時長300分鐘</span>
-              </div>
-
-
-            </div>
-
-
-
-
-          </div>
-
-
-        </div>
-
-        <div class="mkm-video-newcourse">
-
-          <div class="mkm-image-course" [ngStyle]="{'background-image': 'url(../../assets/img/mkm-taiwan.jpg)'}">
-
-            <div class="mkm-course-progress-bar">
-
-              <div class="mkm-course-progress">
-                <span style="width: 50%">完成 50%</span>
-              </div>
-
-            </div>
-
-          </div>
-
-          <div class="mkm-course-rate">
-
-            <ngb-rating [max]="5" [(rate)]="currentRate" [readonly]="true"></ngb-rating>
-            <div class="mkm-discussion"> 評論 (30)</div>
-
-          </div>
-
-          <div class="mkm-course-info">
-
-            <div class="mkm-course-info-picture">
-
-              <img class="mkm-course-profile-picture" src="assets/img/mkm-dev.jpeg">
-
-            </div>
-
-            <div class="mkm-course-info-section">
-
-              <div class="mkm-course-info-title">
-                <h2 class="mkm-course-info-title-style">我的第一個課程</h2>
-              </div>
-
-              <div class="mkm-course-info-category">
-                <h3 class="mkm-course-info-category-style">情接管理科技 ｜ 國小4年紀</h3>
-              </div>
-
-              <div class="mkm-course-time">
-                <span class="mkm-course-time-info"> 課程總時長300分鐘</span>
-              </div>
-
-
-            </div>
-
-
-
-
-          </div>
-
-
-
-        </div>
-
-        <div class="mkm-video-newcourse">
-
-          <div class="mkm-image-course" [ngStyle]="{'background-image': 'url(../../assets/img/mkm-child.jpg)'}">
-
-            <div class="mkm-course-progress-bar">
-
-              <div class="mkm-course-progress">
-                <span style="width: 40%">完成 40%</span>
-              </div>
-
-            </div>
-
-
-          </div>
-
-          <div class="mkm-course-rate">
-
-            <ngb-rating [max]="5" [(rate)]="currentRate" [readonly]="true"></ngb-rating>
-            <div class="mkm-discussion"> 評論 (30)</div>
-
-          </div>
-
-          <div class="mkm-course-info">
-
-            <div class="mkm-course-info-picture">
-
-              <img class="mkm-course-profile-picture" src="assets/img/mkm-dev.jpeg">
-
-            </div>
-
-            <div class="mkm-course-info-section">
-
-              <div class="mkm-course-info-title">
-                <h2 class="mkm-course-info-title-style">我的第一個課程</h2>
-              </div>
-
-              <div class="mkm-course-info-category">
-                <h3 class="mkm-course-info-category-style">情接管理科技 ｜ 國小4年紀</h3>
-              </div>
-
-              <div class="mkm-course-time">
-                <span class="mkm-course-time-info"> 課程總時長300分鐘</span>
-              </div>
-
-
-            </div>
-
-
-
-
-          </div>
-
-
-
-        </div>
-
-        <div class="mkm-video-newcourse">
-
-          <div class="mkm-image-course" [ngStyle]="{'background-image': 'url(../../assets/img/mkm-children.jpg)'}">
-
-            <div class="mkm-course-progress-bar">
-
-              <div class="mkm-course-progress">
-                <span style="width: 100%; padding-top: 0px;"><img class="mkm-mouse" src="assets/img/mkm-ico.png" alt="mkm mouse"> 恭喜完成課程！ 有空再看一次</span>
-              </div>
-
-            </div>
-
-
-          </div>
-
-          <div class="mkm-course-rate">
-
-            <ngb-rating [max]="5" [(rate)]="currentRate" [readonly]="true"></ngb-rating>
-            <div class="mkm-discussion"> 評論 (30)</div>
-
-          </div>
-
-          <div class="mkm-course-info">
-
-            <div class="mkm-course-info-picture">
-
-              <img class="mkm-course-profile-picture" src="assets/img/mkm-dev.jpeg">
-
-            </div>
-
-            <div class="mkm-course-info-section">
-
-              <div class="mkm-course-info-title">
-                <h2 class="mkm-course-info-title-style">我的第一個課程</h2>
-              </div>
-
-              <div class="mkm-course-info-category">
-                <h3 class="mkm-course-info-category-style">情接管理科技 ｜ 國小4年紀</h3>
-              </div>
-
-              <div class="mkm-course-time">
-                <span class="mkm-course-time-info"> 課程總時長300分鐘</span>
-              </div>
-
-
-            </div>
-
-
-
-
-          </div>
-
-
         </div>
 
       </div>
-
-      <div class="mkm-prev">
-        <img (click)="newCoursescrollLeft()" id="newcourse-left-arrow" class="mkm-left-arrow arrow hidden" src="assets/img/mkm-slider-left-newcourse.png">
-
-        <img (click)="newCoursescrollRight()" id="newcourse-right-arrow" class="mkm-right-arrow arrow" src="assets/img/mkm-slider-right-newcourse.png">
-      </div>
-
-
     </div>
 
   </div>
@@ -765,7 +151,7 @@
       <section class="wrapper">
         <div class="center">
           <h1 class="mkm-game-title">心伴鼠鼠四子連線遊戲</h1>
-          <h3 class="mkm-game-description"> 遊戲說明：分為兩位玩家，雙方輪流把心伴鼠鼠放入棋盤，先連成四條線的獲勝！<br>
+          <h3 class="mkm-game-description"> 遊戲說明：分為兩位玩家，雙方輪流把心伴鼠鼠放入棋盤，先將四個連成一條線的獲勝！<br>
             *每一隻心伴鼠鼠都會從最底部開始疊放。<br>
             *無論直、橫、斜的方式都能連成一條線。<br>
             *玩家可以輸入自己的暱稱喔！</h3>

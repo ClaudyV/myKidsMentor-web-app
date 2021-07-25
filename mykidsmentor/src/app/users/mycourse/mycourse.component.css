@@ -13,6 +13,7 @@
     overflow-y: auto;
     border: 2px solid #ffc0bf;
     overflow-x: hidden;
+    border-radius: 25px;
   }
 
  .user-content .all-courses .completed-course {
@@ -21,12 +22,12 @@
   }
   
   .user-content .all-courses .completed-course .wrapper1 {
-    width: 50%;
+    width: 35%;
     display: flex;
   }
 
   .user-content .all-courses .completed-course .wrapper2 {
-    width: 50%;
+    width: 65%;
   }
 
   .user-content .all-courses .completed-course .wrapper2 .course-progress {

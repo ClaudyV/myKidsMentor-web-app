@@ -1,1 +1,60 @@
-<p>accountinfo works!</p>
+<h1 class="content-title">帳戶資料</h1>
+
+<div  *ngIf="user" [ngClass]="{'border-picture': isChanging}" class="mkm-account-profile">
+    <div class="mkm-content">
+
+    
+    <!-- <img class="mkm-mouse" src="assets/img/mkm-ico.png" alt="mouse"> -->
+    <img [ngClass]="{'transparent': isChanging}" *ngIf="user.photoURL; else defaultImage" class="mkm-profile-picture" src="{{user.photoURL}}" alt="{{user.displayName}}">
+    <ng-template #defaultImage>
+      <img [ngClass]="{'transparent': isChanging}" class="mkm-profile-picture" src="assets/img/mkm-ico.png" alt="{{user.displayName}}">
+    </ng-template>
+
+    <div [ngClass] = "{'beforeChangePicture': !isChanging}" *ngIf="!isChanging" class="change-picture">
+        <div class="container-pic">
+            <button (click)="changePicture($event)" class="change">更換</button>
+        </div>
+    </div>
+
+    <div  *ngIf="isChanging" class="mouse-container">
+        <div class="mouses"> 
+            <div>
+                <img class="mouse-style" src="assets/img/mkm-ico.png" alt="{{user.displayName}}">
+                <mat-checkbox class="checked-mouse" [(ngModel)]="checkedPink"></mat-checkbox>
+            </div>
+            <div>
+                <img class="mouse-style" src="assets/img/mkm-ico-blue.png" alt="{{user.displayName}}">
+                <mat-checkbox class="checked-mouse" [(ngModel)]="checkedBlue"></mat-checkbox>
+            </div>
+        </div>
+        <div class="save">
+            <button (click) =cancelPicture($event) class="cancel-button">取消</button>
+            <button (click) =savePicture($event) class="save-button">儲存</button>
+        </div>
+    </div>
+    </div>
+</div>
+
+<form [formGroup]="frmSetNewName" 
+    (ngSubmit)="onSubmitName()" 
+    class="mkm-account-profile">
+    <div class="mkm-content">
+        <div *ngIf="!isChangingName" class="name"> 
+            <span *ngIf="user" class="name-style"> {{user.displayName}} </span>
+        </div>
+        <div *ngIf="isChangingName" class="name">
+            <input class="input-style" type="text" placeholder="{{user.displayName}}" formControlName="newName">
+        </div>
+        <div *ngIf="!isChangingName" class="change-name"> 
+            <button (click) =changeName($event) class="change-button">修改</button>
+        </div>
+        <div *ngIf="isChangingName" class="change-name">
+            <button (click) =cancelNameChange($event) class="cancel-button">取消</button>
+            <button [ngClass]="{'disabled': !frmSetNewName.valid}" type="submit" class="save-button" [disabled]="!frmSetNewName.valid">儲存</button>
+        </div>
+    </div>
+</form>
+
+<div class="mkm-account-email"> 
+    <span *ngIf="user"> {{user.email}}</span>
+</div>

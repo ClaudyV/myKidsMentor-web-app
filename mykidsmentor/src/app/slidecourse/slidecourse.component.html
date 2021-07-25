@@ -1,0 +1,53 @@
+<div class="mkm-course-wrapper">
+    <div class="mkm-image-course" [ngStyle]="{'background-image': 'url(' + course.url + ')'}">
+            
+        <div class="mkm-course-progress-bar">
+
+            <div *ngIf="course.type !== 'newcourses'" class="mkm-course-progress">
+                <span class="progress" [ngClass]="{prog: course.progress !== 100 && course.progress >= 50}" *ngIf="course.progress !== 100 && course.progress >= 50" [ngStyle]="{'width' : course.progress + '%' }">完成 {{ course.progress }}%</span>
+                <span class="progress" *ngIf="course.progress === 100" style="width: 100%; padding-top: 0px;"><img class="mkm-mouse" src="assets/img/mkm-ico.png" alt="mkm mouse"> 恭喜完成課程！ 有空再看一次</span>
+                <ng-container *ngIf="course.progress !== 100 && course.progress < 50">
+                    <span class="progress" [ngStyle]="{'width' : course.progress + '%' }"></span>
+                    <span class="progress-style"> 完成 {{ course.progress }}% </span>
+                </ng-container>
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="mkm-course-rate">
+
+        <ngb-rating [max]="5" [(rate)]="currentRate" [readonly]="true"></ngb-rating>
+        <div class="mkm-discussion"> 評論 ({{ course.people }})</div>
+
+    </div>
+
+    <div class="mkm-course-info">
+
+        <div class="mkm-course-info-picture">
+
+            <img class="mkm-course-profile-picture" src="{{ course.authorImage }}">
+
+        </div>
+
+        <div class="mkm-course-info-section">
+            <div class="mkm-course-info-title">
+            <h2 class="mkm-course-info-title-style">{{ (course.title.length > 10)? (course.title | slice:0:10)+'...':(course.title) }}</h2>
+            </div>
+
+            <div class="mkm-course-info-category">
+            <h3 class="mkm-course-info-category-style">{{ course.category }}</h3>
+            </div>
+
+            <div class="mkm-course-time">
+            <span class="mkm-course-time-info"> 課程總時長{{ course.time }}分鐘</span>
+            </div>
+        </div>
+        <div class="mkm-learning"> 
+            <button class="mkm-button-learning">
+                開始上課
+            </button>
+        </div>
+    </div>
+</div>

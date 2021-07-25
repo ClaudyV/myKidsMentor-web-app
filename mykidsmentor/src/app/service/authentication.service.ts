@@ -54,7 +54,7 @@ export class AuthenticationService implements CanActivate {
                        switchMap(user => {
                          try
                          {
-                          return this.serviceUser.getUserById(user.uid);
+                          return this.serviceUser.getUserById(user?.uid);
                          }
                          catch (error)
                          {
@@ -84,7 +84,6 @@ export class AuthenticationService implements CanActivate {
 
   async createUser(formData) {
     this.userName = formData.value.firstname;
-    console.log(this.userName);
     return this.authLogin.createUserWithEmailAndPassword(formData.value.email, formData.value.password);
   }
 

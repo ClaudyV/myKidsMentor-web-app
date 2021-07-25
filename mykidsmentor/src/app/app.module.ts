@@ -13,31 +13,48 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatIconModule} from '@angular/material/icon';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatButtonModule} from '@angular/material/button';
-import {FormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {MatInputModule} from '@angular/material/input';
 import {AngularFireModule} from '@angular/fire';
 import { AngularFireAnalyticsModule } from '@angular/fire/analytics';
+import { MatCardModule } from '@angular/material/card';
+import {MatSelectModule} from '@angular/material/select';
+import { AngularFireStorageModule } from '@angular/fire/storage';
+import { MatSortModule } from '@angular/material/sort';
+
 import { environment } from '../environments/environment';
 import { LoginComponent } from './login/login.component';
-import { ReactiveFormsModule } from '@angular/forms';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
-import {MatDialogModule} from '@angular/material/dialog';
+import { MatDialogModule } from '@angular/material/dialog';
 import { HomeComponent } from './home/home.component';
 import { CourseComponent } from './course/course.component';
 import { SignupComponent } from './signup/signup.component';
-import {LayoutModule} from '@angular/cdk/layout';
+import { LayoutModule } from '@angular/cdk/layout';
 import { PwnotificationComponent } from './pwnotification/pwnotification.component';
 import { EverificationComponent } from './everification/everification.component';
 import { UsersComponent } from './users/users.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FooterComponent } from './footer/footer.component';
-import {MatTableModule} from '@angular/material/table';
+import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MycourseComponent } from './users/mycourse/mycourse.component';
 import { BlogComponent } from './users/blog/blog.component';
 import { ChangepasswordComponent } from './users/changepassword/changepassword.component';
 import { AccountinfoComponent } from './users/accountinfo/accountinfo.component';
 import { CoursehistoryComponent } from './users/coursehistory/coursehistory.component';
+import { MatCheckboxModule} from '@angular/material/checkbox';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { ScrollingModule } from '@angular/cdk/scrolling';
+import { SearchResultComponent } from './search-result/search-result.component';
+import { SearchCourseComponent } from './search-result/search-course/search-course.component';
+import { SearchBlogComponent } from './search-result/search-blog/search-blog.component';
+import { NewcourseComponent } from './newcourse/newcourse.component';
+import { PopularcourseComponent } from './popularcourse/popularcourse.component';
+import { SlideshowComponent } from './slideshow/slideshow.component';
+import { SlidecourseComponent } from './slidecourse/slidecourse.component';
+import { AdminCoursesComponent } from './users/admin-courses/admin-courses.component';
+import { CourseDialogComponent } from './users/admin-courses/course-dialog/course-dialog.component';
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
 
 
 @NgModule({
@@ -57,7 +74,16 @@ import { CoursehistoryComponent } from './users/coursehistory/coursehistory.comp
     BlogComponent,
     ChangepasswordComponent,
     AccountinfoComponent,
-    CoursehistoryComponent
+    CoursehistoryComponent,
+    SearchResultComponent,
+    SearchCourseComponent,
+    SearchBlogComponent,
+    NewcourseComponent,
+    PopularcourseComponent,
+    SlideshowComponent,
+    SlidecourseComponent,
+    AdminCoursesComponent,
+    CourseDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -76,13 +102,22 @@ import { CoursehistoryComponent } from './users/coursehistory/coursehistory.comp
     LayoutModule,
     MatTableModule,
     MatPaginatorModule,
+    MatCheckboxModule,
+    MatAutocompleteModule,
+    ScrollingModule,
+    MatCardModule,
+    MatSelectModule,
+    AngularFireStorageModule,
+    MatSortModule,
+    Ng2SearchPipeModule,
     NgbModule
   ],
   entryComponents: [
     LoginComponent,
     SignupComponent,
     PwnotificationComponent,
-    EverificationComponent
+    EverificationComponent,
+    CourseDialogComponent
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,0 +1,83 @@
+<div class="search-result" [ngClass]="routeIsActive('/search-result/course') ? 'pink': 'blue'">
+
+    <div class="left"> 
+
+        <div class="keyword"> 
+            <span class="text">搜尋關鍵字</span> <span class="comma">:</span> <span class="result" *ngIf="courses" [ngClass]="{'pink-color': routeIsActive('/search-result/blog')}">{{keyWord}} (共{{ courses.length }}項結果)</span>
+        </div>
+
+        <div class="switch">
+            <img *ngIf="routeIsActive('/search-result/course')" class="active-img-pink" src="assets/img/mkm-ico.png" alt="My kid's Mentor ICO">
+            <div [routerLink]="['/search-result/course']" [queryParams]="{keyword: keyWord}" routerLinkActive="activatedLink" class="course"> 
+                <img *ngIf="!routeIsActive('/search-result/course')" style="width: 20px;" src="assets/img/mkm-ico.png" alt=""> <span>課程</span> 
+            </div>
+
+            <div [routerLink]="['/search-result/blog']" [queryParams]="{keyword: keyWord}" routerLinkActive="activatedLink" class="blog">
+                <span>文章</span> <img *ngIf="!routeIsActive('/search-result/blog')" style="width: 20px;" src="assets/img/mkm-ico-blue.png" alt="My kid's Mentor ICO">
+            </div>
+            <img *ngIf="routeIsActive('/search-result/blog')" class="active-img-blue" src="assets/img/mkm-ico-blue.png" alt="My kid's Mentor ICO">
+
+        </div>
+
+    </div>
+
+    <div *ngIf="routeIsActive('/search-result/course')" class="right"> 
+            <div class="top-steps">
+              <div class="step-arrow">
+                <img style="width: 35px;" src="assets/img/mkm-double-arrow.png" alt="mkm-triangle">
+              </div>
+              <div class="mkm-flow-title">
+                <span>購買課程步驟</span>
+              </div>
+            </div>
+            <div class="mkm-steps">
+        
+              <div [ngClass]="{zy2: isZhuyinBool}" class="mkm-flow-step">
+                註冊或登入
+              </div>
+              
+              <div class="mkm-flow-step-triangle">
+                <img style="width: 32px;" *ngIf="(isSmallScreenValue | async); else showTriangle" src="assets/img/mkm-triangle.png" alt="mkm-triangle">
+                <ng-template #showTriangle>
+                  <img  class="mkm-triangle-down" src="assets/img/mkm-triangle-down.png" alt="mkm-triangle">
+                </ng-template>
+          
+              </div>
+          
+              <div [ngClass]="{zy2: isZhuyinBool}" class="mkm-flow-step">
+                選購課程
+              </div>
+          
+              <div class="mkm-flow-step-triangle">
+                <!-- <img [src]="isSmallScreen ?  : 'assets/img/mkm-triangle.png' " alt="mkm-triangle"> -->
+                <img style="width: 32px;" *ngIf="(isSmallScreenValue | async); else showTriangle" src="assets/img/mkm-triangle.png" alt="mkm-triangle">
+                <ng-template #showTriangle>
+                  <img src="assets/img/mkm-triangle-down.png" alt="mkm-triangle">
+                </ng-template>
+              </div>
+          
+              <div [ngClass]="{zy2: isZhuyinBool}" class="mkm-flow-step">
+                終身享有課程
+              </div>
+        
+            </div>
+        
+        
+    </div>
+
+    <div *ngIf="routeIsActive('/search-result/blog')" class="right">
+        <div class="like"> 
+            <div class="left-like">
+                <img style="width: 50px;" src="/assets/img/mkm-like.png" alt="My kid's mentor (like)"> 
+            </div>
+            <div class="right-like">
+                <span class="info">按下收藏文章</span>
+                <span class="info">方便之後查看</span>
+            </div>
+        </div>
+    </div>
+
+</div>
+<div class="search-result-content">
+<router-outlet></router-outlet>
+</div>

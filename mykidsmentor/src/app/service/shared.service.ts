@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -6,23 +7,31 @@ import { Injectable } from '@angular/core';
 export class SharedService {
 
   private zhuyin:boolean;
+  private keyWord = new BehaviorSubject('');
+  currentKeyWord = this.keyWord.asObservable();
+  private searching = new BehaviorSubject(true);
+  currentSearching = this.searching.asObservable();
 
   constructor() { }
 
     setZhuyin(data:boolean) {
-        this.zhuyin = data;
-        console.log(this.zhuyin);
+      this.zhuyin = data;
     }
 
     isZhuyinService() {
-        return this.zhuyin;
+      return this.zhuyin;
     }
 
-    set isZhuyin(value: boolean) {
-      sessionStorage.setItem('isZhuyin', String(value));
+    setSearchKeyWord(keyWord: string) {
+      this.keyWord.next(keyWord);
     }
 
-    get isZhuyin(): boolean {
-        return <boolean> <unknown>sessionStorage.getItem('isZhuyin');
+    setQuotesValue(data: boolean) {
+      this.searching.next(data);
     }
+
+    getQuotesValue() {
+      return this.searching;
+    }
+    
 }

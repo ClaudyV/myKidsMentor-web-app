@@ -1,10 +1,11 @@
 .mkm-container-sidebar {
+  background-color: #fff3f2;
   display: flex;
 }
 
 .mkm-page-content {
   margin: 20px auto auto auto;
-  width: 50%;
+  width: 75%;
   padding: 10px;
 }
 
@@ -62,7 +63,7 @@
 }
 
   .mkm-container-sidebar .mkm-sidebar {
-    height: 77vh;
+    height: 85vh;
     width: 20%;
     background-color: #fff4f3;
     border-right: 30px solid #ffc1c0;
@@ -82,6 +83,7 @@
       font-size: 21px;
       padding: 20px;
       cursor: pointer;
+      min-width: 124px;
     }
 
     .mkm-container-sidebar .mkm-sidebar .mkm-account-links ul li:focus {
@@ -292,7 +294,7 @@ hr {
 
 @media screen and (min-width: 700px) and (max-width: 1320px) and (orientation: landscape)  {
   .mkm-container-sidebar .mkm-sidebar {
-    min-width: 40vh !important;
+    min-width: 45vh !important;
   }
 }
 

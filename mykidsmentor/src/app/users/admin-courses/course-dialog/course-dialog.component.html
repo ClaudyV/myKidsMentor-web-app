@@ -1,0 +1,112 @@
+<div class="wrapper"> 
+    <mat-card>
+        <mat-card-title>
+            <div *ngIf="!course">Add Course</div>
+            <div *ngIf="course">Update Course</div>
+        </mat-card-title>
+        <mat-card-content>
+            <form [formGroup]="regiForm" (ngSubmit)="onSubmit(regiForm.value)" *ngIf="regiForm" >
+                <table class="table">
+                    <tr>
+                        <td>
+    
+                            
+                        <span class="image">Upload Course Image</span>
+                        <input type="file" name="fileCourse" id="fileCourse" placeholder="Image" (change)="uploadCourseImage($event, 'new-courses')">
+                        <div [hidden]="!uploadPercentCourse">
+                            <mat-progress-bar mode="determinate" value="{{ uploadPercentCourse | async }}"></mat-progress-bar>
+                        </div>
+                        <div class="field" [hidden]="!imageCourse">
+                            <img style="width: 200px;margin-top: 15px;" [src]="imageCourse || '//:0' ">
+                        </div>
+    
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <mat-form-field appearance="outline" class="field">
+                                <mat-label>Title</mat-label>
+                                <input formControlName="Title" matInput name="Title" placeholder="Title">
+                            </mat-form-field>
+                            <mat-error>
+                                <span *ngIf="!regiForm.get('Title').valid && regiForm.get('Title').touched">
+                                        Please enter the title !!!
+                                </span>
+                             </mat-error>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <mat-form-field appearance="outline" class="field">
+                                <mat-label>Description</mat-label>
+                                <textarea  formControlName="Description" matInput name="Description" matTextareaAutosize matAutosizeMinRows="2"
+                                    matAutosizeMaxRows="5" placeholder="Description"></textarea>
+                            </mat-form-field>
+                            <mat-error>
+                            <span *ngIf="!regiForm.get('Description').valid && regiForm.get('Description').touched">
+                                    Please enter the description !!!
+                            </span>
+                        </mat-error>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+    
+                            <mat-form-field appearance="outline">
+                                <mat-label>Duration</mat-label>
+                                <input type="number" formControlName="Duration" matInput placeholder="Duration">
+                            </mat-form-field>
+                            <mat-error>
+                            <span *ngIf="!regiForm.get('Duration').valid && regiForm.get('Duration').touched">
+                                    Please enter the price !!!
+                            </span>
+                        </mat-error>
+    
+                        </td>
+                    </tr>
+                    <tr>
+    
+                        <td>
+                            <mat-form-field appearance="outline">
+                                <mat-label>-- Select Category --</mat-label>
+                                <mat-select placeholder="Select Category" formControlName="Category">
+                                    <mat-option>-- Select Category --</mat-option>
+                                    <mat-option *ngFor="let category of categories" [value]="category.label">{{category.label}}</mat-option>
+                                </mat-select>
+    
+                            </mat-form-field>
+                            <mat-error>
+                                    <span *ngIf="!regiForm.get('Category').valid && regiForm.get('Category').touched">
+                                            Please select a category !!!
+                                    </span>
+                            </mat-error>
+                        </td>
+                    </tr>
+                    <tr>
+    
+                        <td>
+                            <mat-form-field appearance="outline">
+                                <mat-label>-- Select Author --</mat-label>
+                                <mat-select placeholder="Select Author" formControlName="Author">
+                                    <mat-option>-- Select Author --</mat-option>
+                                    <mat-option *ngFor="let item of adminUsers" [value]="item?.image">{{ item?.name }}</mat-option>
+                                </mat-select>
+    
+                            </mat-form-field>
+                            <mat-error>
+                                    <span *ngIf="!regiForm.get('Author').valid && regiForm.get('Author').touched">
+                                            Please select a category !!!
+                                    </span>
+                            </mat-error>
+                        </td>
+                    </tr>
+                    <tr>
+                            <td  class="content-center">
+                                <button mat-raised-button [disabled]="!regiForm.valid" color="accent">Submit</button>
+                            </td>
+                        </tr>
+                </table>
+            </form>
+        </mat-card-content>
+    </mat-card>
+</div>

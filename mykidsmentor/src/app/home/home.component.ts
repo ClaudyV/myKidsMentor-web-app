@@ -8,6 +8,9 @@ import { MatDialog } from '@angular/material/dialog';
 import { map } from 'rxjs/operators';
 import lottie from 'lottie-web';
 import { SharedService } from '../service/shared.service';
+import course from '../../app/datajson/course.json';
+import { CategoriesService } from '../service/categories.service';
+import { CoursesService } from '../service/courses.service';
 
 declare let $: any;
 
@@ -35,23 +38,41 @@ export class HomeComponent implements OnInit {
   @ViewChild('myCourses') myCourses: ElementRef;
   @ViewChild('newCourses') newCourses: ElementRef;
   @ViewChild('scrollBehavior') scrollBehavior: ElementRef;
+  urlTest = '../../assets/img/mkm-taiwan.jpg';
+  courses:any;
+  loading = true;
+  loadingMedim;
+  loadingCount = 3;
   
 
   constructor(private title: Title,
               private meta: Meta,
               public dialog: MatDialog,
               breakpointObserver: BreakpointObserver, 
-              private sharedServ: SharedService) {
+              private sharedServ: SharedService,
+              private categories: CategoriesService,
+              private courseService: CoursesService) {
                 this.isSmallScreen = breakpointObserver.observe('(max-width: 599px)').pipe(map(result => !result.matches));
                 this.isSmallScreenValue = breakpointObserver.observe('(max-width: 959px)')
                 .pipe(map(result => !result.matches));
                 this.isSmallScreenBanner = breakpointObserver.observe('(max-width: 700px)')
                 .pipe(map(result => !result.matches));
-                // this.isZhuyin = this.sharedServ.isZhuyinService();
-                // console.log(this.isZhuyin)
+                breakpointObserver.observe(['(max-width: 1024px)',
+                '(max-width: 650px)']).subscribe((state:BreakpointState) => {
+                  this.loadingCount = 3;
+                  if (state.breakpoints['(max-width: 1024px)']) {
+                    this.loadingCount = 2;
+                  } 
+                  if(state.breakpoints['(max-width: 650px)']) {
+                    this.loadingCount = 1;
+                  }
+                });
               }
 
   ngOnInit(): void {
+
+    console.log(this.loadingMedim);
+    this.getAllCourses();
     this.title.setTitle('Home | My kid' + 's Mentor');
     this.meta.addTags([
       { name: 'og:url', content: '/' },
@@ -60,11 +81,6 @@ export class HomeComponent implements OnInit {
       // { name: 'og:image', content: this.data.image }
     ]);
 
-
-    this.myCoursesSlider();
-
-    this.newCoursesSlider();
-
     this.connectFourGame();
 
     this.introAnimation();
@@ -72,9 +88,23 @@ export class HomeComponent implements OnInit {
     this.getCurrentGamePosition();
   }
 
+  getAllCategories() {
+    this.categories.getAllCategories()
+                    .subscribe(categories => console.log(categories));
+  }
 
+  getAllCourses() {
+    this.loading = true;
+    this.courseService.getAllCourses()
+    .subscribe(
+      courses => {
+        console.log(courses);
+        this.courses = courses;
+        this.loading = false;
+      }
+    );
+  }
 
-  
   getCurrentGamePosition(){
     let reloading = sessionStorage.getItem('scrollTop')
 
@@ -87,136 +117,6 @@ export class HomeComponent implements OnInit {
   get isZhuyinBool(){
     return this.sharedServ.isZhuyinService();
   }
-
-  myCoursesSlider(){
-      // paddles
-    const leftArrow = document.getElementById('mycourse-left-arrow');
-    const rightArrow = document.getElementById('mycourse-right-arrow');
-    // const leftArrow = document.getElementsByClassName('mkm-left-arrow');
-    // const rightArrow = document.getElementsByClassName('mkm-right-arrow');
-
-      // get items dimensions
-    // const itemsLength = $('#mkm-video-mycourse').length;
-    // const itemSize = $('#mkm-video-mycourse').outerWidth(true);
-
-    const itemsLength = $('.mkm-video-mycourse').length;
-    const itemSize = $('.mkm-video-mycourse').outerWidth(true);
-      // get some relevant size for the paddle triggering point
-    const paddleMargin = 20;
-
-      // get wrapper width
-    const getMenuWrapperSize = function() {
-        return $('#mkm-wrap-video-mycourse').outerWidth();
-      };
-    let menuWrapperSize = getMenuWrapperSize();
-      // the wrapper is responsive
-    $(window).on('resize', function() {
-        menuWrapperSize = getMenuWrapperSize();
-      });
-      // size of the visible part of the menu is equal as the wrapper size
-    const menuVisibleSize = menuWrapperSize;
-
-      // get total width of all menu items
-    const getMenuSize = function() {
-        return itemsLength * itemSize;
-      };
-    const menuSize = getMenuSize();
-      // get how much of menu is invisible
-    let menuInvisibleSize = menuSize - menuWrapperSize;
-
-      // get how much have we scrolled to the left
-    const getMenuPosition = function() {
-        return $('#mkm-wrap-video-inside-mycourse').scrollLeft();
-      };
-
-      // finally, what happens when we are actually scrolling the menu
-    $('#mkm-wrap-video-inside-mycourse').on('scroll', function() {
-
-        // get how much of menu is invisible
-        menuInvisibleSize = menuSize - menuWrapperSize;
-        // get how much have we scrolled so far
-        const menuPosition = getMenuPosition();
-
-        const menuEndOffset = menuInvisibleSize - paddleMargin;
-
-        // show & hide the paddles
-        // depending on scroll position
-        if (menuPosition <= paddleMargin) {
-          $(leftArrow).addClass('hidden');
-          $(rightArrow).removeClass('hidden');
-        } else if (menuPosition < menuEndOffset) {
-          // show both paddles in the middle
-          $(leftArrow).removeClass('hidden');
-          $(rightArrow).removeClass('hidden');
-        } else if (menuPosition >= menuEndOffset) {
-          $(leftArrow).removeClass('hidden');
-          $(rightArrow).addClass('hidden');
-      }
-
-      });
-  }
-
-  newCoursesSlider(){
-    // paddles
-    const leftArrow = document.getElementById('newcourse-left-arrow');
-    const rightArrow = document.getElementById('newcourse-right-arrow');
-    // get items dimensions
-    const itemsLength = $('.mkm-video-newcourse').length;
-    const itemSize = $('.mkm-video-newcourse').outerWidth(true);
-    // get some relevant size for the paddle triggering point
-    const paddleMargin = 20;
-
-    // get wrapper width
-    const getMenuWrapperSize = function() {
-      return $('#mkm-wrap-video-newcourse').outerWidth();
-    };
-    let menuWrapperSize = getMenuWrapperSize();
-    // the wrapper is responsive
-    $(window).on('resize', function() {
-      menuWrapperSize = getMenuWrapperSize();
-    });
-    // size of the visible part of the menu is equal as the wrapper size
-    const menuVisibleSize = menuWrapperSize;
-
-    // get total width of all menu items
-    const getMenuSize = function() {
-      return itemsLength * itemSize;
-    };
-    const menuSize = getMenuSize();
-    // get how much of menu is invisible
-    let menuInvisibleSize = menuSize - menuWrapperSize;
-
-    // get how much have we scrolled to the left
-    const getMenuPosition = function() {
-      return $('#mkm-wrap-video-inside-newcourse').scrollLeft();
-    };
-
-    // finally, what happens when we are actually scrolling the menu
-    $('#mkm-wrap-video-inside-newcourse').on('scroll', function() {
-
-      // get how much of menu is invisible
-      menuInvisibleSize = menuSize - menuWrapperSize;
-      // get how much have we scrolled so far
-      const menuPosition = getMenuPosition();
-
-      const menuEndOffset = menuInvisibleSize - paddleMargin;
-
-      // show & hide the paddles
-      // depending on scroll position
-      if (menuPosition <= paddleMargin) {
-        $(leftArrow).addClass('hidden');
-        $(rightArrow).removeClass('hidden');
-      } else if (menuPosition < menuEndOffset) {
-        // show both paddles in the middle
-        $(leftArrow).removeClass('hidden');
-        $(rightArrow).removeClass('hidden');
-      } else if (menuPosition >= menuEndOffset) {
-        $(leftArrow).removeClass('hidden');
-        $(rightArrow).addClass('hidden');
-    }
-
-    });
-}
 
 
 
@@ -638,7 +538,10 @@ connectFourGame(){
     
       // document.addEventListener('mousedown', () => styleEl.innerHTML = '');  
       document.addEventListener('keydown', () => {
-        styleEl.innerHTML = '.board button:focus{border:5px solid #999}'}); 
+        if(styleEl) {
+          styleEl.innerHTML = '.board button:focus{border:5px solid #999}'
+        }
+        }); 
    
     
     

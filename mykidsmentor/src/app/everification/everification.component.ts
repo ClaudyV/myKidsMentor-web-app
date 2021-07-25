@@ -14,6 +14,7 @@ import { MatDialog } from '@angular/material/dialog';
 export class EverificationComponent implements OnInit {
 
   getUserEmail;
+  warning: any;
 
   constructor(public PwNotificationDialogRef: MatDialogRef<EverificationComponent>,
               @Inject(MAT_DIALOG_DATA) public data: any,
@@ -25,7 +26,7 @@ export class EverificationComponent implements OnInit {
 
   ngOnInit(): void {
     this.getUserEmail = this.data.userEmail;
-    console.log(this.getUserEmail);
+    this.warning = this.data.warning;
   }
 
 }

@@ -97,8 +97,33 @@ th.mat-header-cell, td.mat-cell, td.mat-footer-cell {
 }
 
 .mat-header-cell {
-  font-size: 20px;
+  font-size: 15px;
 }
+
+@media screen and (max-width: 500px) {
+  .mat-header-cell {
+    font-size: 12px !important;
+  }
+  .mat-cell, .mat-footer-cell {
+    font-size: 12px !important;
+  }
+}
+
+.mat-checkbox-checked.mat-accent .mat-checkbox-background {
+  background-color: #40ff58 !important;
+}
+
+.material-icons {
+  color: #707070;
+}
+
+input:focus{
+  outline: none;
+}
+
+/* .cdk-overlay-container {
+  position: relative !important;
+} */
 
 
 

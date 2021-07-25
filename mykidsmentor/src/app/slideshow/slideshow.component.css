@@ -1,0 +1,185 @@
+.main{
+    position:relative;
+    width:100%;
+    
+    box-sizing:border-box;
+  
+  }
+  
+  .slideshow-nav{
+    display: flex;
+    justify-content: center;
+    position: relative;
+    margin-top: 20px;
+  }
+    .slideshow-nav .nav-btn{
+      width: 32px;
+      height: 8px;
+      background-color: #C4C4C4;
+      margin: 0 0 0 8px;
+      cursor: pointer;
+      border-radius: 45px;
+    }
+    .slideshow-nav .active-nav-btn{
+        width: 32px;
+        height: 8px;
+        background-color: #5e98aa;
+        margin: 0 0 0 8px;
+        cursor: pointer;
+        border-radius: 45px;
+    }
+  .slideshow-block{
+    
+    margin:0 -24px;
+    background-color:transparent;
+    height:fit-content;
+    
+    position:relative;
+  }
+  .slideshow-block .slideshow-inner{
+    overflow:hidden;
+    position:relative;
+  }
+  .slideshow-block .track{
+    display:inline-flex;
+    transition: transform 0.5s;
+  
+    gap: 24px;
+    box-sizing: border-box;
+    padding: 24px;
+  
+  }
+  .slideshow-block .video-block{
+    height:fit-content;
+    flex-shrink: 0;
+    background-color: transparent;
+    box-sizing:border-box;
+  }
+  
+  
+  .mkm-arrow .arr{
+    cursor: pointer;
+    position: absolute;
+	top: 0;
+	bottom: 0;
+	width: 3em;
+  } 
+    .mkm-arrow .arr .arr-width {
+        width: 30px;
+    }
+  
+    .mkm-arrow .prev{
+        left: -18px;
+        top: 45%;
+    }
+    .mkm-arrow .next{
+        right: -29px;
+        top: 45%;
+    }
+  
+    .mkm-arrow .arrow{
+      color: #4a4a4a;
+      cursor: pointer;
+    }
+    .mkm-arrow .disable-arrow{
+      display: none;
+    }
+  
+  button:focus{
+    outline: none;
+  }
+  @media screen and (max-width:1440px){
+    .slideshow-block{
+      margin: 0 -24px;
+    }
+      .slideshow-block .track{
+        gap: 24px;
+        padding: 24px;
+      }
+  }
+  @media screen and (max-width:1024px){
+    .slideshow-block{
+      margin: 0 -16px;
+    }
+      .slideshow-block .track{
+        gap: 16px;
+        padding: 16px;
+      }
+  }
+  
+  @media screen and (max-width:768px){
+    .slideshow-nav{
+        justify-content: center;
+    }
+      .slideshow-nav .nav-btn{
+        margin: 0 5px 0 0;
+      }
+      .slideshow-nav .active-nav-btn{
+        margin: 0 5px 0 0;
+      }
+    .slideshow-block{
+      margin: 0 -16px;
+    }
+      .slideshow-block .track{
+        gap: 16px;
+        padding: 16px;
+      }
+  }
+
+  @media screen and (max-width: 320px) {
+    .slideshow-nav .nav-btn {
+        margin: 0 -8px 0 0;
+    }
+
+    .slideshow-nav .active-nav-btn {
+        margin: 0 0px 0 0;
+    }
+
+    .mkm-course-wrapper {
+        height: 480px;
+    }
+  }
+
+  @media screen and (max-width:320px){
+    .slideshow-block{
+      margin: 0 -16px;
+    }
+      .slideshow-block .track{
+        gap: 16px;
+        padding: 16px;
+      }
+  }
+
+  @media screen and (max-width:480px){
+    /* .slideshow-nav{
+      display: none;
+    } */
+    .slideshow-block{
+      margin: 0 -16px;
+    }
+      .slideshow-block .track{
+        gap: 16px;
+        padding: 16px;
+      }
+  }
+
+  @media screen and (max-width:650px){ 
+    .video-item {
+        padding: 0px 30px;
+    }
+    
+    .mkm-arrow .next {
+        right: -8px;
+    }
+
+    .mkm-arrow .prev {
+        left: 5px;
+        top: 44%
+    }
+  }
+
+  @media screen and (max-width:900px){
+    .mkm-arrow .arr .arr-width {
+        width: 25px;
+    }
+  }

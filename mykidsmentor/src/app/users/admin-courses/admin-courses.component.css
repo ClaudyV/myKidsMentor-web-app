@@ -1,0 +1,36 @@
+.admin-title {
+  text-align: center;
+  color: #ffc1c0;
+  font-size: 30px;
+  font-weight: 800;
+  margin-bottom: 40px;
+}
+
+.add-course {
+  float: right;
+  margin-bottom: 15px;
+}
+
+table {
+    width: 100%;
+  }
+.actions {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 121px;
+}
+
+.search-form-field {
+  width: 50%;
+  padding: 0px 18px;
+  background-color: #5199ad;
+  border-radius: 43px;
+  height: 45px;
+}
+
+.exmple-container {
+  width: 100%;
+  overflow: auto;
+}

@@ -1,0 +1,115 @@
+.mkm-search-course {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    padding: 30px;
+}
+
+.mkm-video-mycourse{
+    margin: 30px auto;
+    height: auto !important;
+    width: 390px !important;
+    border: 1px solid #89cbde;
+  }
+
+  .mkm-image-course{
+    height: 250px;
+    border-bottom: 3px solid #5d98aa;
+    display: block;
+    background-size: cover;
+  }
+
+  .mkm-course-rate{
+    display: flex;
+    padding-top: 15px;
+    padding-right: 15px;
+    padding-left: 15px;
+  }
+
+  .mkm-discussion{
+    color: #5d98aa;
+  }
+
+  .mkm-course-info{
+    display: flex;
+    padding-right: 15px;
+    padding-left: 15px;
+    padding-top: 7px;
+  }
+  
+  .mkm-course-profile-picture{
+    border-radius: 43px;
+    border: 3px solid #5d98aa;
+    width: 55px;
+    height: 55px;
+  }
+  
+  .mkm-course-info-picture{
+    margin-right: 25px;
+  }
+  
+  .mkm-course-info-title-style{
+    color: #5d98aa;
+    font-weight: bold;
+    font-size: 30px;
+  }
+  
+  .mkm-course-info-section{
+    display: block;
+    width: 100%;
+  }
+  
+  .mkm-course-info-category-style{
+    color: #5d98aa;
+    font-weight: bold;
+    font-size: 17px;
+  }
+  
+  .mkm-course-time-info{
+    float: right;
+    color: #7d7d7d;
+    font-size: 15px;
+  }
+
+  ngb-rating {
+    padding-right: 10px;
+    font-size: 21px;
+    color:rgba(255, 202, 38, 1);
+  }
+
+  @media screen and (max-width: 400px) {
+    .mkm-video-mycourse{
+        width: auto !important;
+        height: auto !important;
+    }
+  }
+
+  @media screen and (max-width: 600px) {
+    .mkm-course-info-title-style {
+        font-size: 21px;
+    }
+    
+      .mkm-course-info-category-style {
+        font-size: 15px;
+    }
+    
+      .mkm-course-time-info {
+        float: none;
+    }
+  }
+
+
+
+
+  @media screen and (max-width: 900px) {
+    .mkm-search-course {
+        grid-template-columns: repeat(1, 1fr) !important;
+    }
+  }
+
+  @media screen and (max-width: 1330px) {
+    .mkm-search-course {
+        grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  

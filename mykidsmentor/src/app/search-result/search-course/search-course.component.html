@@ -1,0 +1,41 @@
+<div class="mkm-search-course">
+  <ng-container *ngIf="courses">
+    <div class="mkm-video-mycourse" *ngFor="let item of courses">
+
+      <div class="mkm-image-course" [ngStyle]="{'background-image': 'url('+ item.url +')'}">
+
+      </div>
+
+      <div class="mkm-course-rate">
+
+        <ngb-rating [max]="5" [(rate)]="currentRate" [readonly]="true"></ngb-rating>
+        <div [ngClass]="{zy2: isZhuyinBool}" class="mkm-discussion"> 評論 (30)</div>
+
+      </div>
+
+      <div class="mkm-course-info">
+
+        <div class="mkm-course-info-picture">
+
+          <img class="mkm-course-profile-picture" src="{{ item.authorImage }}">
+
+        </div>
+
+      <div class="mkm-course-info-section">
+
+        <div class="mkm-course-info-title">
+          <h2 [ngClass]="{zy2: isZhuyinBool}" class="mkm-course-info-title-style">{{ item.title }}</h2>
+        </div>
+
+        <div class="mkm-course-info-category">
+          <h3 [ngClass]="{zy2: isZhuyinBool}" class="mkm-course-info-category-style">{{ item.category }}</h3>
+        </div>
+
+        <div class="mkm-course-time">
+          <span [ngClass]="{zy2: isZhuyinBool}" class="mkm-course-time-info"> 課程總時長 {{ item.time }} 分鐘</span>
+        </div>
+      </div>
+    </div>
+    </div>
+  </ng-container>
+</div>
